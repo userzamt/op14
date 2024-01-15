@@ -5,6 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>lesson00</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+		<link rel="stylesheet" href="lesson00.css">
     </head>
 <body>
 <main class="container-lg">
@@ -12,13 +15,13 @@
         <h1>Различия стандартов HTML 4.04, xHTML, HTML5. Новая методология HTML5</h1>
     </header>
     
-    <a href="../Homework/Homework00/homework.html">Домашнее задание 00</a>
+    <a class="fs-3" href="../Homework/Homework00/homework.html">Домашнее задание 00</a>
 
     <section>
-		<h2>Интернет и WWW</h2>
+		<h2 class="fw-bold">Интернет и WWW</h2>
 		
 		<article>
-			<header>Что такое Интернет</header>
+			<header class="fw-semibold">Что такое Интернет</header>
 			<p>Интернет - всемирная система объединённых компьютерных сетей для хранения и передачи информации(сеть сетей).</p>
 			
 			<p>Если не вдаваться в сложные технические подробности, можно сказать, что Интернет – это система, которая объединяет компьютерные сети по всему миру. </p>
@@ -52,13 +55,13 @@
 				<img src="img/connection.jpg">
 				<figcaption>Схема подключения</figcaption>
 			</figure>
-			<blockquote class="warn"><b>Можно ли обойтись без провайдера и напрямую подключиться к сети Интернет?</b> Теоретически можно! Вам придётся стать самому себе провайдером и потратить за огромную сумму денег, чтобы добраться к центральным серверам. Так что не ругайте сильно своего поставщика интернета за высокие тарифы – этим ребятам тоже нужно оплачивать многие вещи и тратиться на обслуживание оборудования.</blockquote>
+			<blockquote class="warn mt-3"><b>Можно ли обойтись без провайдера и напрямую подключиться к сети Интернет?</b> Теоретически можно! Вам придётся стать самому себе провайдером и потратить за огромную сумму денег, чтобы добраться к центральным серверам. Так что не ругайте сильно своего поставщика интернета за высокие тарифы – этим ребятам тоже нужно оплачивать многие вещи и тратиться на обслуживание оборудования.</blockquote>
 			
 			</p>
 		</article>
 		
 		<article>
-			<header>World Wide Web</header>
+			<header class="fw-semibold">World Wide Web</header>
 			
 			<p>World Wide Web или просто web – «паутина». Фактически она представлена огромным количеством страниц, которые связанны между собой. Эта связь обеспечивается ссылками, посредством которых можно переходить из одной страницы на другую, даже если она расположе на другом компьютере, подключённом к сети Интернет.</p> 
 
@@ -68,7 +71,7 @@
 		</article>
 		
 		<article>
-			<header>Разница?!</header>
+			<header class="fw-semibold">Разница?!</header>
 			
 			<p>На самом деле разница между Интернетом и Всемирной паутиной достаточно большая. Если Интернет – это огромная сеть, связующая миллионы компьютеров по всей планете для совместного использовании информации, то Всемирная паутина лишь один из способов обмена этой информацией.</p>
 			
@@ -79,10 +82,10 @@
 	</section>
 	
 	<section>
-		<h2>История HTML</h2>
+		<h2 class="fw-bold">История HTML</h2>
 		
 		<article>
-			<header>Сэр Тимоти Джон Бернерс-Ли</header>
+			<header class="fw-semibold">Сэр Тимоти Джон Бернерс-Ли</header>
 			
 			<p>Сэр Тимоти Джон Бернерс-Ли — британский учёный, изобретатель HTTP, HTML, создатель Всемирной паутины (совместно с Робертом Кайо) и действующий глава Консорциума Всемирной паутины. Автор концепции семантической паутины. Автор множества других разработок в области информационных технологий.</p>
 			
@@ -95,7 +98,7 @@
 		</article>
 		
 		<article>
-			<header>Про HTTP</header>
+			<header class="fw-semibold">Про HTTP</header>
 			<p>Стандарт <a href="http://tools.ietf.org/html/rfc2616" target="blanck">RFC2616 Hypertext Transfer Protocol HTTP/1.1</a></p>
 			<p>Стандарт <a href="https://tools.ietf.org/html/rfc7540" target="blanck">RFC7540 Hypertext Transfer Protocol Version 2 (HTTP/2)</a></p>
 			
@@ -116,7 +119,7 @@
 		</article>
 		
 		<article>
-			<header>World Wide Web Consortium (W3C)</header>
+			<header class="fw-semibold">World Wide Web Consortium (W3C)</header>
 			
 			<p><a href="https://www.w3schools.com/">www.w3schools.com</a></p>
 			
@@ -141,7 +144,7 @@
 		</article>
 		
 		<article>
-			<header>HTML 2.0</header>
+			<header class="fw-semibold">HTML 2.0</header>
 			
 			<p>История создания HTML, говорит нам о том, что в 1991 году Тим предложил 20 элементов (тэгов), которые можно было использовать для разметки веб документа. <mark>Многие подумают, что это якобы HTML версии 1, <b>это не так</b>.</mark> </p>
 			
@@ -151,7 +154,7 @@
 		</article>
 		
 		<article>
-			<header>От HTML до XHTML</header>
+			<header class="fw-semibold">От HTML до XHTML</header>
 			
 			<p>В январе 1997 года, W3C создает HTML 3.2, затем в декабре того же года HTML 4.0, а в декабре 1999 года у HTML 4.01.
 
@@ -163,7 +166,7 @@
 		</article>
 		
 		<article>
-			<header>XHTML 1.0</header>
+			<header class="fw-semibold">XHTML 1.0</header>
 			
 			<p>В стандарте XHTML используются те же синтаксические соглашения, что и в HTML, но в нем ужесточены требования к следованию установленным правилам.</p>
 
@@ -196,7 +199,7 @@
 		</article>
 		
 		<article>
-			<header>XHTML 2: неожиданный провал</header>
+			<header class="fw-semibold"></header>XHTML 2: неожиданный провал</header>
 			
 			<p>Эта проблема должна была, по идее, быть решенной в следующей версии — XHTML 2. В ней нужно было ужесточить правила обработки ошибок, которые бы заставляли браузеры не обрабатывать страницы, не отвечающие стандарту XHTML.</p>
 			
@@ -221,7 +224,7 @@
 	</section>
 	
 	<section>
-		<h2>HTML5</h2>
+		<h2 class="fw-bold">HTML5</h2>
 		
 		<figure>
 			<img src="img/html5.png">
@@ -229,7 +232,7 @@
 		</figure>
 		
 		<article>
-			<header>WHATWG (Web Hypertext Application Technology Working Group)</header>
+			<header class="fw-semibold">WHATWG (Web Hypertext Application Technology Working Group)</header>
 			
 			<p>История HTML5 начинается в 2004 году, когда большая часть видных деятелей веб-индустрии, а также крупных компаний таких как Google, Mozilla, Opera, Apple и Microsoft, создают свою собственную рабочую группу под названием WHATWG (Web Hypertext Application Technology Working Group). Возглавил её Ян Хиксон.</p>
 			
@@ -257,7 +260,7 @@
 		</article>
 		
 		<article>
-			<header>Состав HTML5</header>
+			<header class="fw-semibold">Состав HTML5</header>
 			
 			<p>К 2009 г. этапе первоначальный стандарт HTML5 был разделен на более управляемые части, и многие из его функциональных возможностей стали отдельными стандартами.</p>
 
@@ -289,7 +292,7 @@
 		</article>
 		
 		<article>
-			<header>Полезные ссылки</header>
+			<header class="fw-semibold">Полезные ссылки</header>
 			
 			<p><a href="http://htmlbook.ru/">http://htmlbook.ru/</a></p>
 			<p><a href="https://webref.ru/">https://webref.ru/</a></p>
@@ -302,9 +305,13 @@
 		</article>
 		
 	</section>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
 </main>  
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
 </body>
 </html>
