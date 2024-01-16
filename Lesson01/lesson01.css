@@ -27,10 +27,6 @@ blockquote {
 	text-align: justify;
 }
 
-pre {
-	margin: 0 auto;
-}
-
 /* FIGURE */
 figure {
 	margin: auto;
@@ -80,3 +76,37 @@ blockquote.info {
 	padding: 5px 5px 5px 15px;
 }
 /* *BLOCKQUOTE*/
+
+/* PRE */
+pre {
+	background-color: #f8f7f7;
+	color: #333;
+	border: thin solid #e9e8e8;
+	border-radius: 3px;
+	padding: 10px 20px;
+}
+
+pre .property {
+	color: #e6550d;
+}
+
+pre .unit {
+	color: #31a354;
+}
+
+pre .comment {
+	color: #a9a9a9;
+}
+
+pre .tag {
+	color: #d20962;
+}
+
+pre .attr{
+	color: #de9000;
+}
+
+pre .val {
+	color: #00a4e4;
+}
+/* *PRE */
