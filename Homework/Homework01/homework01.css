@@ -1,0 +1,41 @@
+html {
+	font-size: 20px;
+}
+
+h2 {
+	border-bottom: thin solid black;
+}
+
+p {
+    text-indent: 1.5rem;
+}
+
+a[href^="https://"]:before, 
+a[href^="http://"]:before {
+	content: url(img/hyperlink.png);
+}
+
+/* FIGURE */
+figure {
+	margin: auto;
+	padding: 10px;
+	border: 1px solid #ccc;
+	text-align: center;
+}
+
+figure img {
+	width: auto;
+	max-width: 95%;
+}
+
+figcaption {
+	color: #666;
+	/*text-transform: uppercase;*/
+}
+
+figcaption:before {
+	content: "Рис. ";
+	content: "Рис. " counter(img-count) " ";/**/
+	counter-increment: img-count;/**/
+}
+/* *FIGURE*/
