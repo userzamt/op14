@@ -123,3 +123,16 @@ span.html5 {
 	border-radius: 3px;
 }
 /* *SPAN.HTML5 */
+
+/* #EXAMPLE0 */
+#example0 {
+	padding: 20px;
+	text-align: center;
+}
+
+#example0 .elem {
+	display: inline-block;
+	vertical-align: middle;/**/
+	margin: 10px;
+}
+/* *#EXAMPLE0 */

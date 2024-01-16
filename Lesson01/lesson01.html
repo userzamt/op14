@@ -394,6 +394,76 @@
         </article>
     </section>
 
+    <section>
+        <h2>Строчно-блочные элементы</h2>
+        
+        <article>
+            <p>Существует еще одна группа элементов, которые браузер обрабатывает как строчно-блочные <code>{display: inline-block;}</code>. Такие элементы являются встроенным, но для них можно задавать поля, отступы, ширину и высоту.</p>
+            <p>Характеристики этих элементов следующие
+                <ul>
+                    <li>Внутрь строчно-блочных элементов допустимо помещать текст, строчные или блочные элементы.</li>
+                    <li>Высота элемента вычисляется браузером автоматически, исходя из содержимого блока.</li>
+                    <li>Ширина равна содержимому плюс значения отступов, полей и границ.</li>
+                    <li>Несколько элементов идущих подряд располагаются на одной строке и переносятся на другую строку при необходимости.</li>
+                    <li>Можно выравнивать по вертикали с помощью свойства <code>vertical-align</code>.</li>
+                    <li>Разрешено задавать ширину и высоту.</li>
+                    <li>Эффект схлопывания отступов не действует.</li>
+                </ul>
+            </p>
+            <figure>
+                <img src="img/inline-block.png">
+                <figcaption>Поведение блочных, строчных и строчно-блочные</figcaption>
+            </figure>
+            
+            <p>Ниже представлен наглядный пример использования свойства <code>{display: inline-block;}</code></p>
+            <pre>
+<span class="tag">#example0 .elem </span> {
+<span class="property">display</span>: <span class="unit">inline-block</span>; <span class="comment">/* теперь div отображается как сточно блочный элемент */</span>
+<span class="property">vertical-align</span>: <span class="unit">middle</span>; <span class="comment">/* выравнивание средней точки элемента по базовой линии родителя
+                       плюс половина высоты родительского элемента. */</span>
+<span class="property">margin</span>: <span class="unit">10px</span>; 
+}
+            </pre>
+            <div id="example0">
+                <div class="elem"><img src="http://fakeimg.pl/150x250/4285f4/"></div>
+                <div class="elem"><img src="http://fakeimg.pl/350x250/34a853/"></div>
+                <div class="elem"><img src="http://fakeimg.pl/250x350/fbbc05/"></div>
+                <div class="elem"><img src="http://fakeimg.pl/50x150/dd4b39/"></div>
+            </div>
+        </article>
+        
+        <article>
+            <h3>Список блочно-строчно-блочных элементов</h3>
+            <dl>
+                <dt><code>&lt;audio&gt;</code></dt>
+                    <dd><span class="html5">HTML5</span>Аудиоплеер</dd>				
+                <dt><code>&lt;button&gt;</code></dt>
+                    <dd><span class="html5">HTML5</span>Создает кнопку</dd>
+                <dt><code>&lt;canvas&gt;</code></dt>
+                    <dd><span class="html5">HTML5</span>Полотно (холст).</dd>
+                <dt><code>&lt;embed&gt;</code></dt>
+                    <dd><span class="html5">HTML5</span>Используется для загрузки и отображения объектов (например, видеофайлов, флэш-роликов, некоторых звуковых файлов и т.д.), которые исходно браузер не понимает.</dd>	
+                <dt><code>&lt;input&gt;</code></dt>
+                    <dd>Создаeт поле для ввода данных.</dd>
+                <dt><code>&lt;keygen&gt;</code></dt>
+                    <dd><span class="html5">HTML5</span>Используется для генерации пары ключей — закрытого и открытого.</dd>	
+                <dt><code>&lt;meter&gt;</code></dt>
+                    <dd><span class="html5">HTML5</span>Определяет скалярное измерение в пределах известного диапазона.</dd>
+                <dt><code>&lt;object&gt;</code></dt>
+                    <dd><span class="html5">HTML5</span>Сообщает браузеру, как загружать и отображать объекты, которые исходно браузер не понимает. </dd>	
+                <dt><code>&lt;progress&gt;</code></dt>
+                    <dd><span class="html5">HTML5</span>Используется для отображения прогресса завершенности задачи. Изменение значения происходит через JavaScript.</dd>	
+                <dt><code>&lt;select&gt;</code></dt>
+                    <dd>Создает выпадающий список.</dd>				
+                <dt><code>&lt;textarea&gt;</code></dt>
+                    <dd>Создает многострочное текстовое поле.</dd>					
+                <dt><code>&lt;video&gt;</code></dt>
+                    <dd><span class="html5">HTML5</span>Видеоплеер.</dd>			
+            </dl>	
+        </article>
+        
+    </section>
+
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
