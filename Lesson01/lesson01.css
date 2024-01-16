@@ -1,0 +1,138 @@
+html {
+    font-size: 20px;
+}
+
+body {	
+	counter-reset: table-count; /* for table caption*/
+}
+
+main {
+	counter-reset: img-count;/*numeric image*/
+}
+
+a[href^="https://"]:before, 
+a[href^="http://"]:before {
+	content: url(img/hyperlink.png);
+}
+
+h2 {
+	border-bottom: thin solid #000;
+}
+
+p {
+	text-indent: 1.5rem;
+}
+
+blockquote {
+	text-align: justify;
+}
+
+/* FIGURE */
+figure {
+	margin: auto;
+	padding: 10px;
+	border: 1px solid #ccc;
+	text-align: center;
+}
+
+figure img {
+	width: auto;
+	max-width: 95%;
+}
+
+figcaption {
+	color: #666;
+	/*text-transform: uppercase;*/
+}
+
+figcaption:before {
+	content: "Рис. ";
+	content: "Рис. " counter(img-count) " ";/**/
+	counter-increment: img-count;/**/
+}
+/* *FIGURE*/
+
+/* BLOCKQUOTE */
+blockquote {
+	border-left: 4px solid #bbb;
+	padding-left: 10px;
+}
+
+blockquote.old , blockquote.error{
+	background-color: rgba(255, 0,0, 0.3);
+	border-left: 4px solid #f00;
+	padding: 5px;
+}
+
+blockquote.warn {
+	background-color: rgba(255, 185,0, 0.3);
+	border-left: 4px solid #ffb900;
+	padding: 5px 5px 5px 15px;
+}
+
+blockquote.info {
+	background-color: rgba(127,187,0, 0.3);
+	border-left: 4px solid #7fbb00;
+	padding: 5px 5px 5px 15px;
+}
+/* *BLOCKQUOTE*/
+
+/* PRE */
+pre {
+	background-color: #f8f7f7;
+	color: #333;
+	border: thin solid #e9e8e8;
+	border-radius: 3px;
+	padding: 10px 20px;
+}
+
+pre .property {
+	color: #e6550d;
+}
+
+pre .unit {
+	color: #31a354;
+}
+
+pre .comment {
+	color: #a9a9a9;
+}
+
+pre .tag {
+	color: #d20962;
+}
+
+pre .attr{
+	color: #de9000;
+}
+
+pre .val {
+	color: #00a4e4;
+}
+/* *PRE */
+
+dl {
+	column-count: 2;
+}
+
+/* SPAN.HTML5 */
+span.html5 {
+	padding: 3px;
+	background-color: #b3dcff;
+	border: thin solid #00aeef;
+	border-radius: 3px;
+}
+/* *SPAN.HTML5 */
+
+/* #EXAMPLE0 */
+#example0 {
+	padding: 20px;
+	text-align: center;
+}
+
+#example0 .elem {
+	display: inline-block;
+	vertical-align: middle;/**/
+	margin: 10px;
+}
+/* *#EXAMPLE0 */
