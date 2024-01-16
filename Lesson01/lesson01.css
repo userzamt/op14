@@ -110,3 +110,16 @@ pre .val {
 	color: #00a4e4;
 }
 /* *PRE */
+
+dl {
+	column-count: 2;
+}
+
+/* SPAN.HTML5 */
+span.html5 {
+	padding: 3px;
+	background-color: #b3dcff;
+	border: thin solid #00aeef;
+	border-radius: 3px;
+}
+/* *SPAN.HTML5 */
