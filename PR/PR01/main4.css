@@ -1,0 +1,142 @@
+/* !!!!!!!!!!!!!!!!!!!!!!!! */
+* {
+	padding: 0;	/* уберём все отступы установленные не нами */
+	margin: 0;
+}
+
+html {
+	font-size: 20px;		/* установив размер шрифта для всего документа можно использлвать - REM */
+	font-family: Helvetica; /* для красоты назначем другой шрифт */
+}
+
+header#main {
+	background-color: #c4dff6;
+}
+
+footer {
+	background-color: #d20962;
+}
+
+main {
+	background-color: rgba(0, 145, 205, 0.4);
+}
+
+/* NAV */
+
+nav ul li {
+	display: inline-block;	/* вкл/выкл свойтсво в браузере для эксперимента */
+}
+
+nav a {
+	display: block;		/* теперь все ссылки в меню блочные */
+	padding: 2rem 2rem; /* если ссылка не отображается как блочный элмент - то не все отступы сработают */
+	text-decoration: none; /* убрать подчёркивание */
+	color: #000; 		   /* вместо синего цвета как у всех ссылок - сделаем название меню черным */
+}
+
+/* небольшая реакция на действия пользователя */
+nav a:hover {
+	background-color: #56a0d3;	/* при наведению на любую из ссылок меню бужет меняться цвет фона под ней */
+}
+
+
+/* !!!!!!!!!!!!!!!!!!!!!!!! */
+nav {
+	float: right;		/* теперь меню плавующее - прижимаем его к правому краю шапки */
+	width: 60%;			/* дадим ширину в 60% от ширины родителя, т.е HEADERа */
+	text-align: right; /* выравнивание содержимого по правой границе */
+}
+
+/* *NAV */
+
+/* #LOGO */
+
+#logo {
+	float: left;	/* логотип будет наоборот по правому краю шапки */
+	width: 35%;		/* логотипу дадим только 30% шапки; оставшиеся 5% родителя пойдут в качестве пространства между блоками */
+}
+
+#logo img {
+	width: 4rem;	/* ширину выставим в 2rem */
+	height: auto;	/* высота сама вычислится автоматически */
+}
+
+#logo a {
+	display: block;
+	text-decoration: none;
+	color: #000;
+}
+
+#logo figure, #logo span {
+	display: inline-block;	/* картинку и надпись сделаем строчно-блочными */
+	vertical-align: middle;	/* и выравнеем по вертикали */
+}
+
+#logo span {
+	font-size: 2.5rem;
+	text-transform: uppercase; /* трансформируем текст в верхрний регистр */
+	padding-left: 1rem;
+}
+
+#logo figure {
+	padding: 5px 0px 0px 5px;
+}
+
+/* *#LOGO */
+
+/* MAIN */
+	
+/* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */
+/*
+	Кто просил информацию по поводу счётчиков в CSS
+https://developer.mozilla.org/ru/docs/Web/CSS/CSS_Lists_and_Counters/Using_CSS_counters
+	
+	https://www.w3schools.com/css/css_counters.asp
+	
+	http://htmlbook.ru/css/counter-increment
+
+	
+	По этой ссылке всё доходчево с примерами объясняется
+
+*/
+
+main {
+	width: 1000px;
+	margin: 0 auto; /* выравнивание по центру блок MAIN*/
+	text-align: center;
+	counter-reset: img;	/* чтобы использовать счётчик - сначало его надо обнулить */
+}
+
+.pic {
+	width: 200px;
+	height: 200px;
+	display: inline-block;
+	margin: 1rem;
+	border: thin solid #000;
+	vertical-align: middle;
+}
+
+.pic header {
+	color: #fff;
+	font-weight: 600;
+	font-size: 2rem;
+	margin-top: 2rem;
+	text-transform: uppercase;
+}
+
+.pic header:after {
+	counter-increment: img;	/* увелечение счётчика на 1 */
+	content: " "  counter(img); /* добавляем контент в конец блока */
+}
+
+.one 	{ background-image: url(img/1.jpg); }
+.two 	{ background-image: url(img/2.jpg); }
+.three 	{ background-image: url(img/3.jpg); }
+.four 	{ background-image: url(img/4.jpg); }
+
+.one, .two, .three, .four {
+	background-position: center;	/* положение фонового рисунка в нутри блока */ 
+	background-size: cover;			/* масштабирование */
+}
+
+/* *MAIN */

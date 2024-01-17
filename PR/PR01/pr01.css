@@ -1,0 +1,87 @@
+html {
+    font-size: 20px;
+}
+
+body {	
+	counter-reset: table-count; /* for table caption*/
+}
+
+main {
+	counter-reset: img-count;/*numeric image*/
+}
+
+a[href^="https://"]:before, 
+a[href^="http://"]:before {
+	content: url(img/hyperlink.png);
+}
+
+h2 {
+	border-bottom: thin solid #000;
+}
+
+p {
+	text-indent: 1.5rem;
+}
+
+blockquote {
+	text-align: justify;
+}
+
+pre {
+	margin: 0 auto;
+}
+
+/* FIGURE */
+figure {
+	margin: auto;
+	padding: 10px;
+	border: 1px solid #ccc;
+	text-align: center;
+}
+
+figure img {
+	width: auto;
+	max-width: 95%;
+}
+
+figcaption {
+	color: #666;
+	/*text-transform: uppercase;*/
+}
+
+figcaption:before {
+	content: "Рис. ";
+	content: "Рис. " counter(img-count) " ";/**/
+	counter-increment: img-count;/**/
+}
+/* *FIGURE*/
+
+/* BLOCKQUOTE */
+blockquote {
+	border-left: 4px solid #bbb;
+	padding-left: 10px;
+}
+
+blockquote.old , blockquote.error{
+	background-color: rgba(255, 0,0, 0.3);
+	border-left: 4px solid #f00;
+	padding: 5px;
+}
+
+blockquote.warn {
+	background-color: rgba(255, 185,0, 0.3);
+	border-left: 4px solid #ffb900;
+	padding: 5px 5px 5px 15px;
+}
+
+blockquote.info {
+	background-color: rgba(127,187,0, 0.3);
+	border-left: 4px solid #7fbb00;
+	padding: 5px 5px 5px 15px;
+	margin-top: 40px;
+}
+
+/* *BLOCKQUOTE*/
+
+
+
