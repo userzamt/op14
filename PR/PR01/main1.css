@@ -1,0 +1,25 @@
+html {
+	font-size: 20px;		/* установив размер шрифта для всего документа можно использлвать - REM */
+	font-family: Helvetica; /* для красоты назначем другой шрифт */
+}
+
+header {
+	background-color: #fd5c63;
+}
+
+footer {
+	background-color: #d20962;
+}
+
+main {
+	background-color: #c1d82f;
+}
+
+/* NAV */
+
+nav ul li {
+	display: inline-block;	/* вкл/выкл свойтсво в браузере для эксперимента */
+}
+
+/* *NAV */
+
