@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>homework01</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+    <link rel="stylesheet" href="homework01.css">
+</head>
+<body>
+    
+<main class="container-lg">
+    <header>
+        <h1>Домашнее задание<br>Использование CSS</h1>
+    </header>
+
+    <p>Создать свою персональную страницу основываясь на пример ниже. На Вашей странице должны присутствовать следующие элементы</p>
+
+    <ul>
+        <li>Заголовок с Вашей фамилией, расположенный по центру экрана</li>
+        <li>Краткое описание о себе. Установить для текста выравнивание по ширине</li>
+        <li>Разместить на странице три Ваши фотографии с подписями под ними. Фотографии должны располагаться в одну линию.</li>
+        <li>Создать два списка, в которых написать Ваши плюсы и минусы</li>
+        <li>Создать таблицу с перечислением Ваших заслуг</li>
+    </ul>
+
+    <p>Страницу сохранить под именем <code>index.html</code>, а все CSS стили хранить в файле <code>index.css</code>.</p>
+
+    <p>Для задание оформления элементов использовать различные CSS свойства. Допускается использование различных селекторов для идентификации элементов, например универсального селектора, селектора класса и идентификатора, селектора потомков и т.д.</p>
+    
+    <p class="text-bg-danger p-3">Запрещено использовать сторонние библиотеки и фреймворки.</p>
+
+    <a class="d-block mt-3" href="https://html5book.ru/html-text/">HTML</a>
+    <a class="d-block mt-3" href="https://developer.mozilla.org/ru/docs/Learn/Getting_started_with_the_web/CSS_basics">CSS</a>
+    <a class="d-block mt-3" href="https://webref.ru/html/table"><code>table</code></a>
+    <a class="d-block mt-3" href="https://www.w3schools.com/html/html_images.asp"><code>img</code></a>
+    <a class="d-block mt-3" href="https://htmlbook.ru/css/display">Свойство <code>display</code></a>
+    <a class="d-block mt-3" href="https://htmlbook.ru/html/ul"><code>ul/li</code></a>
+    <a class="d-block mt-3 mb-5" href="https://developer.mozilla.org/ru/docs/Web/CSS/text-align">Свойство <code>text-align</code></a>
+
+    <section>
+        <h2>Пример персональной страницы</h2>
+
+        <article>
+            <header>
+                <h3 class="text-center">Ли Си Цин</h3>                
+            </header>
+            
+            <p class="text-lg">О русском летчике Ли Си Цын пели песни, слагали анекдоты и армейские байки. Он сбивал американские истребители в китайском небе, наводил страх на вражеских летчиков над Кореей, руководил воздушными операциями во Вьетнаме. Истории этого псевдонима много десятков лет, и впервые это имя прозвучало еще в период становления советской власти. Ли Си Цын не является конкретной исторической личностью, но легенды об этом воине объединили в себе подвиги целого ряда сражавшихся за земли дружественных стран советских летчиков.</p>
+
+            <div class="container">
+                <div class="row">
+                    <figure class="col">                    
+                        <img class="rounded img-thumbnail" src="img/lisicin.jpg">
+                        <figcaption>Корейский лётчик Ли Си Цин</figcaption>
+                    </figure>
+        
+                    <figure class="col">                    
+                        <img class="rounded img-thumbnail" src="img/jet1.png">
+                        <figcaption>Обучение пилотов</figcaption>
+                    </figure>
+        
+                    <figure class="col">                    
+                        <img class="rounded img-thumbnail" src="img/jet2.jpg">
+                        <figcaption>Инструктаж</figcaption>
+                    </figure>
+                </div>
+            </div>
+
+        </article>
+
+        <article>
+            <header>  
+                <h4>Плюсы</h4>
+                <hr class="border border-primary border-2 opacity-75 mt-1">
+            </header>
+            
+            <ul>
+                <li>Особая китайская миссия</li>
+                <li>Песенная реанимация собирательного образа летчика</li>
+                <li>Просто хороший парень</li>
+            </ul>
+        </article>
+
+        <article>
+            <header>  
+                <h4>Минусы</h4>
+                <hr class="border border-danger border-2 opacity-75 mt-1">
+            </header>
+            
+            <ul>
+                <li>Мало сбитых F-4</li>
+                <li>Американцы боятся Ли Си Циных</li>
+                <li>Бесстрашно шли в бой и не жалели себя</li>
+            </ul>
+        </article>
+
+        <h5 class="text-center mt-4">Достижения</h5>
+        <table class="table table-hover mb-5">
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Название</th>
+                    <th>Количество</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>McDonnell Douglas F-4 Phantom</td>
+                    <td>382</td>
+                </tr>
+    
+                <tr>
+                    <td>2</td>
+                    <td>Boeing B-52 Stratofortress</td>
+                    <td>17</td>
+                </tr>
+            </tbody>
+
+            
+        </table>
+
+    </section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+</body>
+</html>
