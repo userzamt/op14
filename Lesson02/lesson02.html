@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lesson02</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+    <link rel="stylesheet" href="lesson02.css">    
+</head>
+<body>
+<main class="container-lg">
+    <header>
+        <h1>Позиционирование элементов</h1>
+    </header>
+
+    <a href="../PR/PR01/pr01.html" class="d-block mt-3 mb-3">ПР01. Верстка сайта используя стандарт HTML5 и CSS3</a>
+
+    <p>Позиционирование — одно из ключевых понятий в блочной верстке. Разобравшись с ним, вам многое станет понятно, а верстка из шаманства превратится в осмысленный процесс.</p>
+	
+    <section>
+        <h2><code>Position</code></h2>
+        
+        <p><code>position</code> устанавливает способ позиционирования элемента относительно окна браузера или других объектов на веб-странице.</p>			
+        <p>Позволяет точно задать новое местоположение блока относительно того места, где он находился бы в нормальном потоке документа. По умолчанию все элементы располагаются последовательно один за другим в том порядке, в котором они определены в структуре документа. Свойство не наследуется.</p>
+        <p>Значения: <code>static</code>, <code>relative</code>, <code>absolute</code>, <code>fixed</code>, <code>initial</code>, <code>inherit</code>.</p>
+        
+        <article>
+            <h3><code>position: static</code></h3>
+            <p>Значение по умолчанию, означает отсутствие позиционирования. Элементы отображаются последовательно один за другим в том порядке, в котором они определены в html-документе.</p>
+            <p>Нет необходимости специально назначать это свойство какому-либо элементу, если только вам не требуется изменить ранее установленное позиционирование на дефолтное.</p>
+            <pre>
+<span class="tag">#content1</span> {
+    <span class="property">position</span>: <span class="unit">static</span>;
+}
+            </pre>
+            <p><a href="exmple/exmple1.html">Пример 1 &rarr;</a></p>
+            
+        </article>
+        
+        <article>
+            <h3><code>position: relative</code></h3>
+            <p>Относительно позиционированный элемент сдвигается со своего обычного места, а пространство, которое он занимал, не исчезает. При этом такой элемент может перекрывать другое содержимое на странице.</p>
+            <blockquote class="warn">Если для относительно позиционированного элемента одновременно задать свойства <code>top</code> и <code>bottom</code> или <code>left</code> и <code>right</code>, то в первом случае сработает только <code>top</code>, во втором — <code>left</code>.</blockquote>
+            <blockquote class="error">Не будут работать одновременно указанные <code>top</code> и <code>bottom</code>, <code>left</code> и <code>right</code>. Нужно использовать только одну границу из каждой пары.</blockquote>
+            
+            <p>Относительное позиционирование (<code>position: relative</code>) позволяет вам использовать свойства: <code>top</code>, <code>bottom</code>, <code>left</code> и <code>right</code>, для расположения элемента относительно того места, где бы он появился при обычном позиционировании.</p>
+            
+            <pre>
+<span class="tag">#content2</span> {
+    <span class="property">position</span>: <span class="unit">relative</span>;
+    <span class="property">top</span>: 20px<span class="unit"></span>;
+    <span class="property">right</span>: -20px<span class="unit"></span>;
+}
+            </pre>
+            <figure>
+                <img src="img/exp2.png">
+                <figcaption><code>position: relative</code></figcaption>
+            </figure>
+            <p><a href="exmple/exmple2.html">Пример 2 &rarr;</a></p>				
+        </article>
+        
+        <article>
+            <h3>Свойства смещения</h3>
+            <p>Свойства описывают смещение относительно ближайшей стороны блока-контейнера. Задаются для элементов, для которых значение свойства <code>position</code> не равно <code>static</code>. Могут принимать как положительные, так и отрицательные значения. Не наследуются.</p>				
+            <dl>
+                <dt><code>auto</code></dt>
+                    <dd>Значение по умолчанию. Вычисляемое значение свойства равно нулю.</dd>
+                <dt><code>Длина</code></dt>
+                    <dd>Смещение задаётся в единицах длины.</dd>
+                <dt><code>%</code></dt>
+                    <dd>Процентные значения вычисляются относительно высоты блока-контейнера для <code>top</code> и <code>bottom</code> и ширины блока-контейнера для <code>right</code> и <code>left</code>.</dd>
+                <dt><code>initial</code></dt>
+                    <dd>Устанавливает значение свойства в значение по умолчанию.</dd>
+                <dt><code>inherit</code></dt>
+                    <dd>Наследует значение свойства от родительского элемента.</dd>
+            </dl>
+            <p>Для свойства <code>top</code> положительные значения перемещают верхний край позиционируемого элемента ниже, а отрицательные — выше верхнего края его блока-контейнера. Для свойства <code>left</code> положительные значения сдвигают край позиционируемого элемента вправо, а отрицательные значения — влево. То есть, положительные значения смещают элемент внутрь блока-контейнера, а отрицательные — за его пределы.</p>				
+        </article>
+        
+        <article>
+            <h3><code>position: absolute</code></h3>
+            <p>При абсолютном позиционировании (<code>position: absolute</code>), элемент удаляется из документа, и появляется там, где вы ему скажете.</p>
+            <p>Абсолютно позиционированный элемент полностью удаляется из потока документа и позиционируется относительно его блока-контейнера (другого элемента или окна браузера). Блок-контейнер для абсолютно позиционированного элемента — ближайший элемент-предок, значение свойства <code>position</code> которого не равно <code>static</code>.</p>
+            <p>Местоположение краёв элемента определяется с помощью свойств смещения. Пространство, которое занимал такой элемент, схлопывается, как будто элемента не существовало на странице. Абсолютно позиционированный элемент может перекрывать другие элементы или быть перекрытым ими (за счёт свойства <code>z-index</code>). Любой абсолютно позиционированный элемент генерирует блок, то есть принимает значение <code>display: block;</code>.</p>
+            <pre>
+<span class="tag">#content3</span> {
+    <span class="property">position</span>: <span class="unit">absolute</span>;
+    <span class="property">top</span>: 0px<span class="unit"></span>;
+    <span class="property">left</span>: 100px<span class="unit"></span>;
+}
+            </pre>
+            <figure>
+                <img src="img/exp3.png">
+                <figcaption><code>position: absolute</code></figcaption>
+            </figure>
+
+            <p><a href="exmple/exmple3.html">Пример 3 &rarr;</a></p>
+            
+            <p>Обратите внимание, что на этот раз, поскольку блок <code>article 2</code> был удален из документа, оставшиеся элементы на странице расположились по-другому: <code>article 1</code>, <code>article 3</code> и <code>footer</code> переместились выше, на место удаленного блока. А сам блок article 2, расположился точно в левом, верхнему углу страницы.</p>
+            <p>Таким образом, мы можем позиционировать любой элемент относительно страницы, однако этого не достаточно. На самом деле, нам необходимо позиционировать элементы относительно родительского блока.</p>				
+        </article>
+        
+        <article>
+            <h3><code>position: fixed</code></h3>
+            <p>Фиксированное позиционирование (<code>position: fixed</code>), является подразделом абсолютного позиционирования. Единственное его отличие в том, что он всегда находится в видимой области экрана, и не двигается во время прокрутки страницы. В этом отношении, он немного похож на фиксированное фоновое изображение.</p>
+            <p>Блоком-контейнером фиксированного элемента является окно просмотра, при этом элемент полностью удаляется из потока документа.</p>
+            <pre>
+<span class="tag">#content4</span> {
+    <span class="property">position</span>: <span class="unit">fixed</span>;
+    <span class="property">top</span>: 100px<span class="unit"></span>;
+    <span class="property">left</span>: 100px<span class="unit"></span>;
+}
+            </pre>
+            <figure>
+                <img src="img/exp4.png">
+                <figcaption><code>position: fixed</code></figcaption>
+            </figure>
+            <p><a href="exmple/exmple4.html">Пример 4 &rarr;</a></p>				
+        </article>
+        
+        <article>
+            <h3>Позиционирование внутри элемента</h3>
+            <p>Для блока-контейнера абсолютно позиционированного элемента задаётся свойство <code>position: relative</code> без смещений. Это позволяет позиционировать элементы внутри элемента-контейнера.</p>
+            <p>Назначив блоку <code>section</code> относительное позиционирование (<code>position: relative</code>), мы сможем позиционировать любые дочерние элементы, относительно его границ. Давайте разместим блок <code>article 2</code>, в верхнем правом углу блока <code>section</code>.</p>		
+                    
+            <pre>
+<span class="tag">section</span> {
+    <span class="property">position</span>: <span class="unit">relative</span>;
+}
+<span class="tag">.absolut</span> {
+    <span class="property">position</span>: <span class="unit">absolute</span>;
+    <span class="property">top</span>: <span class="unit">0px</span>;
+    <span class="property">right</span>: <span class="unit">0px</span>;
+}
+            </pre>
+            
+            <figure>
+                <img src="img/exp5.png">
+                <figcaption><code>position:relative + position:absolute</code></figcaption>
+            </figure>
+            
+            <p><a href="exmple/exmple5.html">Пример 5 &rarr;</a></p>
+            
+            <p>Нужно пользоваться таким позиционированием с осторожностью, т.к оно может перекрыть текст. Этим оно отличается от <code>float</code>.</p>
+            
+        </article>
+        
+        <article>
+            <h3>Проблемы позиционирования</h3>
+            <p>Вооружившись знаниями из предыдущих шагов, можно попробовать сделать две колонки, с помощью относительного и абсолютного позиционирования.</p>		
+                    
+            <pre>
+<span class="tag">section</span> {
+    <span class="property">position</span>: <span class="unit">relative</span>;
+}
+
+<span class="tag">#art-1</span> {
+    <span class="property">position</span>: <span class="unit">absolute</span>;
+    <span class="property">top</span>: <span class="unit">0px</span>;
+    <span class="property">right</span>: <span class="unit">0px</span>;
+    <span class="property">width</span>: <span class="unit">45%</span>;
+    <span class="property">height</span>: <span class="unit">300px</span>;
+}
+
+<span class="tag">#art-2</span> {
+    <span class="property">position</span>: <span class="unit">absolute</span>;
+    <span class="property">top</span>: <span class="unit">0px</span>;
+    <span class="property">left</span>: <span class="unit">0px</span>;
+    <span class="property">width</span>: <span class="unit">45%</span>;
+    <span class="property">height</span>: <span class="unit">300px</span>;
+}
+            </pre>				
+            <figure>
+                <img src="img/exp6.png">
+                <figcaption>Проблемы позиционирования</figcaption>
+            </figure>				
+            <p><a href="exmple/exmple6.html">Пример 6 &rarr;</a></p>
+            <p>А сейчас у вас должен был возникнуть вопрос: “А куда же делись остальные элементы из нашего примера?”. Они скрылись под абсолютно расположенными блоками. К счастью, есть возможность это исправить.</p>
+            <p>Одно из решений – задать фиксированную высоту контейнеру, содержащему колонки.</p>
+            <pre>
+<span class="tag">section</span> {
+    <span class="property">position</span>: <span class="unit">relative</span>;
+    <span class="property">height</span>: <span class="unit">400px</span>;
+}
+            </pre>
+            <figure>
+                <img src="img/exp7.png">
+                <figcaption>Проблемы позиционирования</figcaption>
+            </figure>
+            <p><a href="exmple/exmple7.html">Пример 7 &rarr;</a></p>
+            <p>Решение не очень подходящее, поскольку мы никогда не знаем заранее, какого размера текст, будет расположен в колонках, и какой шрифт будет использован.</p>			
+        </article>	
+    </section>
+    
+    <section>
+        <h2><code>Float</code></h2>
+        <p>Определяет, по какой стороне будет выравниваться элемент, при этом остальные элементы будут обтекать его с других сторон. Когда значение свойства <code>float</code> равно none, элемент выводится на странице как обычно, при этом допускается, что одна строка обтекающего текста может быть на той же линии, что и сам элемент.</p>
+        <figure>
+                <img src="img/exp8.png">
+                <figcaption><code>Float</code></figcaption>
+            </figure>
+        <p><a href="exmple/exmple8.html">Пример 8 &rarr;</a></p>
+        <p>Свойство <code>float</code> позволяет перемещать любой элемент, выравнивая его по левому или правому краю веб-страницы или содержащего его элемента-контейнера. При этом остальные блочные элементы будут его игнорировать, а строчные элементы будут смещаться вправо или влево, освобождая для него пространство и обтекая его.</p>
+        <figure>
+                <img src="img/exp9.png">
+                <figcaption><code>Float</code> такие же проблемы(блок выходит за пределы родителя)</figcaption>
+            </figure>
+        <p><a href="exmple/exmple9.html">Пример 9 &rarr;</a></p>
+        <p>Если назначить первому блоку <code>float: left</code>, а затем второму <code>float: left</code>, каждый из блоков прижмется к левому краю, и мы получим две колонки, с переменной высотой.</p>
+        
+        <article>
+            <h3>Решение проблемы позиционирования <code>float</code></h3>
+            <p><code>clear</code> - устанавливает, с какой стороны элемента запрещено его обтекание другими элементами. Если задано обтекание элемента с помощью свойства <code>float</code>, то <code>clear</code> отменяет его действие для указанных сторон.</p>
+            <p>Чистку флоатов можно делать двумя способами. Если после колонок идет еще один блок, достаточно назначить ему <code>clear: both</code>.</p>
+                                    
+            <pre>
+<span class="tag">.art-clear</span> {
+    <span class="property">clear</span>: <span class="unit">both</span>;
+}
+            </pre>
+            <p><a href="exmple/exmple9.html">Пример 9 &rarr;</a> Тот же пример, но нужно зайти в панель разработчика чтобы включить свойство.</p>
+            <figure>
+                <img src="img/exp10.png">
+                <figcaption>Проблемы позиционирования</figcaption>
+            </figure>
+
+            У разработчиков принято создавать класс с именем <code>.clearfix</code> для этих целей(или в сочетании с псевдоклассом <code>:after</code> применяем его к блоку-контейнеру).
+            <pre>
+<span class="tag">.clearfix</span> {
+    <span class="property">clear</span>: <span class="unit">both</span>;
+}
+            </pre>
+            
+            <pre>
+&lt;<span class="tag">section</span>>
+    &lt;<span class="tag">article</span>>
+        Душа моя озарена неземной радостью, как .....
+    &lt;<span class="tag">/article</span>>
+    &lt;<span class="tag">article</span>>
+        Душа моя озарена неземной радостью, как .....
+    &lt;<span class="tag">/article</span>>
+
+    &lt;<span class="tag">article</span> <span class="attr">class</span>="<span class="val">clearfix</span>">Душа моя озарена неземной радостью, как .....&lt;<span class="tag">/article</span>>    
+&lt;<span class="tag">/article</span>>
+            </pre>
+            
+        </article>
+        
+        <article>
+            <h3>Особенности свойства <code>float</code></h3>
+            <p>Плавающий блок принимает размеры своего содержимого с учетом внутренних отступов и рамок.</p>
+            <p>Верхние и нижние отступы margin плавающих элементов не схлопываются. Свойство <code>float</code>применяется как к блочным элементам, так и к строчным элементам.<p>
+            <p>Левый или правый внешний край перемещаемого элемента, в отличие от позиционированных элементов, не может располагаться левее (или правее) внутреннего края его блока-контейнера, т.е. выходить за его границы. При этом, если для блока-контейнера заданы внутренние отступы, то плавающий блок будет отступать от края блока-контейнера на заданное расстояние.</p>
+            <p>Свойство автоматически изменяет вычисляемое (отображаемое в браузере) значение свойства <code>display</code> на <code>display: block</code> для следующих значений: <code>inline</code>, <code>inline-block</code>, <code>table-row</code>, <code>table-row-group</code>, <code>table-column</code>, <code>table-column-group</code>, <code>table-cell</code>, <code>table-caption</code>, <code>table-header-group</code>, <code>table-footer-group</code>. Значение <code>inline-table</code> меняет на <code>table</code>.</p>
+            
+            <p><a href="exmple/exmple10.html">Пример 10 &rarr;</a></p>
+        
+        </article>		
+    </section>
+    
+    <section>
+        <h2><code>z-index</code></h2>
+        <p>Любые позиционированные элементы на веб-странице могут накладываться друг на друга в определенном порядке, имитируя тем самым третье измерение, перпендикулярное экрану. Каждый элемент может находиться как ниже, так и выше других объектов веб-страницы, их размещением по z-оси и управляет <code>z-index</code>. <mark>Это свойство работает только для элементов, у которых значение <code>position</code> задано как <code>absolute</code>, <code>fixed</code> или <code>relative</code>.</mark></p>
+        <p>В качестве значения используются целые числа (положительные, отрицательные и ноль). Чем больше значение, тем выше находится элемент по сравнению с теми элементами, у которых оно меньше. При равном значении <code>z-index</code>, на переднем плане находится тот элемент, который в коде HTML описан ниже. Допустимо использовать отрицательное значение.</p>
+        <p>Кроме числовых значений применяется <code>auto</code> — порядок элементов в этом случае строится автоматически, исходя из их положения в коде HTML и принадлежности к родителю, поскольку дочерние элементы имеют тот же номер, что их родительский элемент.</p>			
+        <pre>
+<span class="tag">#z_indx1</span> {
+    <span class="property">z-index</span>: <span class="unit">1</span>;
+    <span class="property">background-color</span>: <span class="unit">red</span>;
+    <span class="property">opacity</span>: <span class="unit">0.8</span>;
+}
+
+<span class="tag">#z_indx2</span> {
+    <span class="property">z-index</span>: <span class="unit">20</span>;
+    <span class="property">background-color</span>: <span class="unit">green</span>;
+    <span class="property">opacity</span>: <span class="unit">0.8</span>;
+}
+
+<span class="tag">#z_indx3</span> {
+    <span class="property">z-index</span>: <span class="unit">15</span>;
+    <span class="property">background-color</span>: <span class="unit">blue</span>;
+    <span class="property">opacity</span>: <span class="unit">0.8</span>;
+}
+        </pre>
+        
+        <div style="position: relative; height: 200px; ">
+            <div id="z_indx1"></div>
+            <div id="z_indx2"></div>
+            <div id="z_indx3"></div>
+        </div>
+    </section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+</body>
+</html>
