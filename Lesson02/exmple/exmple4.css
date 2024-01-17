@@ -1,0 +1,44 @@
+main {
+	width: 600px;
+	height: auto;
+	margin: auto;
+	padding: 10px;
+	background-color: hsl(60, 100%, 70%);
+}
+
+header {
+	margin: auto;
+	padding: 10px;
+	background-color: hsl(120, 50%, 50%);
+}
+
+nav {
+	margin: auto;
+	padding: 10px;
+	background-color: hsl(240, 40%, 80%);
+}
+
+section {
+	margin: auto;
+	padding: 10px;
+	background-color: hsl(180, 80%, 50%);
+}
+
+article {
+	margin: 10px auto;
+	padding: 10px;
+	border: thin solid black;
+	background-color: hsl(30, 100%, 50%);
+}
+
+.fix {
+	position: fixed;
+	top: 100px;
+	left: 100px;
+}
+
+footer {
+	margin: auto;
+	padding: 10px;
+	background-color: hsl(90, 100%, 50%);
+}
