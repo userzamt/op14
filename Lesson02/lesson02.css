@@ -43,10 +43,13 @@ h3, article header {
 
 h4 { padding-left: 2rem; }
 
-
 p {
 	text-align: justify;
 	text-indent: 1.5rem;
+}
+
+dl{
+    columns: 2;
 }
 
 /* FIGURE */
