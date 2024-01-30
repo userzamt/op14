@@ -1,0 +1,309 @@
+html {
+	font-size: 20px;
+}
+
+body {
+	counter-reset: table-count; /* for table caption*/
+}
+
+main {
+	counter-reset: img-count;/*numeric image*/
+}
+
+a {
+	font-family: Helvetica;
+}
+
+a[href^="https://"]:before, 
+a[href^="http://"]:before {
+	content: url(../img/hyperlink.png);
+	display: inline-block;
+	vertical-align: middle;
+}
+
+h1 { font-size: 2.5rem; }
+
+h2 {
+	border-bottom: thin solid #000;
+	font-size: 2rem;
+}
+
+h3, article header {
+	font-size: 1.5rem;
+	padding: 10px 0px 0px 1.5rem;
+	margin-top: 25px;
+	margin-bottom: 0px;
+	/*background-color: rgba(200,200,200, 0.5);/**/
+}
+
+h4 { padding-left: 2rem; }
+
+
+p {
+	text-align: justify;
+	text-indent: 1.5rem;
+}
+
+dl {
+	column-count: 2;
+}
+
+/* FIGURE */
+figure {
+	margin: auto;
+	padding: 10px;
+	border: 1px solid #ccc;
+	text-align: center;
+}
+
+figcaption {
+	color: #666;
+	/*text-transform: uppercase;*/
+}
+
+figcaption:before {
+	content: "Рис. " counter(img-count) " ";
+	counter-increment: img-count;
+}
+/* *FIGURE*/
+
+/* BLOCKQUOTE */
+blockquote {
+	border-left: 4px solid #bbb;
+	padding-left: 10px;
+}
+
+blockquote.old , blockquote.error{
+	background-color: rgba(255, 0,0, 0.3);
+	border-left: 4px solid #f00;
+	padding: 5px;
+}
+
+blockquote.warn {
+	background-color: rgba(255, 185,0, 0.3);
+	border-left: 4px solid #ffb900;
+	padding: 5px 5px 5px 15px;
+}
+
+blockquote.info {
+	background-color: rgba(127,187,0, 0.3);
+	border-left: 4px solid #7fbb00;
+	padding: 5px 5px 5px 15px;
+	margin-top: 40px;
+}
+
+/* *BLOCKQUOTE*/
+
+/* TABLE TABLE_PHP */
+.table-php th {
+	background-color: #c4c9df;
+	text-align: center;
+}
+
+.table-php tr td:first-child{ font-family: monospace; }
+
+.table-php tr:hover { background-color: #eee; }
+/* *TABLE TABLE_PHP */
+
+/* PRE */
+pre {
+	background-color: #f8f7f7;
+	color: #333;
+	border: thin solid #e9e8e8;
+	border-radius: 3px;
+	padding: 10px 20px;
+}
+
+pre .property {
+	color: #e6550d;
+}
+
+pre .unit {
+	color: #31a354;
+}
+
+pre .comment {
+	color: #a9a9a9;
+}
+
+pre .tag {
+	color: #d20962;
+}
+
+pre .attr{
+	color: #de9000;
+}
+
+pre .val {
+	color: #00a4e4;
+}
+
+
+/* *PRE */
+
+/* TABLE T-PREFIX */
+#t-prefix  {
+	border-collapse: collapse;
+	text-align: center;
+	font-size: 1.15rem;
+	width: 95%;
+	margin: auto;
+}
+
+#t-prefix th {
+	font-weight: 600;
+	background-color: #ADD8E6;
+	padding: 10px;
+	border: thin solid rgba(0,0,0, 0.3);
+}
+
+#t-prefix td {
+	padding: 10px;
+	border: thin solid rgba(0,0,0, 0.3);
+	text-align: left;
+}
+/* *TABLE T-PREFIX */
+
+/* examples */
+.s-attr[data-my] {
+	font-weight: 600;
+	padding-left: 50px;
+}
+
+#s-attr-value a[href="https://yandex.ru"]{
+	background-color: yellow;
+}
+
+#pseudo-focus:focus {
+	color: red;
+}
+
+#pseudo-active:active {
+	color: green;
+}
+
+#pseudo-active:hover {
+	background-color: yellow;
+}
+
+#pseudo-visited:visited {
+	color: rgba(255,50,50, 0.5);
+}
+
+#pseudo-ui input:disabled{
+	margin: 10px 0px;
+	box-shadow: 0 0 10px rgba(0,0,0, 0.5);
+}
+
+#pseudo-ui input:checked{
+	width: 3vh;
+	height: 3vh;
+	box-shadow: 0 0 10px rgba(0,0,0, 0.5);
+}
+
+#pseudo-child, #pseudo-only { padding-left: 30px;}
+
+#pseudo-child b:first-child {
+	color: green;
+	text-transform: uppercase;
+}
+
+#pseudo-child b:last-child {
+	color: red;
+	text-transform: uppercase;
+}
+
+#pseudo-only i:only-child {
+	font-weight: 600;
+	color: hsl(190, 60%, 70%);
+	text-transform: uppercase;
+}
+
+#pseudo-type {
+	margin: auto;
+	width: 70%;
+}
+
+#pseudo-type p:first-of-type {
+	color: green;
+	text-transform: uppercase;
+}
+
+#pseudo-type p:last-of-type {
+	color: red;
+	text-transform: uppercase;
+}
+
+#pseudo-type img:only-of-type {
+	border: 1rem solid #000;
+}
+
+#t-pseudo-nth {
+	border-collapse: collapse;
+	text-align: center;
+	font-size: 1.15rem;
+	width: 70%;
+	margin: auto;
+}
+
+#t-pseudo-nth th, #t-pseudo-nth td {
+	padding: 10px;
+	border: thin solid rgba(0,0,0, 0.3);
+}
+
+#t-pseudo-nth tr:nth-child(even) {
+	background-color: #c1d82f;
+}
+
+#t-pseudo-nth tr:nth-child(odd) {
+	background-color: #fbb034;
+}
+
+#t-pseudo-nth tr:first-child {
+	background-color: #ffdd00;
+}
+
+#t-pseudo-nth tr:hover {
+	background-color: #00a4e4;
+}
+
+#elem-letter, #elem-line {
+	padding-left: 30px;
+}
+
+#elem-letter:first-letter {
+	font-size: 1.25rem;
+	color: #ed1c24;
+}
+
+#elem-line:first-line {
+	font-size: 1.25rem;
+	color: #ed1c24;
+}
+
+#elem-ba a {
+	color: #56a0d3;
+	font-size: 1.6rem;
+	text-decoration: none;
+}
+
+#elem-ba a:before {
+	content: "\21BB ";
+	color: #56a0d3;
+}
+
+#elem-ba a:after {
+	content: "(" attr(href) ")";
+	color: rgba(0,0,0, 0.8);
+	font-size: 0.8rem;
+}
+
+.elem-select {
+	padding-left: 50px;
+}
+
+.elem-select::selection {
+	background: #ff7b29;
+}
+
+/* *examples */
