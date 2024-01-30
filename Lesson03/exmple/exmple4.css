@@ -1,0 +1,33 @@
+main {
+	width: 600px;
+	height: auto;
+	margin: auto;
+	padding: 10px;
+	/*background-color: hsl(60, 100%, 70%);*/
+}
+
+section {
+	margin: auto;
+	padding: 10px;
+	/*background-color: hsl(180, 80%, 50%);*/
+}
+
+article {
+	margin: 10px auto;
+	padding: 10px;
+	border: thin solid black;
+	/*background-color: hsl(30, 100%, 50%);*/
+}
+
+h3 ~ p {
+	font-size: 1.6rem;
+	color: green;
+	text-transform: uppercase;
+}
+
+/* BLOCKQUOTE */
+blockquote {
+	border-left: 4px solid #bbb;
+	padding-left: 10px;
+}
+/* *BLOCKQUOTE*/
