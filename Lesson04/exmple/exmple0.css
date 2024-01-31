@@ -1,0 +1,28 @@
+/*@charset "IBM866";*/
+@charset "windows-1251";
+
+
+/*
+  File save in ASCII
+*/
+
+p:after {
+	content: "Work или нет";
+	font-size: 1.6rem;
+}
+
+header {
+	border-bottom: thin solid black;
+	font-size: 2rem;
+}
+
+footer {
+	color: #bbb;
+	font-size: 0.7rem;
+	text-align: right;
+}
+
+article {
+	width: 600px;
+	margin: auto;
+}

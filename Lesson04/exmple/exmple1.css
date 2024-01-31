@@ -1,0 +1,28 @@
+/*@font-face {
+	font-family: "Anonymous Pro";
+	src: url("font/Anonymous_Pro.ttf");
+	font-weight: bold;
+}*/
+
+main {
+	width: 600px;
+	height: auto;
+	margin: auto;
+	padding: 10px;
+	/*background-color: hsl(60, 100%, 70%);*/
+}
+
+
+
+article header {
+	font-family: "Anonymous Pro";
+	font-size: 2rem;
+	/*font-weight: bold;*/
+}
+
+article p {
+	font-family: "Anonymous Pro";
+	font-style: italic;
+	
+	text-align: justify;
+}

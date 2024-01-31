@@ -1,0 +1,17 @@
+
+main {
+	width: 600px;
+	height: auto;
+	margin: auto;
+	padding: 10px;
+}
+
+article header {
+	font-size: 2rem;
+	font-weight: bold;
+}
+
+article p {
+	font-style: italic;	
+	text-align: justify;
+}

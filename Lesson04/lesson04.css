@@ -1,0 +1,284 @@
+html {
+	font-size: 20px;
+}
+
+body {
+	counter-reset: table-count; /* for table caption*/
+}
+
+main {
+	counter-reset: img-count;/*numeric image*/
+}
+
+nav ol li{
+	padding-top: 0.5rem;
+}
+
+h2 {
+	border-bottom: thin solid #000;
+}
+
+p {
+	text-align: justify;
+	text-indent: 1.5rem;
+}
+
+dl {
+	column-count: 2;
+}
+
+/* FIGURE */
+figure {
+	margin: auto;
+	padding: 10px;
+	border: 1px solid #ccc;
+	text-align: center;
+}
+
+figcaption {
+	color: #666;
+	/*text-transform: uppercase;*/
+}
+
+figcaption:before {
+	content: "Рис. " counter(img-count) " ";
+	counter-increment: img-count;
+}
+/* *FIGURE*/
+
+/* PRE */
+pre {
+	background-color: #f8f7f7;
+	color: #333;
+	border: thin solid #e9e8e8;
+	border-radius: 3px;
+	padding: 10px 20px;
+}
+
+pre .tag {
+	color: #d20962;
+}
+
+pre .attr{
+	color: #de9000;
+}
+
+pre .val {
+	color: #00a4e4;
+}
+
+pre .comment {
+	color: #7ac143;
+}
+/* *PRE */
+
+/* BLOCKQUOTE */
+blockquote {
+	border-left: 4px solid #bbb;
+	padding-left: 10px;
+}
+/* *BLOCKQUOTE*/
+
+/* #EXAMPLE0 */
+#example0 {
+	padding: 20px;
+	text-align: center;
+}
+
+#example0 .elem {
+	display: inline-block;
+	vertical-align: middle;/**/
+	margin: 10px;
+}
+/* *#EXAMPLE0 */
+
+
+/* BLOCKQUOTE */
+blockquote {
+	border-left: 4px solid #bbb;
+	padding-left: 10px;
+}
+
+blockquote.old , blockquote.error{
+	background-color: rgba(255, 0,0, 0.3);
+	border-left: 4px solid #f00;
+	padding: 5px;
+}
+
+blockquote.warn {
+	background-color: rgba(255, 185,0, 0.3);
+	border-left: 4px solid #ffb900;
+	padding: 5px 5px 5px 15px;
+}
+
+blockquote.info {
+	background-color: rgba(127,187,0, 0.3);
+	border-left: 4px solid #7fbb00;
+	padding: 5px 5px 5px 15px;
+	margin-top: 40px;
+}
+
+/* *BLOCKQUOTE*/
+
+/* TABLE TABLE_PHP */
+.table-php th {
+	background-color: #c4c9df;
+	text-align: center;
+}
+
+.table-php tr td:first-child{ font-family: monospace; }
+
+.table-php tr:hover { background-color: #eee; }
+/* *TABLE TABLE_PHP */
+
+/* #EXAMPLE */
+.wrapIn {
+	font-size: 1in;
+	padding: 0;
+	margin: 0;
+}
+
+.wrapCm {
+	width: 3cm;
+	height: 2cm;
+	background-color: #fae;
+	border: 0.5cm solid black;
+	margin: auto;
+}
+
+.wrapMm {
+	width: 100mm;
+	height: 100mm;
+	background-color: #eee;
+	border: 1mm solid black;
+	margin: auto;
+}
+
+.wrapEm {
+	font-size: 1.5em;
+}
+
+.wrapProcent {
+	font-size: 90%;
+}
+
+.wrapRem {
+	font-size: 1.5rem;
+}
+/* *#EXAMPLE */
+
+
+/* #EXAMPLE */
+
+.deg-30, .deg20 {
+	width: 200px;
+	height: auto;
+	margin: 30px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.deg-30  img { width: 95%; }
+.deg20  img { width: 95%; }
+
+.deg-30 {
+	transform: rotate(-30deg);
+}
+
+.deg20 {
+	transform: rotate(20deg);
+}
+
+.rad {
+	width: 200px;
+	height: auto;
+	margin: 50px auto;
+	color: black;
+	transform: rotate(0.5rad);
+}
+
+.rad  img { width: 95%; }
+
+.turn2 {
+	width: 200px;
+	height: auto;
+	margin: 100px auto;
+	color: black;
+	transform: rotate(1.8turn);
+}
+
+.turn2  img { width: 95%; }
+
+/* *#EXAMPLE */
+
+
+/* #EXAMPLE */
+.opcity {
+	width: 120px;
+	height: 120px;
+	color: rgb(255,255,255);
+	background-color: black;
+	display: inline-block;
+}
+
+.exmple {
+	width: 200px;
+	height: 200px;
+	display: inline-block;
+	margin: 20px;
+	opacity: 0.5;
+}
+
+.exmple:hover {
+	opacity: 1;
+}
+
+.hsl {
+	width: 150px;
+	height: 150px;
+	text-align: center;
+	display: inline-block;
+}
+
+.alpha {
+	width: 150px;
+	height: 150px;
+	text-align: center;
+	display: inline-block;
+	vertical-align: top;
+}
+
+/* *#EXAMPLE */
+
+/* TABLE SUPPORTBROWSER */
+.supportBrowser {
+	border-collapse: collapse;
+	text-align: center;
+	font-size: 0.9rem;
+	width: 95%;
+	margin: auto;
+}
+
+.supportBrowser th {
+	font-weight: 600;
+	background-color: #ADD8E6;
+	padding: 10px;
+	border: thin solid rgba(0,0,0, 0.3);
+}
+
+.supportBrowser td {
+	padding: 10px;
+	border: thin solid rgba(0,0,0, 0.3);
+	text-align: center;
+}
+
+.supportBrowser .no span:before{
+	content: " \2716";
+	color: #ce3045;
+}
+
+.supportBrowser .yes span:before{
+	content: " \2714";
+	color: #4b846a;
+}
+/* *TABLE SUPPORTBROWSER */
