@@ -166,3 +166,47 @@ blockquote.info {
 	font-size: 1.5rem;
 }
 /* *#EXAMPLE */
+
+
+/* #EXAMPLE */
+
+.deg-30, .deg20 {
+	width: 200px;
+	height: auto;
+	margin: 30px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.deg-30  img { width: 95%; }
+.deg20  img { width: 95%; }
+
+.deg-30 {
+	transform: rotate(-30deg);
+}
+
+.deg20 {
+	transform: rotate(20deg);
+}
+
+.rad {
+	width: 200px;
+	height: auto;
+	margin: 50px auto;
+	color: black;
+	transform: rotate(0.5rad);
+}
+
+.rad  img { width: 95%; }
+
+.turn2 {
+	width: 200px;
+	height: auto;
+	margin: 100px auto;
+	color: black;
+	transform: rotate(1.8turn);
+}
+
+.turn2  img { width: 95%; }
+
+/* *#EXAMPLE */
