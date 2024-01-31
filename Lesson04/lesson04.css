@@ -1,0 +1,168 @@
+html {
+	font-size: 20px;
+}
+
+body {
+	counter-reset: table-count; /* for table caption*/
+}
+
+main {
+	counter-reset: img-count;/*numeric image*/
+}
+
+nav ol li{
+	padding-top: 0.5rem;
+}
+
+h2 {
+	border-bottom: thin solid #000;
+}
+
+p {
+	text-align: justify;
+	text-indent: 1.5rem;
+}
+
+dl {
+	column-count: 2;
+}
+
+/* FIGURE */
+figure {
+	margin: auto;
+	padding: 10px;
+	border: 1px solid #ccc;
+	text-align: center;
+}
+
+figcaption {
+	color: #666;
+	/*text-transform: uppercase;*/
+}
+
+figcaption:before {
+	content: "Рис. " counter(img-count) " ";
+	counter-increment: img-count;
+}
+/* *FIGURE*/
+
+/* PRE */
+pre {
+	background-color: #f8f7f7;
+	color: #333;
+	border: thin solid #e9e8e8;
+	border-radius: 3px;
+	padding: 10px 20px;
+}
+
+pre .tag {
+	color: #d20962;
+}
+
+pre .attr{
+	color: #de9000;
+}
+
+pre .val {
+	color: #00a4e4;
+}
+
+pre .comment {
+	color: #7ac143;
+}
+/* *PRE */
+
+/* BLOCKQUOTE */
+blockquote {
+	border-left: 4px solid #bbb;
+	padding-left: 10px;
+}
+/* *BLOCKQUOTE*/
+
+/* #EXAMPLE0 */
+#example0 {
+	padding: 20px;
+	text-align: center;
+}
+
+#example0 .elem {
+	display: inline-block;
+	vertical-align: middle;/**/
+	margin: 10px;
+}
+/* *#EXAMPLE0 */
+
+
+/* BLOCKQUOTE */
+blockquote {
+	border-left: 4px solid #bbb;
+	padding-left: 10px;
+}
+
+blockquote.old , blockquote.error{
+	background-color: rgba(255, 0,0, 0.3);
+	border-left: 4px solid #f00;
+	padding: 5px;
+}
+
+blockquote.warn {
+	background-color: rgba(255, 185,0, 0.3);
+	border-left: 4px solid #ffb900;
+	padding: 5px 5px 5px 15px;
+}
+
+blockquote.info {
+	background-color: rgba(127,187,0, 0.3);
+	border-left: 4px solid #7fbb00;
+	padding: 5px 5px 5px 15px;
+	margin-top: 40px;
+}
+
+/* *BLOCKQUOTE*/
+
+/* TABLE TABLE_PHP */
+.table-php th {
+	background-color: #c4c9df;
+	text-align: center;
+}
+
+.table-php tr td:first-child{ font-family: monospace; }
+
+.table-php tr:hover { background-color: #eee; }
+/* *TABLE TABLE_PHP */
+
+/* #EXAMPLE */
+.wrapIn {
+	font-size: 1in;
+	padding: 0;
+	margin: 0;
+}
+
+.wrapCm {
+	width: 3cm;
+	height: 2cm;
+	background-color: #fae;
+	border: 0.5cm solid black;
+	margin: auto;
+}
+
+.wrapMm {
+	width: 100mm;
+	height: 100mm;
+	background-color: #eee;
+	border: 1mm solid black;
+	margin: auto;
+}
+
+.wrapEm {
+	font-size: 1.5em;
+}
+
+.wrapProcent {
+	font-size: 90%;
+}
+
+.wrapRem {
+	font-size: 1.5rem;
+}
+/* *#EXAMPLE */
