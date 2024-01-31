@@ -548,7 +548,223 @@ Text one
 				</article>
 			</div>			
 		</article>
-    </section>	
+    </section>
+    
+    <section>
+        <h2><code>@</code>-правила(<code>at</code>-правила)</h2>
+        <p>At-правила это своего рода заявление для CSS, в котором содержаться инструкции для выполнениния или поведения. Каждое правило начинается с симвла @(коммерческое at(эт)), после которго следует ключевое слово, которое выступает в качестве идентификатора поведения для CSS.</p>
+        <p>За частую использование @-правил ограничевается подключением дополнительных стилей или шрифтов, установки кодировки, но это лишь малая часть того что они могут.</p>
+        
+        <pre>
+    <span class="tag">@[KEYWORD]</span> (<span class="property">position</span>);
+        </pre>
+        
+        <article>
+            <h3><code>@charset</code></h3>
+            <p>Применяется для задания кодировки внешнего CSS-файла. Это имеет значение в том случае, если в CSS-файле используются символы национального алфавита.</p>
+            
+            <pre>
+    <span class="tag">@charset</span> "<span class="property">кодировка</span>";
+            </pre>
+            <blockquote class="error">Значение кодировки обязательно должно быть взято в кавычки.</blockquote>
+            
+            <pre>
+    <span class="tag">@charset</span> "<span class="property">UTF-8</span>";
+    <span class="comment">/* Должно идти первой строкой. Пред ней не должно быть ничего - даже комментариев */</span>
+            </pre>
+            
+            <p><a href="exmple/exmple0.html">Пример использования <code>@charset</code>&rarr;</a><p>
+            
+        </article>
+        
+        <article>
+            <h3><code>@document</code></h3>
+            <p><code>@document</code> устанавливает стилевые правила на основе адреса документа. К примеру, если адреса мобильной и основной версии сайта различаются, то мы можем задать собственный стиль элементов для каждой версии.</p>
+            
+            <table class="supportBrowser">
+                <caption>Поддержка в браузерах</caption>
+                <tr>
+                    <th>IE</th>
+                    <th>Chrome</th>
+                    <th>Opera</th>
+                    <th>Safari</th>
+                    <th>Firefox</th>
+                </tr>
+                <tr>
+                    <td class="no"><span></span></td>
+                    <td class="no"><span></span></td>
+                    <td class="no"><span></span></td>
+                    <td class="no"><span></span></td>
+                    <td class="yes"><span></span></td>
+                </tr>
+            </table>
+            
+            <p>Мы не будем рассматривать его работу, по скольку он поддерживается пока одним браузером. <a href="https://webref.ru/css/document" target="_blanck">Более подробнее о нём можно почитать здесь &rarr;</a></p>
+            
+        </article>
+        
+        <article>
+            <h3><code>@font-face</code></h3>
+            <p>Определяет настройки шрифтов, а также позволяет загрузить специфичный шрифт на компьютер пользователя.</p>
+            <blockquote class="warn"> Вы можете использовать практически любые шрифты, в любых количествах. Однако, согласно основным принципам дизайна, считается что более 3 шрифтов в оформлении это ужасно.</blockquote>
+            
+            <pre>
+<span class="tag">@font-face</span> {
+    <span class="comment">/* Простой пример подключения шрифта */</span>
+    <span class="property">font-family</span>: <span class="unit">"Имя Шрифта"</span>;
+    <span class="property">src</span>: <span class="unit">url("путь/до/Шрифта")</span>;
+}
+            </pre>
+            
+            <figure>
+                <img src="img/fontSupport.png">
+                <figcaption>Поддержка браузерами различных видов шрифтов</figcaption>
+            </figure>	
+            
+            <pre>
+<span class="tag">@font-face</span> {
+    <span class="property">font-family</span>: <span class="unit">"Anonymous Pro"</span>;
+    <span class="property">src</span>: <span class="unit">url("font/Anonymous_Pro.ttf")</span>;
+}
+
+<span class="tag">p</span> {
+    <span class="property">font-family</span>: <span class="unit">"Anonymous Pro"</span>;
+}
+            </pre>
+            
+            <p><a href="exmple/exmple1.html">Пример использования <code>@font-face</code>&rarr;</a><p>
+            <blockquote class="info">В Интернете есть два наиболее удобных сервиса встраивания шрифтов в страницу: <a href="https://www.fontsquirrel.com/" target="_blanck">Шрифтовая белка</a> и <a href="https://fonts.google.com/"  target="_blanck">Google WebFonts</a>.<br>Стоит их попробовать.</blockquote>				
+        </article>
+        
+        <article>
+            <h3><code>@import</code></h3>
+            <p>Позволяет импортировать содержимое CSS-файла в текущую стилевую таблицу.</p>
+            <blockquote class="error">Правило <code>@import</code> позволяет импортировать содержимое CSS-файла в текущую стилевую таблицу, <mark>НО</mark> <code>@import</code> не разрешается вставлять после любых объявлений кроме <code>@charset</code> или другого <code>@import</code>.</blockquote>
+                            
+            <pre>
+    <span class="tag">@import</span> <span class="property">url</span>(<span class="unit">"путь/до/файла"</span>) [Тип Носителя, ...];
+    <span class="tag">@import</span> <span class="unit">"путь/до/файла"</span> [Тип Носителя, ...];
+            </pre>
+            
+            <p>Широкое развитие различных платформ и устройств заставляет разработчиков делать под них специальные версии сайтов, что достаточно трудоёмко и проблематично. Вместе с тем, времена и потребности меняются, и создание сайта для различных устройств является неизбежным и необходимым звеном его развития. С учетом этого в CSS введено понятие типа носителя, когда стиль применяется только для определённого устройства.</p>
+            
+            <table id="typeDevice" class="table-php">
+                <caption>Типы носителей</caption>
+                <tr>
+                    <th>Тип</th>
+                    <th>Описание</th>
+                </tr>
+                <tr>
+                    <td>all</td>
+                    <td>Все типы. Это значение используется по умолчанию.</td>
+                </tr>
+                <tr>
+                    <td>aural</td>
+                    <td>Речевые синтезаторы, а также программы для воспроизведения текста вслух. Сюда, например, можно отнести речевые браузеры.</td>
+                </tr>
+                <tr>
+                    <td>braille</td>
+                    <td>Устройства, основанные на системе Брайля, которые предназначены для слепых людей.</td>
+                </tr>
+                <tr>
+                    <td>handheld</td>
+                    <td>Наладонные компьютеры и аналогичные им аппараты.</td>
+                </tr>
+                <tr>
+                    <td>print</td>
+                    <td>Печатающие устройства вроде принтера.</td>
+                </tr>
+                <tr>
+                    <td>projection</td>
+                    <td>Проектор.</td>
+                </tr>
+                <tr>
+                    <td>screen</td>
+                    <td>Экран монитора.</td>
+                </tr>
+                <tr>
+                    <td>tv</td>
+                    <td>Телевизор.</td>
+                </tr>
+            </table>
+            
+            <pre>
+    <span class="tag">@import</span> <span class="unit">"style/main.css"</span> screen;
+    <span class="tag">@import</span> <span class="unit">"style/print.css"</span> print;
+            </pre>
+            
+            <p><a href="exmple/exmple2.html">Пример использования <code>@import</code>&rarr;</a><p>				
+        </article>
+        
+        <article>
+            <h3><code>@keyframes</code></h3>
+            <p><code>@keyframes</code> устанавливает ключевые кадры при анимации элемента. Ключевой кадр это свойства элемента (прозрачность, цвет, положение и др.), которые должны применяться к элементу в заданный момент времени.</p>
+            <p>О нём и сопутствующих ему свойствах поговорим чуть далее в этой статье.</p>
+        </article>
+        
+        <article>
+            <h3><code>@media</code></h3>
+            <p>Указывает тип носителя, для которого будет применяться указанный стиль. В качестве типов выступают различные устройства, например, принтер, коммуникатор, монитор и др</p>
+            <p>О нём и сопутствующих ему свойствах узнаете в следующей лекции.</p>
+        </article>
+        
+        <article>
+            <h3><code>@page</code></h3>
+            <p>Задаёт значение полей при печати документа.</p>
+            <pre>
+<span class="tag">@page</span> {<span class="unit">Значение отступов</span>};
+            </pre>
+            
+            <p>Для установки значения полей на странице, используется универсальное свойство <code>margin</code> или его производные — <code>margin-top</code>, <code>margin-right</code>, <code>margin-bottom</code> и <code>margin-left</code>, задающие соответственно отступ сверху, справа, снизу и слева. Отрицательное значение допускается, но часть страницы может оказаться «отрезанной». Свойства <code>border</code> и <code>padding</code> не применимы.</p>
+            <p>Допустипо использование ключевых слов, после <code>@page</code> и пробел. Ключевое слово <code>:left</code> позволяет задать поля для всех левых страниц, <code>:right</code> — для всех правых, а <code>:first</code> — для первой страницы.</p>
+            
+            <pre>
+<span class="tag">@page</span> {
+    <span class="property">margin</span>: <span class="unit">250px</span>;
+}
+
+<span class="tag">@page :first</span> {
+    <span class="property">margin</span>: <span class="unit">0</span>;
+}
+
+<span class="tag">@page :left</span> {
+    <span class="property">margin-right</span>: <span class="unit">50px</span>;
+}
+
+<span class="tag">@page :right</span> {
+    <span class="property">margin-left</span>: <span class="unit">50px</span>;
+}
+            </pre>
+            
+            <p><a href="exmple/exmple3.html">Пример использования <code>@page</code>&rarr;</a><p>
+            
+        </article>
+        
+        <article>
+            <h3><code>@viewport</code></h3>
+            <p>Позволяет оптимизировать макет веб-страницы в зависимости от различных устройств и их размеров.</p>
+            
+            <table class="supportBrowser">
+                <caption>Поддержка в браузерах</caption>
+                <tr>
+                    <th>IE</th>
+                    <th>Chrome</th>
+                    <th>Opera</th>
+                    <th>Safari</th>
+                    <th>Firefox</th>
+                </tr>
+                <tr>
+                    <td class="yes"><span></span></td>
+                    <td class="no"><span></span></td>
+                    <td class="no"><span></span></td>
+                    <td class="no"><span></span></td>
+                    <td class="no"><span></span></td>
+                </tr>
+            </table>
+            
+            <p>Мы не будем рассматривать его работу, по скольку он поддерживается пока одним браузером. <a href="https://webref.ru/css/viewport" target="_blanck">Более подробнее о нём можно почитать здесь &rarr;</a></p>
+        </article>				
+    </section>
 </main>    
 
 

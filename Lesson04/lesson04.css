@@ -249,3 +249,36 @@ blockquote.info {
 }
 
 /* *#EXAMPLE */
+
+/* TABLE SUPPORTBROWSER */
+.supportBrowser {
+	border-collapse: collapse;
+	text-align: center;
+	font-size: 0.9rem;
+	width: 95%;
+	margin: auto;
+}
+
+.supportBrowser th {
+	font-weight: 600;
+	background-color: #ADD8E6;
+	padding: 10px;
+	border: thin solid rgba(0,0,0, 0.3);
+}
+
+.supportBrowser td {
+	padding: 10px;
+	border: thin solid rgba(0,0,0, 0.3);
+	text-align: center;
+}
+
+.supportBrowser .no span:before{
+	content: " \2716";
+	color: #ce3045;
+}
+
+.supportBrowser .yes span:before{
+	content: " \2714";
+	color: #4b846a;
+}
+/* *TABLE SUPPORTBROWSER */

@@ -1,0 +1,6 @@
+@import "style/main.css" screen;/* монитор */
+@import "style/print.css" print;/* вывод на печать */
+@import "style/handheld.css" handheld;/* смартфоны и прочие */
+
+
+
