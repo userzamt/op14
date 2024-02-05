@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>homework01</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+    <link rel="stylesheet" href="homework04.css">
+</head>
+<body>
+    
+<main class="container-lg">
+    <header>
+        <h1>Домашнее задание 04<br>Form плюс CSS</h1>
+    </header>
+
+    <a target="_blank" href="https://www.w3schools.com/html/html_forms.asp" class="d-block">Form</a>
+    <a target="_blank" href="https://www.w3schools.com/html/html_forms_attributes.asp" class="d-block">Аттрибуты</a>
+    <a target="_blank" href="https://www.w3schools.com/html/html_form_elements.asp" class="d-block">Элементы формы</a>
+    <a target="_blank" href="https://www.w3schools.com/html/html_form_input_types.asp" class="d-block">Input type</a>
+    <a target="_blank" href="https://www.w3schools.com/html/html_form_attributes.asp" class="d-block">Аттрибуты Input</a>
+    <br>
+    <a target="_blank" href="https://doka.guide/html/form/?ysclid=ls5muagczz95828252" class="d-block">doka Form</a>
+
+    <p>Ваша задача повторить пример формы представленный ниже. 100% сходства не нужно. Ссылки выше помогут Вам в верстке формы.</p>
+    <p>Для части полей используйте аттрибуты <code>placeholder</code>(подсказка для ввода данных) и <code>checked</code>(помечается выбранный пункт)</p>
+    <p>При написании CSS стилей для элементов на странице, разрешается использовать только селекторы классов, идентификаторов, атрибутов, селекторы потомков.</p>
+
+    <section class="row mt-3">
+        <form class="col-10 mx-auto" action="">
+            <fieldset class="border p-5">
+                <legend>Форма псевдорегистрации</legend>
+
+                <div class="mb-3">
+                    <label for="fio" class="form-label">ФИО</label>
+                    <input class="form-control" type="text" id="fio" placeholder="Введите Ваше ФИО(напр. Иванов Иван Иванович)">
+                </div>
+
+                <div class="mb-3">
+                    <label for="usr-email" class="form-label">Почта</label>
+                    <input class="form-control" type="email" id="usr-email" placeholder="user@mail.local">
+                </div>
+
+                <div class="mb-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="polityc" checked>
+                        <label class="form-check-label" for="polityc">Согласия с правилами нашего сайта</label>                        
+                    </div>
+
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="news">
+                        <label for="news" class="form-check-labe">Согласие на получение только самых нужных новостей</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="notrobot">
+                        <label class="form-check-label" for="notrobot">Я не робот</label>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="mydate">Дата рождения</label>
+                    <input class="form-control" type="date" id="mydate">
+                </div>
+
+                <div class="row mb-3">
+                    <div class="form-check col-lg-4">
+                        <input class="form-check-input" type="radio" id="zvl" name="rdb">
+                        <label class="form-check-label" for="zvl">Заволжье</label> 
+                    </div>
+                    <div class="form-check col-lg-4">
+                        <input class="form-check-input" type="radio" id="gor" name="rdb">
+                        <label class="form-check-label" for="gor">Городец</label> 
+                    </div>
+                    <div class="form-check col-lg-4">
+                        <input class="form-check-input" type="radio" id="blh" name="rdb">
+                        <label class="form-check-label" for="blh">Балахна</label> 
+                    </div>                                       
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label" for="kurs">Курс</label>
+                    <select class="form-select" id="kurs">
+                        <option value="0" selected>Выберете курс</option>                        
+                        <option value="1">1 курс</option>                        
+                        <option value="2">2 курс</option>                        
+                        <option value="3">3 курс</option>                        
+                        <option value="4">4 курс</option>                        
+                    </select>
+                </div>
+
+                <div class="text-center">
+                    <button type="button" class="btn btn-success">Зарегистрироваться</button>
+                </div>                
+            </fieldset>
+        </form>
+    </section>
+
+    
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+</body>
+</html>
