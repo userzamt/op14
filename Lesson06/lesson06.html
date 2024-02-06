@@ -18,7 +18,195 @@
 
     <a class="fs-3" href="../Homework/Homework06/homework06.html">Домашнее задание 06</a>
 
-       
+    <section>
+        <h2>CSS3 переходы. Свойство <code>transition</code></h2>
+        <p></p>
+        <p>Переход является простой анимацией от одного набора CSS-свойств к другому через определенный промежуток времени. Работает это так, что отдельные свойства анимируются от начального состояния до конечного.</p>
+        <blockquote class="warn">Имейте в виду, что переход представляет собой специфический вид анимации, где есть только начальное и конечное состояние.</blockquote>
+        <p>Чтобы переход заработал, нужно следующее.</p>
+        <ul>
+            <li><b>Два стиля.</b> Один стиль должен представлять начальный вид элемента, например красную кнопку перехода, а второй - его конечный вид: синюю кнопку перехода. О процессе анимации изменения между двумя состояниями позаботится веб-браузер (например, об изменении цвета кнопки с красного на синий).</li>
+            <li><b>Свойство <code>transition</code>.</b> В CSS3 добавляется свойство <code>transition</code> - позволяющее осуществить анимацию. Обычно свойство <code>transition</code> применяется к исходному стилю, который определяет внешний вид элемента до начала анимации.</li>
+            <li><b>Инициатор.</b> Инициатор представляет собой действие, вызывающее изменение от одного стиля к другому. В CSS для запуска анимации можно использовать несколько псевдоклассов. Наиболее часто применяется псевдокласс <code>:hover</code>. С его помощью можно анимировать изменение, происходящее от обычного появления элемента и до его внешнего вида, который появляется, когда посетитель проводит над ним указатель мыши. 
+
+            <blockquote class="info">Самый простой способ задать стили для различных состояний - это воспользоваться псевдоклассами <code>:hover</code>, <code>:focus</code>, <code>:active</code> и <code>:target</code></blockquote>
+
+            <blockquote class="warn">Смена свойств происходит при наступлении определенного события, которое описывается соответствующим псевдоклассом. Чаще всего используется псевдокласс <code>:hover</code>. Данный псевдокласс не работает на мобильных устройствах, таких как iPhone или Android. Универсальным решением, работающим в настольных и мобильных браузерах, будет обработка событий с помощью JavaScript (например, переключение классов при клике).</blockquote>
+            
+            <blockquote class="info">Кроме того, для динамической смены стиля любого тега можно воспользоваться JavaScript.</blockquote></li>	
+        </ul>
+        
+        <p>Когда инициатор больше не применяется, то есть когда, например, посетитель убирает указатель мыши с кнопки навигации, браузер возвращает тег обратно к его прежнему стилю и анимирует весь этот процесс. Иными словами, вам нужно лишь установить переход для элемента один раз, а анимацию от одного стиля к другому и обратно к исходному стилю браузер возьмет на себя.</p>
+
+        <p>Переходы применяются ко всем элементам, а также к псевдоэлементам <code>:before</code> и <code>:after</code>. Для задания всех свойств перехода обычно используют краткую запись свойства <code>transition</code>.</p>
+        <p>CSS3 переходы могут применяться не ко всем свойствам и их значениям. Подробный перечень вы найдёте <a href="https://www.w3.org/TR/css3-transitions/#animatable-properties" target="_blanck">на этой странице</a> и <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animated_properties" target="_blanck">на этой странице</a>.</p>
+        
+        <article>
+            <h3><code>transition-property</code></h3>
+            <p>Содержит название CSS-свойств, к которым будет применен эффект перехода. Значение свойства может содержать как одно свойство, так и список свойств через запятую. При создании перехода можно использовать как начальное, так и конечное состояние элемента. Свойство не наследуется.</p>
+            
+            <pre>
+<span class="property">background-color</span>: <span class="unit">#000</span>;
+<span class="property">border-radius</span>: <span class="unit">10px</span>;
+<span class="property">transition-property</span>: <span class="unit">background-color</span>;
+<span class="comment">/* Так же разрещается следующая запись */</span>
+<span class="property">transition-property</span>: <span class="unit">all</span>;
+<span class="property">transition-property</span>: <span class="unit">background-color, border-radius</span>;
+            </pre>
+            <blockquote class="warn"><code>all</code> - значение по умолчанию. Применяет эффект перехода ко всем свойствам элемента.</blockquote>
+            
+            <pre>
+<span class="tag">.btn</span> {
+<span class="property">background-color</span>: <span class="unit">#000</span>;
+<span class="property">border-radius</span>: <span class="unit">10px</span>;
+<span class="property">transition-property</span>: <span class="unit">background-color, border-radius</span>;
+}
+
+<span class="tag">.btn:hover</span> {
+<span class="property">background-color</span>: <span class="unit">#fff</span>;
+<span class="property">border-radius</span>: <span class="unit">50%</span>;
+}
+            </pre>
+            
+            <div id="trans1"></div>
+            
+            <p>Как Вы можете увидеть плавного перехода нет. Нам поможет в этом....</p>				
+        </article>
+        
+        <article>
+            <h3><code>transition-duration</code></h3>
+            <p>Задаёт промежуток времени, в течение которого должен осуществляться переход.Если продолжительность перехода не указана, то анимация при смене значений свойств происходить не будет. Свойство не наследуется.</p>				
+            <p>Чтобы указать продолжительность анимации, используется свойство <code>transition-duration</code>. Ему передается или значение в секундах, или значение в миллисекундах (тысячных долях секунды).</p>	
+            <p>Так же можно указать отдельную продолжительность для каждого анимируемого свойства. Например, когда посетитель проводит указатель мыши над кнопкой, может потребоваться, чтобы цвет текста изменялся быстрее, цвет фона изменялся немного медленнее, а цвет границы изменялся заметно медленнее. Для этого нужно перечислить анимируемые свойства, используя свойство <code>transition-property</code>, а затем перечислить показатели продолжительности с помощью свойства <code>transition-duration</code>.</p>				
+            
+            <pre>
+<span class="property">background-color</span>: <span class="unit">#000</span>;
+<span class="property">border-radius</span>: <span class="unit">10px</span>;
+<span class="property">transition-property</span>: <span class="unit">background-color</span>;
+<span class="property">transition-duration</span>: <span class="unit">.8s</span>;
+
+<span class="comment">/* Так же разрещается следующая запись */</span>
+<span class="property">transition-property</span>: <span class="unit">background-color, border-radius</span>;
+<span class="property">transition-duration</span>: <span class="unit">.8s, 950ms</span>;
+            </pre>
+            <blockquote class="warn">Порядок перечисления показателей продолжительности должен соответствовать порядку перечисления свойств.</blockquote>
+            
+            <pre>
+<span class="tag">.btn</span> {
+<span class="property">background-color</span>: <span class="unit">#000</span>;
+<span class="property">border-radius</span>: <span class="unit">10px</span>;
+<span class="property">transition-property</span>: <span class="unit">background-color, border-radius</span>;
+<span class="property">transition-duration</span>: <span class="unit">.8s</span>;
+}
+
+<span class="tag">.btn:hover</span> {
+<span class="property">background-color</span>: <span class="unit">#fff</span>;
+<span class="property">border-radius</span>: <span class="unit">50%</span>;
+}
+            </pre>
+            
+            <div id="trans2"></div>
+            <figure id="transFig">
+                <img src="http://placekitten.com/200/150">
+                <figcaption>Микрогалерея</figcaption>
+            </figure>				
+        </article>
+        
+        <article>
+            <h3><code>transition-timing-function</code></h3>
+            <p>Чтобы анимированный переход заработал, нужно только установить значения для свойств <code>transition-property</code> и <code>transition-duration</code>. Но с помощью свойства <code>transition-timing-function</code> можно также контролировать и скорость хода анимации. </p>
+            <p>Свойство задаёт временную функцию, которая описывает скорость перехода объекта от одного значения к другому. Если вы определяете более одного перехода для элемент, например, цвет фона элемента и его положение, вы можете использовать разные функции для каждого свойства. Свойство не наследуется.</p>
+            <p>В предназначении этого свойства нетрудно и запутаться: оно управляет не продолжительностью анимации (для этого есть свойство <code>transition-duration</code>), а скоростью хода анимации. Например, можно начать анимацию медленно, а затем быстро ее завершить, создавая эффект незаметного в начале и быстрого в конце изменения фонового цвета.</p>
+            <p>Свойство <code>transition-timing-function</code> может получать в качестве занчения ключевые слова:</p> 
+            <ul>
+                <li><code><b>linear</b></code> - Переход происходит равномерно на протяжении всего времени, без колебаний в скорости.</li>
+                <li><code><b>ease</b></code> - Функция по умолчанию, переход начинается медленно, разгоняется быстро и замедляется в конце.</li>
+                <li><code><b>ease-in</b></code> - Переход начинается медленно, а затем плавно ускоряется в конце.</li>
+                <li><code><b>ease-out</b></code> - Переход начинается быстро и плавно замедляется в конце. </li>
+                <li><code><b>ease-in-out</b></code> - Переход медленно начинается и медленно заканчивается. </li>
+                <li><code><b>cubic-bezier(x1, y1, x2, y2)</b></code> - Позволяет вручную установить значения от 0 до 1 для кривой ускорения. <a href="http://roblaplaca.com/examples/bezierBuilder/" target="_blanck">На этом сайте</a> вы сможете построить любую траекторию перехода.
+                <blockquote class="warn">Для создания более реалистичных анимаций используйте функцию cubic-bezier<br>
+                <figure>
+                    <img src="img/bezie.png">
+                    <figcaption>Пользовательские функции CUBIC BÉZIER с сайта EASINGS.NET</figcaption>
+                </figure>
+                </blockquote>
+                <mark>Обязательно посетите сайт <a href="http://easings.net/ru" target="_blinck">EASINGS.NET</a> и  <a href="https://matthewlein.com/ceaser/" target="_blinck">этот сайт</a>.</mark>				
+                </li>
+            </ul>
+            
+            <div id="timeFunction">
+                <a href="#start" class="startTransition">Start</a><a href="#reset" class="resetTransition">Reset</a>
+                <div id="start">
+                    <p>linear</p>
+                    <p>ease</p>
+                    <p>ease-in</p>
+                    <p>ease-out</p>
+                    <p>ease-in-out</p>
+                    <p>cubic-bezier</p>						
+                </div>
+            </div>
+            
+            <figure>
+                <img src="img/mybezie.png" style="width: auto;">
+                <figcaption>Функция Безье cubic-bezier(0.390, -0.440, 0.695, 1.650)</caption>
+            </figure>				
+        </article>
+        
+        <article>
+            <h3><code>transition-delay</code></h3>
+            <p>Можно задержать время начала анимации перехода, воспользовавшись свойством <code>transition-delay</code>, т. е. как долго переход должен ждать, прежде чем начнётся на самом деле.</p>
+            <p>Необязательное свойство. Не наследуется.</p>
+            <p>Как и с <code>transition-duration</code> вы можете использовать секунды (s) или миллисекунды (ms).</p>
+            <pre>
+<span class="property">transition-delay</span>: <span class="unit">300ms</span>;
+<span class="property">transition-delay</span>: <span class="unit">.4s, 1500ms, 2s</span>;
+            </pre>
+            <p>Как и в случае применения свойства <code>transition-duration</code>, для каждого свойства можно указать свое время задержки. Порядок перечисления показателей времени должен соответствовать порядку перечисления этих свойств для <code>transition-property</code>.</p>
+            
+            <table id="transDelay">
+                <tr>
+                    <td style="transition-delay: .5s;">10%</td>
+                    <td style="transition-delay: 1s;">20%</td>
+                    <td style="transition-delay: 1.5s;">30%</td>
+                    <td style="transition-delay: 2s;">40%</td>
+                    <td style="transition-delay: 2.5s;">50%</td>
+                    <td style="transition-delay: 3s;">60%</td>
+                    <td style="transition-delay: 3.5s;">70%</td>
+                    <td style="transition-delay: 4s;">80%</td>
+                    <td style="transition-delay: 4.5s;">90%</td>
+                    <td style="transition-delay: 5s;">100%</td>
+                </tr>
+            <table>
+            
+        </article>
+        
+        <article>
+            <h3>Краткая запись свойства <code>transition</code></h3>
+            <p>Запись всех свойств по отдельности - <code>transition-property</code>, <code>transition-duration</code>, <code>transition-timing-function</code> - может просто утомить. По этому, все свойства, отвечающие за изменение внешнего вида элемента, можно объединить в одно свойство <code>transition</code></p>
+            <pre style="padding-left: 0px; ">
+<span class="property">transition</span>: <span class="unit">transition-property transition-duration transition-timing-function transition-delay</span>;
+            </pre>
+            <p>Это свойство связывает все другие свойства в одно. Нужно просто перечислить через запятую свойство, продолжительность, функцию распределения скорости по времени и задержку.</p>				
+            <p>Если воспользоваться значениями по умолчанию, то запись</p>
+            <pre>
+<span class="property">transition</span>: <span class="unit">1s</span>;
+            </pre>
+            <p>будет эквивалентна</p>
+            <pre>
+<span class="property">transition</span>: <span class="unit">all 1s ease 0s</span>;
+            </pre>
+            <p>Желательно чтобы список состоял из ключевого слова <code>all</code> или какого-нибудь одного CSS-свойства, а также из продолжительности, а функцию распределения скорости по времени и задержку можно не указывать. По умолчанию в качестве функции распределения задается <code>ease-in</code>, а задержка не используется. То есть, если нужно просто анимировать переход всех CSS-свойств на 1 секунду, нужно написать следующий код:</p>
+            <pre>
+<span class="property">transition</span>: <span class="unit">all 1s</span>;
+            </pre>
+            <blockquote class="warn">Если нужно анимировать сразу несколько CSS-свойств (но не все), можно воспользоваться их списком с запятой в качестве разделителя, где элементами будут являться разделенные пробелами свойства переходов.
+                <pre>
+<span class="property">transition</span>: <span class="unit">color 1s, background-color 1s, border-color .5s 1s</span>;
+                </pre>
+            </blockquote>				
+        </article>
+    </section>      
 
 </main>    
 

@@ -55,6 +55,18 @@ pre {
 	padding: 10px 20px;
 }
 
+pre .property {
+	color: #e6550d;
+}
+
+pre .unit {
+	color: #31a354;
+}
+
+pre .comment {
+	color: #a9a9a9;
+}
+
 pre .tag {
 	color: #d20962;
 }
@@ -65,10 +77,6 @@ pre .attr{
 
 pre .val {
 	color: #00a4e4;
-}
-
-pre .comment {
-	color: #7ac143;
 }
 /* *PRE */
 
@@ -117,3 +125,145 @@ blockquote.info {
 
 .table-php tr:hover { background-color: #eee; }
 /* *TABLE TABLE_PHP */
+
+/* EXAMPLE */
+
+#trans1, #trans2 {
+	width: 100px;
+	height: 100px;
+	display: inline-block;
+}
+
+#trans1 {
+	border: thin solid #333;
+	background-color: #000;
+	border-radius: 10px;
+	transition-property: all;
+}
+
+#trans1:hover {
+	background-color: #fff;
+	border-radius: 50%;
+}
+
+#trans2 {
+	border: thin solid #333;
+	background-color: #000;
+	border-radius: 10px;
+	transition-property: all;
+	transition-duration: 0.8s;
+	background-image: url("img/user.png");
+}
+
+#trans2:hover {
+	background-color: #fff;
+	border-radius: 50%;
+}
+
+#transFig, #transFig img {
+	width: auto;
+	height: auto;
+}
+
+#transFig {
+	display: inline-block;
+	margin: 0px 20px;
+	vertical-align: middle;
+	opacity: 0.6;
+}
+
+#transFig  {	
+	transition-property: all;
+	transition-duration: .95s;
+}
+
+#transFig figcaption {
+	transition-property: all;
+	transition-duration: .5s;
+}
+
+#transFig:hover {
+	opacity: 1;
+	border: thin solid #000;
+}
+
+#transFig:hover > figcaption {
+	color: #000;
+}
+
+#timeFunction {
+	width: 80%;
+	margin: auto;
+}
+
+#timeFunction a {
+	display: inline-block;
+	margin: 20px;
+	padding: 10px;
+	text-decoration: none;
+	color: #444;
+	font-weight: 600;
+	font-family: monospace;
+	font-size: 1.2rem;
+	box-shadow: 0px 0px 10px rgba(0,0,0, 0.8);
+}
+
+#timeFunction p {
+	width: 150px;
+	height: 20px;
+	border: thin solid #000;
+	padding: 15px;
+	text-align: center;
+	border-radius: 5px;
+	transform: none; /* */
+	transition-property: transform; /* or ALL*/
+	transition-duration: 3s;
+}
+
+#timeFunction p:nth-of-type(1) {
+	transition-timing-function: linear;
+	background-color: #f7c8c9;
+}
+
+#timeFunction p:nth-of-type(2) {
+	transition-timing-function: ease;
+	background-color: #bff199;
+}
+
+#timeFunction p:nth-of-type(3) {
+	transition-timing-function: ease-in;
+	background-color: #a560e8;
+}
+
+#timeFunction p:nth-of-type(4) {
+	transition-timing-function: ease-out;
+	background-color: #81ceff;
+}
+
+#timeFunction p:nth-of-type(5) {
+	transition-timing-function: ease-in-out;
+	background-color: #ffc715;
+}
+
+#timeFunction p:nth-of-type(6) {
+	transition-timing-function: cubic-bezier(0.390, -0.440, 0.695, 1.650);
+	background-color: #e50064;
+}
+
+#start:target > p {
+	transform: translateX(450px);
+}
+
+#transDelay  td{
+	margin: auto;
+	color: #ccc;
+	background-color: #fff;
+	transition-property: background-color;
+	transition-duration: .5s;
+	transition-timing-function: ease;
+}
+
+#transDelay:hover td {
+	background-color: #00a100;
+}
+/* ***EXAMPLE */
