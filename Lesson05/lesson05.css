@@ -79,19 +79,6 @@ blockquote {
 }
 /* *BLOCKQUOTE*/
 
-/* #EXAMPLE0 */
-#example0 {
-	padding: 20px;
-	text-align: center;
-}
-
-#example0 .elem {
-	display: inline-block;
-	vertical-align: middle;/**/
-	margin: 10px;
-}
-/* *#EXAMPLE0 */
-
 
 /* BLOCKQUOTE */
 blockquote {
@@ -130,3 +117,129 @@ blockquote.info {
 
 .table-php tr:hover { background-color: #eee; }
 /* *TABLE TABLE_PHP */
+
+/* #EXAMPLE */
+
+#rotateDiv {
+	background-image: url("img/apple.jpg");
+	width: 100px;
+	height: 100px;
+	transform: rotate(1rad);
+	margin: auto;
+}
+
+#rotateDiv:hover {
+	transform: none;
+}
+
+#scaleDiv1, #scaleDiv2, #scaleDiv3, #scaleDiv4 {
+	width: 100px;
+	height: 100px;
+	display: inline-block;
+	vertical-align: middle;
+	border: thin solid #000;
+	margin: 20px;
+}
+
+#scaleDiv1:hover {
+	transform: scale(2);
+	background: linear-gradient(to top, #ffdd00, #c1d82f);
+}
+
+#scaleDiv2:hover {
+	transform: scale(0.5, 4);
+	background: linear-gradient(to top, #00bce4, #7d3f98);
+}
+
+#scaleDiv3:hover {
+	transform: scale(0.1);
+	background: linear-gradient(to top, #ff4f81, #ff6c5f);
+}
+
+#scaleDiv4:hover {
+	transform: scale(-1);
+	background: linear-gradient(to top, #c4dff6, #0091cd);
+}
+
+#translateDiv1, #translateDiv2, #translateDiv3, #translateDiv4 {
+	width: 150px;
+	height: 150px;
+	display: inline-block;
+	vertical-align: middle;
+	border: 5px solid #000;
+	margin: 20px;
+}
+
+#translateDiv1:hover {
+	transform: translate(2cm);
+	background: linear-gradient(to left, #990033, #ffb310);
+}
+
+#translateDiv2:hover {
+	transform: translate(30vh, 20vw);
+	background: linear-gradient(to left, #00c4ff, #ff0b00);
+}
+
+#translateDiv3:hover {
+	transform: translate(-12pt);
+	background: linear-gradient(to left, #6a67ce, #fc636b);
+}
+
+#translateDiv4:hover {
+	transform: translate(0, -2rem);
+	background: linear-gradient(to left, #ed008c, #fff000);
+}
+
+#skewDiv1, #skewDiv2, #skewDiv3, #skewDiv4 {
+	width: 200px;
+	height: 150px;
+	display: inline-block;
+	vertical-align: middle;
+	border: 5px solid #000;
+	margin: 20px;	
+}
+
+#skewDiv1:hover {
+	transform: skew(30deg, 45deg);
+	background: url("http://placekitten.com/200/150");
+}
+
+#skewDiv2:hover {
+	transform: skew(1rad);
+	background: url("http://placekitten.com/200/150");
+}
+
+#skewDiv3:hover {
+	transform: skewX(30deg);
+	background: url("http://placekitten.com/200/150");
+}
+
+#skewDiv4:hover {
+	transform: skewY(45deg);
+	background: url("http://placekitten.com/200/150");
+}
+
+.wrap {
+	background-color: rgba(228, 30, 40, .2);
+	display: inline-block;
+}
+
+#matrixDiv {
+	width: 300px;
+	height: 100px;
+	background-color: #a0ac48;
+}
+
+#matrixDiv:hover {
+	transform: matrix(1.2, 0.15, 0.5, 1.1, 10, 0);
+}
+
+#manyTransform {
+	width: 250px;
+	height: 150px;
+	background: url("http://placekitten.com/200/150");
+}
+
+#manyTransform:hover {
+	transform: scale(1.2) translateX(2in) rotate(330deg);
+}
