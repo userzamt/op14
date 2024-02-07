@@ -3,42 +3,15 @@ html {
 }
 
 body {
-	min-width: 800px;
-	width: 100%;
-	max-width: 1024px;
-	margin: auto;
-	box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 	counter-reset: table-count; /* for table caption*/
 }
 
 main {
-	margin: 25px 25px;
 	counter-reset: img-count;/*numeric image*/
 }
 
-a {
-	font-family: Helvetica;
-}
-
-a[href^="https://"]:before, 
-a[href^="http://"]:before {
-	content: url(../img/hyperlink.png);
-	display: inline-block;
-	vertical-align: middle;
-}
-
-a[href^="sample/"]:before {
-	content: url(../img/sample.png);
-	display: inline-block;
-	vertical-align: middle;
-}
-
-h1 { font-size: 2.5rem; }
-
 h2 {
 	border-bottom: thin solid #000;
-	font-size: 2rem;
-	margin: 2rem 0 1rem 0;
 }
 
 h3.variant:after {
@@ -55,7 +28,6 @@ h3 {
 }
 
 h4 { padding-left: 2rem; }
-
 
 p {
 	text-align: justify;
