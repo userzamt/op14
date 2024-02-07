@@ -55,6 +55,18 @@ pre {
 	padding: 10px 20px;
 }
 
+pre .property {
+	color: #e6550d;
+}
+
+pre .unit {
+	color: #31a354;
+}
+
+pre .comment {
+	color: #a9a9a9;
+}
+
 pre .tag {
 	color: #d20962;
 }
@@ -65,10 +77,6 @@ pre .attr{
 
 pre .val {
 	color: #00a4e4;
-}
-
-pre .comment {
-	color: #7ac143;
 }
 /* *PRE */
 
