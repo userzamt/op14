@@ -17,6 +17,235 @@
         <h1>Домашнее задание 06<br>Создание слайдера на CSS</h1>
     </header>
 
+    
+		<section>
+			<h2>Ваша задача</h2>
+			<p>Создать анимированный слайдер на пять слайдов. Размер слайдера не должен превышать 1024*768px.</p>
+			<p>Допускается использования дополнительных кнопок для навигации по слайдам, а так же использование любых свойств, псевдоклассов и псевдоэлементов CSS3.</p>
+			<p>Запрещено использовать готовые шаблоны слайдеров.</p>
+			<blockquote class="info">Ниже будет разобрано как создать слайдер. </blockquote>
+		</section>
+		
+		<section>
+			<h2>Слайдер на CSS3</h2>
+			
+			<p>Сегодня мы с Вами попробуем сделать слайдер на CSS3. Еще несколько лет назад такое было попросту невозможно, сегодня же это можно сделать абсолютно без помощи javascript. В общем, приступим.</p>
+			
+			<article>
+				<h3>Исходный материал</h3>
+				<p>В качестве рабочих изображений для примеров будут использованы картинки из папки <kbd>img/<kbd>, а именно: loko.png, mag.png, ska.png, su.png, tor.png, tra.png</p>
+				<p>Размер каждого изображения 200*200px.</p>
+				<p>В своей работе вы можете использовать любые изображения.</p>
+				<blockquote class="info">Во всех примерах сдайдер будет состоять из трёх слайдов.</blockquote>
+			</article>
+			
+			<article>
+				<h3>Разметка</h3>
+				<p>Прежде всего нам необходим главный контейнер, в котором будет находится сам слайдер и панель управления.</p>			
+				<pre>
+	&lt;<span class="tag">article</span> <span class="attr">class</span>="<span class="val">wrapSlider</span>">
+		...  
+	&lt;<span class="tag">/article</span>>
+				</pre>
+				<p>Всю остальную разметку, которая будет показана в примерах, нужно добавлять в него(в главный контейнер).</p>
+				<p>Далее создаём три <code>radiobutton</code> и отмечаем одного из них как <code>checked</code></p>
+				<pre>
+		&lt;<span class="tag">input</span> <span class="attr">type</span>="<span class="val">radio</span>" <span class="attr">name</span>="<span class="val">Pointers</span>" <span class="attr">id</span>="<span class="val">pnt1</span>" <span class="attr">checked</span>>
+		&lt;<span class="tag">input</span> <span class="attr">type</span>="<span class="val">radio</span>" <span class="attr">name</span>="<span class="val">Pointers</span>" <span class="attr">id</span>="<span class="val">pnt2</span>">
+		&lt;<span class="tag">input</span> <span class="attr">type</span>="<span class="val">radio</span>" <span class="attr">name</span>="<span class="val">Pointers</span>" <span class="attr">id</span>="<span class="val">pnt2</span>">
+				</pre>
+				<p>Обратите внимание все <code>radiobutton</code> имеют одинаковое имя, но разные идентификаторы.</p>
+				<p>Чуть позже добавим к ним подписи, а сейчас добавим блок для хранения самих слайдов.</p>
+				<pre>
+	&lt;<span class="tag">div</span> <span class="attr">class</span>="<span class="val">listSlides</span>">
+		&lt;<span class="tag">div</span> <span class="attr">class</span>="<span class="val">slides img1</span>">&lt;<span class="tag">/div</span>>
+		&lt;<span class="tag">div</span> <span class="attr">class</span>="<span class="val">slides img2</span>">&lt;<span class="tag">/div</span>>
+		&lt;<span class="tag">div</span> <span class="attr">class</span>="<span class="val">slides img2</span>">&lt;<span class="tag">/div</span>>
+	&lt;<span class="tag">/div</span>>
+				</pre>
+				<p>Теперь в отдельном блоке создадим три подписи к кнопкам, но в данном случае они будут служить нам для другого.</p>
+				<p>С помощью атрибута <code><a href="http://htmlbook.ru/html/label/for" target="_blanck">for</a></code> связываем каждую подпись с одной из кнопок, это позволит нам красиво оформить их. Не сами радиокнопки, потому что на них, к сожалению, стили не действуют, а <code>label</code>. Связка позволяет сделать так, что при клике на подпись автоматически становится выбранной и <code>radiobutton</code>, что нам и нужно.</p>
+				<pre>
+	&lt;<span class="tag">div</span> <span class="attr">class</span>="<span class="val">ctrlPanel</span>">
+		&lt;<span class="tag">label</span> <span class="attr">class</span>="<span class="val">pnt1</span>">&lt;<span class="tag">/label</span>>
+		&lt;<span class="tag">label</span> <span class="attr">class</span>="<span class="val">pnt2</span>">&lt;<span class="tag">/label</span>>
+		&lt;<span class="tag">label</span> <span class="attr">class</span>="<span class="val">pnt3</span>">&lt;<span class="tag">/label</span>>
+	&lt;<span class="tag">/div</span>>
+				</pre>			
+				<p>В итоге получаем - читсую разметку с тремя <code>radiobutton</code> на странице.</p>
+				
+				<p><a href="exmple/exmple1.html" target="_blanck">Пример 1. Простой пример. Черновая разметка.</a></p>
+				
+				<blockquote class="warn">Примеры выполнения работы доступны как ввиде отедельных страниц(папака <code>example/</code>), так и ввиде блоков <code>iframe</code> на стороний ресурс(https://jsfiddle.net/). Блок <code>iframe</code> содержит три вкладки: HTML, CSS, Result. В котрых вы можете посмотреть разметку, стили и результат примера.</blockquote>
+				
+				<iframe width="100%" height="300" src="https://jsfiddle.net/userzamt/vzw80y6v/1/embedded/html,css,result/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+			</article>
+			
+			<article>
+				<h3>Добавление стилей</h3>
+				<p>Создаём стиль для общего контейнера. Тут не должно быть сложностей.</p>
+				<pre>
+	<span class="tag">.wrapSlider</span> {
+		<span class="property">width</span>: <span class="unit">400px</span>;
+		<span class="property">height</span>: <span class="unit">250px</span>;
+		<span class="property">margin</span>: <span class="unit">auto</span>;
+		<span class="property">padding</span>: <span class="unit">10px</span>;
+		<span class="property">text-align</span>: <span class="unit">center</span>;
+		<span class="property">border</span>: <span class="unit">thin solid #777</span>;
+		<span class="property">border-radius</span>: <span class="unit">5px</span>;
+		<span class="property">box-shadow</span>: <span class="unit">0px 5px 5px rgba(0,0,0, 0.5)</span>;
+		<span class="property">position</span>: <span class="unit">relative</span>;
+	}
+				</pre>
+				<p>Следующим действием скрываем <code>radiobutton</code>. На странице сами <code>radiobutton</code> по большому счёту не нужны. Для дизайна нам больше подходят связаные с ними <code>label</code>. Для чего тогда <code>radiobutton</code>? Их главная ценность в том что мы можем узнать кто из них <code>checked</code>.</p>
+				<pre>
+	<span class="tag">.wrapSlider input</span> {
+		<span class="property">dispaly</span>: <span class="unit">none</span>;
+	}
+				</pre>
+				<p>Далее оформляем блок хранения слайдов и сами слайды. Все слайды по умолчанию скрыты, но если Вы хотите убетиться что они существуют, то закомментируйте строчку <code>display: none</code> и посмотрите что получиться.</p>
+				<pre>
+	<span class="tag">.listSlides</span> {
+		<span class="property">width</span>: <span class="unit">inherit</span>;
+		<span class="property">height</span>: <span class="unit">220px</span>;
+		<span class="property">background-color</span>: <span class="unit">rgba(200,200,200, 0.2)</span>;	
+		<span class="property">overflow</span>: <span class="unit">hidden</span>;
+		<span class="property">text-align</span>: <span class="unit">center</span>;
+	}
+
+	<span class="tag">.slides</span> {
+		<span class="property">width</span>: <span class="unit">inherit</span>;
+		<span class="property">height</span>: <span class="unit">inherit</span>;
+		<span class="property">display</span>: <span class="unit">none</span>;	
+	}
+				</pre>
+				<p>Сделаем лайблы в виде красивых точек.</p>
+				<pre>
+	<span class="tag">.ctrlPanel</span> {
+		<span class="property">width</span>: <span class="unit">inherit</span>;
+		<span class="property">height</span>: <span class="unit">20px</span>;
+		<span class="property">position</span>: <span class="unit">absolute</span>;	
+		<span class="property">bottom</span>: <span class="unit">10px</span>;
+	}
+
+	<span class="tag">.ctrlPanel label</span> {
+		<span class="property">width</span>: <span class="unit">10px</span>;
+		<span class="property">height</span>: <span class="unit">10px</span>;
+		<span class="property">display</span>: <span class="unit">inline-block</span>;	
+		<span class="property">border-radius</span>: <span class="unit"> 50%</span>;
+		<span class="property">border</span>: <span class="unit">2px solid #aaa</span>;
+		<span class="property">box-shadow</span>: <span class="unit">0px 0px 2px rgba(0,0,0, 0.3)</span>;	
+	}
+				</pre>		
+				<p>Наш слайдер почти готов. Осталось самоего главное создать переключение слайдов.</p>
+				
+				<p><a href="exmple/exmple2.html" target="_blanck">Пример 2. Общий дизайн есть. Но нет переключения слайдов</a></p>
+				
+				<blockquote class="warn">Примеры выполнения работы доступны как ввиде отедельных страниц(папака <code>example/</code>), так и ввиде блоков <code>iframe</code> на стороний ресурс(https://jsfiddle.net/). Блок <code>iframe</code> содержит три вкладки: HTML, CSS, Result. В котрых вы можете посмотреть разметку, стили и результат примера.</blockquote>
+				
+				<iframe width="100%" height="300" src="https://jsfiddle.net/userzamt/1zov5mj8/3/embedded/html,css,result/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+			</article>
+			
+			<article>
+				<h3>"Оформление переключателя"</h3>
+				<p>На данном этапе у нас фактически есть пустой(в том смысле, что он ничего не показывает) слайдер с тремя полыми точками. Для начала сделаем так чтобы они закрашивались при нажатии на них(не путайте с псевдоклассом <code>:hover</code>). </p>
+				<pre>
+	<span class="tag">#pnt1:checked ~ .ctrlPanel label:nth-of-type(1),
+	#pnt2:checked ~ .ctrlPanel label:nth-of-type(2),
+	#pnt3:checked ~ .ctrlPanel label:nth-of-type(3)</span> {
+		<span class="property">background-color</span>: <span class="unit">rgba(200,30,40, 0.4)</span>;
+	}
+				</pre>	
+				<p>Данная запись трактуется следующим образом: если выбран(или по другому <code>checked</code>) <code>#pnt1</code>, то во всех последующих панелий упраления <code>.ctrlPanel</code>, а посколько она одна, то взять в ней первый элемент(<code>:nth-of-type(1)</code>) с типом <code>label</code> и применить к нему свойство <code>background-color</code>.</p>
+				<p>Аналогично запись трактуется и для <code>#pnt2</code> и <code>#pnt3</code>.</p>
+				<p>Добавление переключателя слайдов происходит практически аналогично предыдущему примеру.</p>
+				<pre>
+	<span class="tag">#pnt1:checked ~ .listSlides > .img1 ,
+	#pnt2:checked ~ .listSlides > .img2, 
+	#pnt3:checked ~ .listSlides > .img3</span> {
+		<span class="property">display</span>: <span class="unit">block</span>;
+	}
+				</pre>
+				<p>Если выбран <code>#pnt1</code>, то во всех последующих блоках хранения слайдов <code>.listSlides</code>, а посколько он один, то в нём ко всем прямым потомкам с классом <code>.img1</code> применить свойство <code>display: block</code>.</p>
+				
+				<p><a href="exmple/exmple3.html" target="_blanck">Пример 3. Практически готовый слайдер</a></p>
+				
+				<blockquote class="warn">Примеры выполнения работы доступны как ввиде отедельных страниц(папака <code>example/</code>), так и ввиде блоков <code>iframe</code> на стороний ресурс(https://jsfiddle.net/). Блок <code>iframe</code> содержит три вкладки: HTML, CSS, Result. В котрых вы можете посмотреть разметку, стили и результат примера.</blockquote>
+				
+				<iframe width="100%" height="500" src="https://jsfiddle.net/userzamt/5LfahL0t/5/embedded/html,css,result/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+			</article>
+			
+			<article>
+				<h3>Добавление перехода</h3>
+				<p>Сейчас у Вас уже есть самый простой слайдер, который будет работать во многих браузерах, но как он работает. Нет плавного перехода. Это не проблема. Воспользуемся свойством <code>transition</code>. Добавим следующие строки.</p>
+				<pre>
+	<span class="tag">.slides</span> {
+		.....
+		<span class="property">transform</span>: <span class="unit">translate(150px, -50px) rotate(45deg)</span>;
+		<span class="property">opacity</span>: <span class="unit">0</span>;
+		<span class="property">transition</span>: <span class="unit">all .5s</span>;
+	}
+
+	<span class="tag">#pnt1:checked ~ .listSlides > .img1 ,
+	#pnt2:checked ~ .listSlides > .img2, 
+	#pnt3:checked ~ .listSlides > .img3</span> {
+		<span class="property">transform</span>: <span class="unit">none</span>;
+		<span class="property">opacity</span>: <span class="unit">1</span>;
+	}
+				</pre>
+				<p><a href="exmple/exmple4.html" target="_blanck">Пример 4. Готовый слайдер.</a></p>
+				
+				<blockquote class="warn">Примеры выполнения работы доступны как ввиде отедельных страниц(папака <code>example/</code>), так и ввиде блоков <code>iframe</code> на стороний ресурс(https://jsfiddle.net/). Блок <code>iframe</code> содержит три вкладки: HTML, CSS, Result. В котрых вы можете посмотреть разметку, стили и результат примера.</blockquote>
+				<p>Ещё один пример. Он похож на предыдущий, но в этом есть переходы.</p>
+				
+				<iframe width="100%" height="450" src="https://jsfiddle.net/userzamt/1vnbeon7/11/embedded/html,css,result/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+			</article>
+			
+			<article>
+				<h3>Анимация</h3>
+				<p>Теперь по сложнее и интереснее. Создание автоматического прехода слайдов. Для данной цели подойдёт свойство <code>animation</code>.</p>
+				<p>Из разметки можно удалить блок с панелью управления. Он нам больше не понадобиться.</p>
+				
+				<blockquote class="error"><b>ВНИМАНИЕ!!</b> Не обязательно создавать анимированый слайдер. Это раздел больше как ознакомительный.</blockquote>
+				
+				<p>Перед тем как мы начнем работать с анимацией, мы должны разобраться с некоторыми параметрами для того, чтобы получить правильный вид анимации. Oбщая продолжительность нашей анимации - 15 секунд, но мы должны знать, сколько ключевых кадров равны 1 секунде. Итак, давайте рассмотрим серию операций, которые дадут нам точное число ключевых кадров на основе анимируемых изображений. Вот расчеты:</p>
+				<ol>
+					<li>Общее количество изображений в слайдере - 3</li>
+					<li>Продолжительность анимации для каждого изображения - 5 секунд</li>
+					<li>Общая продолжительность анимации - 3 изображений × 5 секунд = 15 секунд</li>
+					<li>Подсчитаем сколько ключевых кадров равны одной секунде, для этого разделим общее количество ключевых кадров на общую продолжительность анимации: 100 ключ. кадров / 15 сек. = 6.666 ключ. кадра</li>
+				</ol>
+				<p>Теперь мы можем применить CSS анимацию к слайдеру. Мы сможем поставить анимацию на бесконечный цикл, потому что у каждого изображения своя собственная анимация.</p>
+				<pre>
+	<span class="tag">.img1</span> { <span class="property">animation</span>: <span class="unit">cycle1 15s linear infinite</span>; }
+	<span class="tag">.img2</span> { <span class="property">animation</span>: <span class="unit">cycle2 15s linear infinite</span>; }
+	<span class="tag">.img3</span> { <span class="property">animation</span>: <span class="unit">cycle3 15s linear infinite</span>; }
+				</pre>		
+				<p>После того, как свойства анимации назначены, мы должны использовать ключевые кадры для настройки анимации движения.</p>
+				<pre>
+	<span class="tag">@keyframes cycle1</span> {
+		<span class="tag">0%</span>    { <span class="property">opacity</span>: <span class="unit">0.2</span>; <span class="property">transform</span>: <span class="unit">scale(0.8)</span>;}
+		<span class="tag">6.6%</span>  { <span class="property">opacity</span>: <span class="unit">0.7</span>; <span class="property">transform</span>: <span class="unit">scale(1)</span>; }
+		<span class="tag">13.2%</span> { <span class="property">opacity</span>: <span class="unit">1</span>;   <span class="property">transform</span>: <span class="unit">scale(1)</span>; }
+		<span class="tag">19.8%</span> { <span class="property">opacity</span>: <span class="unit">1</span>;   <span class="property">transform</span>: <span class="unit">scale(1)</span>; }
+		<span class="tag">26.4%</span> { <span class="property">opacity</span>: <span class="unit">1</span>;   <span class="property">transform</span>: <span class="unit">scale(1)</span>; }
+		<span class="tag">33%</span>   { <span class="property">opacity</span>: <span class="unit">0.1</span>; <span class="property">transform</span>: <span class="unit">scale(0.1)</span>;}
+		<span class="tag">39.6%</span> { <span class="property">opacity</span>: <span class="unit">0</span>;   <span class="property">transform</span>: <span class="unit">scale(0)</span>; }
+		<span class="tag">46.2%</span> { <span class="property">opacity</span>: <span class="unit">0</span>;   <span class="property">transform</span>: <span class="unit">scale(0)</span>; }
+		<span class="tag">52.8%</span> { <span class="property">opacity</span>: <span class="unit">0</span>;   <span class="property">transform</span>: <span class="unit">scale(0)</span>; }
+		<span class="tag">59.4%</span> { <span class="property">opacity</span>: <span class="unit">0</span>;   <span class="property">transform</span>: <span class="unit">scale(0)</span>; }
+		<span class="tag">66%</span>   { <span class="property">opacity</span>: <span class="unit">0</span>;   <span class="property">transform</span>: <span class="unit">scale(0)</span>; }
+		<span class="tag">72.6%</span> { <span class="property">opacity</span>: <span class="unit">0</span>;   <span class="property">transform</span>: <span class="unit">scale(0)</span>; }
+		<span class="tag">79.2%</span> { <span class="property">opacity</span>: <span class="unit">0</span>;   <span class="property">transform</span>: <span class="unit">scale(0)</span>; }
+		<span class="tag">85.8%</span> { <span class="property">opacity</span>: <span class="unit">0</span>;   <span class="property">transform</span>: <span class="unit">scale(0)</span>; }
+		<span class="tag">92.4%</span> { <span class="property">opacity</span>: <span class="unit">0</span>;   <span class="property">transform</span>: <span class="unit">scale(0)</span>; }
+		<span class="tag">100%</span>  { <span class="property">opacity</span>: <span class="unit">0.2</span>; <span class="property">transform</span>: <span class="unit">scale(0.8)</span>; }	
+	}
+				</pre>	
+				<p>Описание ключевых кадров для анимаций <code>cycle2</code> и <code>cycle3</code> представлены ниже. Так же Вы можете посмотреть результат работы.</p>
+				<iframe width="100%" height="450" src="https://jsfiddle.net/userzamt/kmd3zc9h/5/embedded/html,css,result/dark/" allowfullscreen="allowfullscreen" frameborder="0"></iframe>
+			</article>
+		</section>
 
 
     
