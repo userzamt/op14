@@ -1,0 +1,149 @@
+html {
+	font-size: 20px;
+}
+
+body {
+	counter-reset: table-count; /* for table caption*/
+}
+
+main {
+	counter-reset: img-count;/*numeric image*/
+}
+
+h2 {
+	border-bottom: thin solid #000;
+}
+
+h3.variant:after {
+	content: " №" counter(variant-count) " ";
+	counter-increment: variant-count;
+}
+
+h3 {
+	font-size: 1.5rem;
+	padding: 10px 0px 0px 1.5rem;
+	margin-top: 25px;
+	margin-bottom: 0px;
+	/*background-color: rgba(200,200,200, 0.5);/**/
+}
+
+h4 { padding-left: 2rem; }
+
+p {
+	text-align: justify;
+	padding: 0 10px;
+}
+
+p img { width: 15%; }
+
+
+dl {
+	column-count: 2;
+}
+
+
+blockquote {
+	text-align: justify;
+}
+
+pre {
+	margin: 0 auto;
+}
+
+
+/* TABLE ALL */
+table caption:before {
+	content: "Таб. " counter(table-count) " ";
+	counter-increment: table-count;	
+}
+
+table { margin: auto; width: 95%; border-collapse: collapse;}
+th, td { padding: 10px; border: thin solid rgba(0,0,0, 0.3); }
+/* *TABLE ALL */
+
+/* FIGURE */
+figure {
+	margin: auto;
+	padding: 10px;
+	border: 1px solid #ccc;
+	text-align: center;
+}
+
+figure img {
+	width: auto;
+	max-width: 95%;
+}
+
+figcaption {
+	color: #666;
+	/*text-transform: uppercase;*/
+}
+
+figcaption:before {
+	content: "Рис. ";
+	content: "Рис. " counter(img-count) " ";/**/
+	counter-increment: img-count;/**/
+}
+/* *FIGURE*/
+
+/* BLOCKQUOTE */
+blockquote {
+	border-left: 4px solid #bbb;
+	padding-left: 10px;
+}
+
+blockquote.old , blockquote.error{
+	background-color: rgba(255, 0,0, 0.3);
+	border-left: 4px solid #f00;
+	padding: 5px;
+}
+
+blockquote.warn {
+	background-color: rgba(255, 185,0, 0.3);
+	border-left: 4px solid #ffb900;
+	padding: 5px 5px 5px 15px;
+}
+
+blockquote.info {
+	background-color: rgba(127,187,0, 0.3);
+	border-left: 4px solid #7fbb00;
+	padding: 5px 5px 5px 15px;
+	margin-top: 40px;
+}
+
+/* *BLOCKQUOTE*/
+
+/* PRE */
+pre {
+	background-color: #f8f7f7;
+	color: #333;
+	border: thin solid #e9e8e8;
+	border-radius: 3px;
+	padding: 10px 20px;
+}
+
+pre .property {
+	color: #e6550d;
+}
+
+pre .unit {
+	color: #31a354;
+}
+
+pre .comment {
+	color: #a9a9a9;
+}
+
+pre .tag {
+	color: #d20962;
+}
+
+pre .attr{
+	color: #de9000;
+}
+
+pre .val {
+	color: #00a4e4;
+}
+/* *PRE */
+

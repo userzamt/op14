@@ -1,0 +1,107 @@
+html {
+	font-size: 18px;
+}
+
+body {
+	min-width: 800px;
+	width: 100%;
+	max-width: 1024px;
+	margin: auto;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+main {
+	margin: 25px 25px;
+	counter-reset: img-count;/*numeric image*/
+}
+
+h2 {
+	border-bottom: thin solid black;
+}
+
+dl {
+	column-count: 2;
+}
+
+article  > h3 {
+	padding-left: 1.5rem;
+}
+
+p {
+	/*text-indent: 0.75rem;*/
+	text-align: justify;
+}
+
+blockquote {
+	text-align: justify;
+}
+
+/* FIGURE */
+figure {
+	margin: auto;
+	padding: 10px;
+	border: 1px solid #ccc;
+	text-align: center;
+}
+
+figure img {
+	width: 95%;
+	max-width: 750px;
+}
+
+figcaption {
+	color: #666;
+	/*text-transform: uppercase;*/
+}
+
+figcaption:before {
+	content: "Рис. " counter(img-count) " ";
+	counter-increment: img-count;
+}
+/* *FIGURE*/
+
+/* PRE */
+pre {
+	background-color: #f8f7f7;
+	color: #333;
+	border: thin solid #e9e8e8;
+	border-radius: 3px;
+	padding: 10px 20px;
+}
+
+pre .property {
+	color: #e6550d;
+}
+
+pre .unit {
+	color: #31a354;
+}
+
+pre .comment {
+	color: #a9a9a9;
+}
+
+pre .tag {
+	color: #d20962;
+}
+
+pre .attr{
+	color: #de9000;
+}
+
+pre .val {
+	color: #00a4e4;
+}
+/* *PRE */
+
+/* BLOCKQUOTE */
+blockquote {
+	border-left: 4px solid #bbb;
+	padding-left: 10px;
+}
+/* *BLOCKQUOTE*/
+
+
+/* examples */
+
+/* *examples */
