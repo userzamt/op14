@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" href="exmple5.css">
+	
+</head>
+
+<body>
+	<main>
+		<div id="logo"></div>
+		<article>
+			<h2>Немного о функции <code>steps</code></h2>
+			<figure>
+				<img src="../img/h.jpg">
+				<figcaption> CSS-спрайт или просто спрайт</figcaption>
+			</figure>
+			<p>Если вам не хочется использовать гифы на сайте, а предпочитаете PNG за их лучшую цветность, но всё же нужно анимировать их, тогда вот способ: у анимаций CSS с ключевыми кадрами есть свойство под названием <code>animation-timing-function</code>. Одна из его возможностей — использовать функцию steps(), как в нижеследующем примере:</p>			
+			<pre>
+<span class="tag">div</span> {
+    <span class="property">animation</span>: <span class="unit">play 1s steps(10)</span>;
+}
+
+<span class="tag">@keyframes play</span> {
+    <span class="tag">from</span> { <span class="property">background-position</span>: <span class="unit">0px 0</span>; }
+    
+    <span class="tag">to</span> { <span class="property">background-position</span>: <span class="unit">-500px 0</span>; }
+
+}
+			</pre>
+			<p>Различие между нею и остальными анимационными функциями состоит в том, что вместо плавного движения от 0px к −500px происходят резкие прыжки с паузами между ними. Это идеально подходит для анимаций, использующих лист с покадровым изображением спрайта. В вышеприведённом примере шаг равен 50px, а пауза — 100 миллисекунд (всего 10 шагов).</p>
+		
+		</article>
+		
+	</main>
+	
+</body>
+
+</html>
