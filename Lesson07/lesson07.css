@@ -1,0 +1,199 @@
+html {
+	font-size: 20px;
+}
+
+body {
+	counter-reset: table-count; /* for table caption*/
+}
+
+main {
+	counter-reset: img-count;/*numeric image*/
+}
+
+nav ol li{
+	padding-top: 0.5rem;
+}
+
+h2 {
+	border-bottom: thin solid #000;
+}
+
+p {
+	text-align: justify;
+	text-indent: 1.5rem;
+}
+
+dl {
+	column-count: 2;
+}
+
+/* FIGURE */
+figure {
+	margin: auto;
+	padding: 10px;
+	border: 1px solid #ccc;
+	text-align: center;
+}
+
+figcaption {
+	color: #666;
+	/*text-transform: uppercase;*/
+}
+
+figcaption:before {
+	content: "Рис. " counter(img-count) " ";
+	counter-increment: img-count;
+}
+/* *FIGURE*/
+
+/* PRE */
+pre {
+	background-color: #f8f7f7;
+	color: #333;
+	border: thin solid #e9e8e8;
+	border-radius: 3px;
+	padding: 10px 20px;
+}
+
+pre .property {
+	color: #e6550d;
+}
+
+pre .unit {
+	color: #31a354;
+}
+
+pre .comment {
+	color: #a9a9a9;
+}
+
+pre .tag {
+	color: #d20962;
+}
+
+pre .attr{
+	color: #de9000;
+}
+
+pre .val {
+	color: #00a4e4;
+}
+/* *PRE */
+
+/* BLOCKQUOTE */
+blockquote {
+	border-left: 4px solid #bbb;
+	padding-left: 10px;
+}
+
+blockquote.old , blockquote.error{
+	background-color: rgba(255, 0,0, 0.3);
+	border-left: 4px solid #f00;
+	padding: 5px;
+}
+
+blockquote.warn {
+	background-color: rgba(255, 185,0, 0.3);
+	border-left: 4px solid #ffb900;
+	padding: 5px 5px 5px 15px;
+}
+
+blockquote.info {
+	background-color: rgba(127,187,0, 0.3);
+	border-left: 4px solid #7fbb00;
+	padding: 5px 5px 5px 15px;
+	margin-top: 40px;
+}
+
+/* *BLOCKQUOTE*/
+
+/* EXAMPLE */
+
+@keyframes myAni {
+	from { bottom: 0px; }
+	
+	to { bottom: 200px; }
+}
+
+#aniCount {
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	background-color: hsla(120, 90%, 50%, 0.9);
+	position:  absolute;
+	bottom: 0px;
+	animation-name: myAni;
+	animation-duration: 2s;
+	animation-iteration-count: 3;
+}
+
+@keyframes aniMeteor {
+	from {
+		background-position: 0px 0px;
+	}
+	to {
+		background-position: -6110px 0px;
+	}
+}
+
+#logoMeteor {
+	width: 130px;
+	height: 130px;
+	background: url("img/meteor.png") 0px 0px no-repeat;
+	animation-name: aniMeteor;
+	animation-duration: 2s;
+	animation-timing-function: steps(47, end);
+	animation-iteration-count: infinite;
+}
+
+#aniDirec {
+	width: 80%;
+	margin: auto;
+}
+
+@keyframes aniDirection {
+	100% { transform: translateX(300px); }
+}
+
+.aniDirec  li {
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	margin: 0px 10px;
+	box-shadow: 2px 2px 4px rgba(0,0,0, 0.5);
+}
+
+.aniDirec  li:nth-child(1) { background-color: #1cc7d0;}
+.aniDirec  li:nth-child(2) { background-color: #2dde98;}
+.aniDirec  li:nth-child(3) { background-color: #ffc168;}
+
+.normal li{ 
+	animation-name: aniDirection;
+	animation-duration: 2.5s;
+	animation-iteration-count: infinite;
+	animation-direction: normal; 
+}
+
+.alter li {
+	animation-name: aniDirection;
+	animation-duration: 2.5s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate; 
+}
+
+.revers li {
+	animation-name: aniDirection;
+	animation-duration: 2.5s;
+	animation-iteration-count: infinite;
+	animation-direction: reverse; 
+}
+
+
+.alterRevers li {
+	animation-name: aniDirection;
+	animation-duration: 2.5s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate-reverse; 
+}
+/* *#EXAMPLE */
