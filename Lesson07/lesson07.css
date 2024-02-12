@@ -2,7 +2,6 @@ html {
 	font-size: 20px;
 }
 
-
 body {
 	counter-reset: table-count; /* for table caption*/
 }
@@ -80,14 +79,6 @@ pre .val {
 	color: #00a4e4;
 }
 /* *PRE */
-
-/* BLOCKQUOTE */
-blockquote {
-	border-left: 4px solid #bbb;
-	padding-left: 10px;
-}
-/* *BLOCKQUOTE*/
-
 
 /* BLOCKQUOTE */
 blockquote {

@@ -60,13 +60,13 @@
             <p>Создание анимации начинается с установки ключевых кадров правила <code>@keyframes</code>. Кадры определяют, какие свойства на каком шаге будут анимированы. Каждый кадр может включать один или более блоков объявления из одного или более пар свойств и значений. Правило <code>@keyframes</code> содержит имя анимации элемента, которое связывает правило и блок объявления элемента.</p>
             <pre>
 <span class="tag">@keyframes myAnimation</span> {
-<span class="tag">from</span> {
-    <span class="property">box-shadow</span>: <span class="unit">2px 2px 10px rgba(0,0,0, 0.5)</span>;
-}
+    <span class="tag">from</span> {
+        <span class="property">box-shadow</span>: <span class="unit">2px 2px 10px rgba(0,0,0, 0.5)</span>;
+    }
 
-<span class="tag">to</span> {
-    <span class="property">box-shadow</span>: <span class="unit">0px 0px 0px rgba(0,0,0, 1)</span>;
-}
+    <span class="tag">to</span> {
+        <span class="property">box-shadow</span>: <span class="unit">0px 0px 0px rgba(0,0,0, 1)</span>;
+    }
 }
             </pre>
             
@@ -75,18 +75,18 @@
             <p>Если кадры имеют одинаковые свойства и значения, их можно объединить в одно объявление:</p>
             <pre>
 <span class="tag">@keyframes move</span> {
-<span class="tag">from, to</span> {
-    <span class="property">top</span>: <span class="unit">0</span>;
-    <span class="property">left</span>: <span class="unit">0</span>;
-}
+    <span class="tag">from, to</span> {
+        <span class="property">top</span>: <span class="unit">0</span>;
+        <span class="property">left</span>: <span class="unit">0</span>;
+    }
 
-<span class="tag">25%</span>, <span class="tag">75%</span> {
-    <span class="property">top</span>: <span class="unit">100%</span>;
-}
+    <span class="tag">25%</span>, <span class="tag">75%</span> {
+        <span class="property">top</span>: <span class="unit">100%</span>;
+    }
 
-<span class="tag">50%</span> {
-    <span class="property">top</span>: <span class="unit">50%</span>;
-}
+    <span class="tag">50%</span> {
+        <span class="property">top</span>: <span class="unit">50%</span>;
+    }
 }
             </pre>
         </article>
@@ -99,13 +99,13 @@
             <p>В CSS3 предоставляется несколько свойств, связанных с анимацией и позволяющих управлять способом и временем проигрывания анимации (а также сокращенная версия, охватывающая все отдельные свойства). Как минимум, чтобы заставить анимацию выполняться, нужно указать имя, которое было дано исходной анимации (в правиле <code>@keyframes</code>), и продолжительность анимации.</p>
             <pre>
 <span class="tag">@keyframes myFrame</span> {
-<span class="tag">from</span> { <span class="comment">/* ... */</span> }
+    <span class="tag">from</span> { <span class="comment">/* ... */</span> }
 
-<span class="tag">to</span> { <span class="comment">/* ... */</span> }
+    <span class="tag">to</span> { <span class="comment">/* ... */</span> }
 }
 
 <span class="tag">.selector</span> {
-<span class="property">animation-name</span>: <span class="unit">myFrame</span>;
+    <span class="property">animation-name</span>: <span class="unit">myFrame</span>;
 }
             </pre>
             <p>Подобно именам классов CSS, название анимации может включать в себя только: буквы (a-z), цифры (0-9), подчёркивание (_), дефис (-). Название не может начинаться с цифры или с дефисов.</p>
@@ -116,7 +116,7 @@
             <p>Свойство <code>animation-name</code> просто сообщает браузеру, какую анимацию нужно применить, а свойство <code>animation-duration</code> устанавливает продолжительность анимации, задаётся в секундах или миллисекундах, отрицательные значения не допустимы. Не наследуется. Если для элемента задано более одной анимации, то можно установить разное время для каждой, перечислив значения через запятую.</p>
             <pre>
 <span class="tag">.selector</span> {
-<span class="property">animation-duration</span>: <span class="unit">10s</span>;
+    <span class="property">animation-duration</span>: <span class="unit">10s</span>;
 }
             </pre>
             <p><a href="exmple/exmple4.html">Простой пример анимации &rarr;</a></p>
@@ -143,7 +143,7 @@
             <p>Переходы являются анимациями, выполняемыми однократно, например указатель мыши проходит над кнопкой и она увеличивается в размерах. А вот анимации благодаря свойству <code>animation-iteration-count</code> могут запускаться один, два и более раза или непрерывно.</p>
             <pre>
 <span class="tag">.selector</span> {
-<span class="property">animation-iteration-count</span>: <span class="unit">3</span>;
+    <span class="property">animation-iteration-count</span>: <span class="unit">3</span>;
 }
             </pre>
             <div style="height: 300px; position: relative;">
@@ -202,7 +202,7 @@
         </article>
                     
     </section>
-    
+
 </main>    
 
 
