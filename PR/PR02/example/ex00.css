@@ -1,0 +1,84 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-image: url("img/bg.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;    
+}
+
+/* protagonist */
+@keyframes idle {
+    from{
+        background-position: 0px 0px;
+    }
+    
+    to{
+        background-position: -800px 0px;
+    }
+}
+
+@keyframes run {
+    from{
+        background-position: 0px 0px;
+    }
+    
+    to{
+        background-position: -1600px 0px;
+    } 
+}
+
+@keyframes move {
+    from {
+        left: 0%;
+        /* transform: none; */
+    }
+
+    to {
+        left: 80%;
+        /* transform: scaleX(-1); */
+    }
+}
+
+@keyframes jump {
+    from {
+        background-position: 0px 0px;
+    }
+
+    to {
+        background-position: -400px 0px;
+    }
+}
+
+
+.protagonist {
+    width: 200px;
+    height: 200px;
+    background-image: url("img/MartialHero2/Sprites/Idle.png");
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 60px;
+    animation-name: idle;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(4);
+    animation-iteration-count: infinite;
+}
+
+.run {
+    background-image: url("img/MartialHero2/Sprites/Run.png");
+    animation-name: run, move;
+    animation-duration: 0.7s, 3s;
+    animation-timing-function: steps(8), linear;
+    animation-iteration-count: infinite, infinite;
+    animation-direction: normal, alternate;
+}
+
+.jump {
+    background-image: url("img/MartialHero2/Sprites/Jump.png");
+    animation-name: jump;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(2);
+}
