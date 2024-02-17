@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lesson08</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+    <link rel="stylesheet" href="lesson08.css">   
+</head>
+<body>
+<main class="container-lg">
+    <header>
+        <h1>Медиа запросы. CSS Flexbox</h1>
+    </header>
+
+    <a class="fs-3" href="../Homework/Homework08/homework08.html">Домашнее задание 08</a>
+
+    <section>
+        <h2><code>@media</code>(медиа-запрос)</h2>
+        <p>Правило <code>@media</code> позволяет указать тип носителя, для которого будет применяться указанный стиль, но так же, наряду с типами носителей в CSS3 включена поддержка различных технических параметров устройств, на основе которых требуется загружать те или иные стили.</p>
+        <blockquote class="info">К примеру, можно определить разрешение смартфона и для него установить свои отдельные свойства, а для остальных устройств другие. Также можно выявить различные характеристики вроде наличия монохромного экрана, ориентации (портретная или альбомная) и др. Все характеристики легко комбинируются.</blockquote>
+        <p>Медиа-запросы – это понятный и простой способ для создания адаптивного макета сайта с помощью CSS.</p>
+        <p>Такой макет подстраивается под разрешение монитора и окна браузера, меняя при необходимости ширину макета, число колонок, размеры изображений и текста. Медиа-запросы ограничивают ширину макета и при достижении этого значения (к примеру за счёт уменьшения окна или при просмотре на устройстве с указанным размером) уже применяется другой стиль.</p>
+        
+        <article>
+            <h3>Типы носителей</h3>
+            <p>Правило <code>@media</code> позволяет указать тип носителя, для которого будет применяться указанный стиль. В качестве типов носителя выступают следующие устройства</p>
+            
+            <table id="typeDevice">
+                <caption>Типы носителей</caption>
+                <tr>
+                    <th>Тип</th>
+                    <th>Описание</th>
+                </tr>
+                <tr>
+                    <td>all</td>
+                    <td>Все типы. Это значение используется по умолчанию.</td>
+                </tr>					
+                <tr>
+                    <td>print</td>
+                    <td>Печатающие устройства вроде принтера.</td>
+                </tr>
+                <tr>
+                    <td>screen</td>
+                    <td>Экран монитора.</td>
+                </tr>
+                <tr>
+                    <td>speech</td>
+                    <td>Речевые синтезаторы, а также программы для воспроизведения текста вслух. Сюда, например, можно отнести речевые браузеры.</td>
+                </tr>
+            </table>				
+        </article>
+        
+        <article>
+            <h3>Синтаксис</h3>
+            <p>Медиа запросы позволяют использовать особые css-стили для конкретных устройств вывода. До появления CSS3 разработчики могли подключать специальные стили для разных устройств только с помощью атрибута <code>media</code> тэга <code>&lt;link&gt;</code></p>
+            <pre>
+&lt;<span class="tag">link</span> <span class="attr">rel</span>=<span class="val">"stylesheet"</span> <span class="attr">href</span>=<span class="val">"print.css"</span> <span class="attr">media</span>=<span class="val">"print"</span>&gt;
+            </pre>
+            <p>Все медиа-запроса начинаются с правила <code>@media</code>, после чего следует условие, в котором используются один или несколько типов носителя(если их более одного, то они перечисляются через запятаю) и выражение для проверки характеристик устройства, содержащее логические операторы и медиа-функции.  После чего следуют обязательные фигурные скобки, внутри которых пишутся стилевые правила.</p>
+            <pre>
+<span class="tag">@media</span> <тип носителя> <характеристика> {
+<span class="property">....</span>
+}
+            </pre>
+            <blockquote class="warn">Самый простой пример - попробуйте распечать эту старницу.<br><a href="https://web.archive.org/web/20190602161514/http://www.liquidapsive.com/" target="_blanck">Вот пример адаптивной вёрстки и не только &rarr;</a></blockquote>
+        </article>
+    
+        <article>
+            <h3>Логические операторы</h3>
+            <p>Медиа запросы представляют собой логические выражения, которые могут быть истинными или ложными. Когда html-документ рендерится, браузер определяет тип носителя информации. В самом простом случаи запрос будет истинным, если указанный тип носителя соответствует типу носителя, на котором запущен браузер(при условии что нет проверки на различные характеричтики устройства). В этом случае к указанным в правиле <code>@media</code> селекторам применятся соответствующие css-стили.</p>
+            
+            <pre>
+<span class="tag">@media</span> <span class="attr">screen</span> { <span class="property">h1</span>: <span class="unit">1.25rem</span>; }
+            </pre>				
+            <p>А вообще, с помощью логических операторов можно создавать комбинированные медиазапросы, в которых будет проверяться условие на соответсвие нескольким характеристикам устройства.</p>
+            
+            <table id="logicOper">
+                <caption>Логические операторы</caption>
+                <tr>
+                    <th>Оператор</th>
+                    <th>Описание</th>
+                </tr>
+                <tr>
+                    <td><code>AND</code></td>
+                    <td>Логическое И. Указывается для объединения нескольких условий.</td>
+                </tr>
+                <tr>
+                    <td><code>, (запятая)</code></td>
+                    <td>Оператор запятая работает по аналогии с логическим оператором <code>or</code>.</td>
+                </tr>					
+                <tr>
+                    <td><code>NOT</code></td>
+                    <td>Оператор <code>not</code> позволяет сработать медиа запросу в противоположном случае. <br> Если ключевое слово <code>not</code> указывается в начале медиа-запроса, то отрицание применяется ко всему запросу целиком. <br>Если медиа-запрос составлен с использованием оператора запятая, то отрицание будет распространяться только на ту часть, которая идет до запятой. <br>Оператор <code>not</code> имеет низкий приоритет и оценивается в запросе последним.</td>
+                </tr>
+                <tr>
+                    <td><code>ONLY</code></td>
+                    <td>Применяется для старых браузеров, которые не поддерживают медиа-запросы. Старые браузеры считают ключевое слово <code>only</code> типом носителя, но поскольку такого типа не существует, то игнорируют весь стиль целиком. Современные браузеры воспринимают запись с <code>only</code> и без него одинаково.</td>
+                </tr>					
+            </table>
+        </article>
+    
+        <article>
+            <h3>Медиа-функции(характеристики медианосителя)</h3>
+            <p>К характеристикам медианосителя относятся проверяемые параметры устройства. Значения, которые используются при задании характеристик, являются контрольными точками.</p>
+            <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media#Media_features" target="_blinck">Список проверяемых параметров устройств &rarr;</a></p>
+            <p>Стиль выполняется в том случае, если запрос возвращает истину, иными словами, указанные условия выполняются.</p>
+            <blockquote class="warn">Большинство функций содержат приставку <code>min-</code> и <code>max-</code>, которая соответствуют минимальному и максимальному значению.</blockquote>
+            
+            <h4><code>(min-, max-)width</code></h4>
+            <p>Проверяет ширину области просмотра. Значения задаются в единицах длины. Обычно для проверки используются минимальные и максимальные значения ширины.<p>
+            <p><code>min-width</code> применяет правило если ширина области просмотра больше значения, указанного в запросе, <code>max-width</code> — ширина области просмотра меньше значения, указанного в запросе.</p>
+            <p><a href="exmple/exmple1.html" target="_blinck">Пример 1 &rarr;</a></p>
+            <blockquote class="info">Так, <code>max-width: 400px</code> означает, что ширина окна браузера меньше 400 пикселов, а <code>min-width: 1000px</code>, наоборот, сообщает, что ширина окна больше 1000 пикселов.</blockquote>
+            <br>
+            <p>При составлении медиа запросов нужно ориентироваться на так называемые переломные точки дизайна, т.е. такие значения ширины области просмотра, в которых дизайн сайта существенно меняется, например, появляется горизонтальная полоса прокрутки. Чтобы определить эти точки, нужно открыть сайт в браузере и постепенно уменьшать область просмотра.</p>
+            <p>Чтобы адаптировать дизайн сайта под разные устройства, необходимо задать разные стили для разных разрешений экранов.</p>
+            <br>
+            <blockquote class="warn"><a href="http://mattkersley.com/responsive/" target="_blinck">Посмотри как выглядит твой сайт на разных разрешениях &rarr;</a>
+            <br>
+            <a href="http://viewportsizes.com/" target="_blinck">Разрешение дисплея для мобильных устройств &rarr;</a>
+            </blockquote>				
+            
+            <h4><code>orientation</code></h4>
+            <p>Определяет, что устройство находится в альбомном режиме (ширина больше высоты) или портретном (ширина меньше высоты).</p>
+            <figure>
+                <img src="img/orient.jpg">
+                <figcaption>Альбомная и портретная ориентация устройства</figcaption>
+            </figure>
+            <p><a href="exmple/exmple2.html" target="_blinck">Пример 2 &rarr;</a></p>
+            <p>Принимает два значения: <code>(orientation: portrait)</code> и <code>(orientation: landscape)</code>.</p>
+        </article>
+    </section>
+
+    <section>
+        <h2><code>Flexible Box Layout Module</code></h2>
+        <p>CSS Flexible Box Layout Module — это система компоновки элементов.</p>
+        <p>Модуль Flexbox-лейаута (flexible box — «гибкий блок», на данный момент W3C Candidate Recommendation) ставит задачу предложить более эффективный способ вёрстки, выравнивания и распределения свободного места между элементами в контейнере, даже когда их размер неизвестен и/или динамический (отсюда слово «гибкий»).</p>
+        <p>Главная задумка flex-вёрстки в наделении контейнера способностью изменять ширину/высоту (и порядок) своих элементов для наилучшего заполнения пространства (в большинстве случаев — для поддержки всех видов дисплеев и размеров экранов). Flex-контейнер растягивает элементы для заполнения свободного места или сжимает их, чтобы предотвратить выход за границы.</p>
+        <p>Самое важное, flexbox-лейаут не зависит от направления в отличие от обычных лейаутов (блоки, располагащиеся вертикально, и инлайн-элементы, располагающиеся горизонтально).</p>
+        <p><a href="https://www.w3.org/TR/css-flexbox-1/" target="_blinck">Спецификация CSS Flexible Box Layout Module</a> (в народе Flexbox) призвана кардинально изменить ситуацию в лучшую сторону при решении огромного количества задач. Flexbox позволяет контролировать размер, порядок и выравнивание элементов по нескольким осям, распределение свободного места между элементами и многое другое.</p>
+
+        <blockquote class="warn">Flexbox-лейаут лучше всего подходит для составных частей приложения и мелкомасштабных лейаутов, в то время как Grid-лейаут больше используется для лейаутов большого масштаба.</blockquote>
+        
+        <article>
+            <h3>Преимущество</h3>
+            <p>Основные преимущества <code>flexbox</code></p>
+            <ul>
+                <li>Все блоки очень легко делаются “резиновым”, что уже следует из названия <code>“flex”</code>. Элементы могут сжиматься и растягиваться по заданным правилам, занимая нужное пространство.</li>
+                <li>Благодаря <code>flexbox</code> элементы ведут себя предсказуемо на всех типах устройств и при различных размерах экрана. Модель гибкой разметки имеет преимущества перед блочной разметкой за счет отсутствия плавающих элементов (свойство <code>float</code>) и отсутствия схлопывания внешних отступов <code>margin</code>.</li>
+                <li>Расположение элементов в основном потоке документа не имеет решающего значения. Его можно поменять в CSS. Это особенно важно для некоторых аспектов responsive-верстки.</li>
+                <li>Элементы могут автоматически выстраиваться в несколько строк/столбцов, занимая все предоставленное место.</li>
+                <li>Множество языков в мире используют написание справа налево <code>rtl (right-to-left)</code>, в отличии от привычного нам <code>ltr (left-to-right)</code>. <code>Flexbox</code> адаптирован для этого. В нем есть понятие начала и конца, а не права и лева. Т.е. в браузерах с локалью <code>rtl</code> все элементы будут автоматически расположены в реверсном порядке.</li>
+            </ul>
+        </article>
+        
+        <article>
+            <h3>Поддержка браузерами</h3>
+            <p>Поддержка браузерами пока неполная. Виноват в этом в основном Internet explorer, который поддерживает спецификацию с 10 версии.</p>
+            <table class="supportBrowser">
+                <caption>Поддержка в браузерах</caption>
+                <tr>
+                    <th>IE<br>-ms-</th>
+                    <th>Chrome</th>
+                    <th>Opera</th>
+                    <th>Safari</th>
+                    <th>Firefox</th>
+                </tr>
+                <tr>
+                    <td class="warn"><span></span></td>
+                    <td class="yes"><span></span></td>
+                    <td class="yes"><span></span></td>
+                    <td class="yes"><span></span></td>
+                    <td class="yes"><span></span></td>
+                </tr>
+            </table>
+        </article>
+        
+        <article>
+            <h3>Концепция</h3>
+            <p><code>Flexbox</code> - это целый модуль, а не просто единичное свойство, он объединяет в себе множество свойств. Некоторые из них должны применяться к контейнеру (родительскому элементу, так называемому flex-контейнеру), в то время как другие свойства применяются к дочерним элементам, или flex-элементам.</p>
+            <p>Первое, что нужно сделать – это указать контейнеру <code>display:flex</code> или <code>display:inline-flex</code>.</p>
+            <iframe height='265' scrolling='no' title='Example 1' src='https://codepen.io/userzamt/embed/mRaaeb/?height=265&theme-id=0&default-tab=html,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/userzamt/pen/mRaaeb/'>Example 1</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+            
+            <p>После установки данных значений свойства, каждый дочерний элемент автоматически становится flex-элементом, выстраиваясь в ряд колонками одинаковой высоты, равной высоте блока-контейнера. При этом блочные и строчные дочерние элементы ведут себя одинаково, т.е. ширина блоков равна ширине их содержимого с учетом внутренних полей и рамок элемента.</p>
+            <blockquote class="error">Если родительский блок содержит текст или изображения без оберток, они становятся анонимными flex-элементами. Текст выравнивается по верхнему краю блока-контейнера, а высота изображения становится равной высоте блока, т.е. оно деформируется.</blockquote>
+            <iframe height='311' scrolling='no' title='Example 2' src='https://codepen.io/userzamt/embed/NdeeOv/?height=311&theme-id=dark&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='https://codepen.io/userzamt/pen/NdeeOv/'>Example 2</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.
+            </iframe>
+            <p>В модели <code>flexbox</code> для внутренних блоков не работают такие css-свойства, как <code>float</code>, <code>clear</code>, <code>vertical-align</code>. На flex-контейнер не оказывают влияние свойства <code>column</code>, задающие колонки в тексте.</p>
+            
+            <p><code>Flexbox</code> основывается на «направлениях flex-потока». Ознакомьтесь с этой схемой из спецификации, разъясняющей основную идею flex-лейаутов.</p>
+            <figure>
+                <img src="img/flexbox.png">
+                <figcaption>Понятие главной и поперечной оси</figcaption>
+            </figure>
+            
+            <p>Одним из основных понятий в <code>fleхbox</code> являются оси.</p>
+            <ul>
+                <li><b>Главной осью</b> flex-контейнера является направление, в соответствии с которым располагаются все его дочерние элементы.</li>
+                <li><b>Поперечной осью</b> называется направление, перпендикулярное главной оси.</li>
+            </ul>
+            <p>Главная ось в <code>ltr</code> локали по умолчанию располагается слева направо. Поперечная – сверху вниз.</p>
+            <blockquote class="warn">Направление главной оси flex-контейнера можно задавать, используя базовое CSS свойство <code>flex-direction</code>.</blockquote>				
+        </article>
+        
+        <article>
+            <h3>Свойства flex-контейнера</h3>
+            <h4><code>flex-direction</code></h4>
+            <p>Свойство <code>flex-direction</code> задаёт направление основных осей в контейнере и тем самым определяет положение флексов в контейнере.</p>
+            
+            <figure>
+                <img style="width:auto;" src="img/flexbox-main-row.png">
+                <img style="width:auto;" src="img/flexbox-main-column.png">
+                <figcaption>Задание направления главной и поперечной оси</figcaption>
+            </figure>
+            
+            <p>Доступные значения <code>flex-direction</code>:</p>
+            <ul>
+                <li><b>row</b> - значение по умолчанию, слева направо (в rtl справа налево). Flex-элементы выкладываются в строку.</li>
+                <li><b>row-reverse</b> - направление справа налево (в rtl слева направо). Flex-элементы выкладываются в строку относительно правого края контейнера (в rtl — левого).</li>
+                <li><b>column</b> - направление сверху вниз. Flex-элементы выкладываются в колонку.</li>
+                <li><b>column-reverse</b> - колонка с элементами в обратном порядке, снизу вверх.</li>
+            </ul>
+            <iframe height='297' scrolling='no' title='Example 3' src='http://codepen.io/userzamt/embed/ac032bd9746ae6e524427e32a0059b05/?height=297&theme-id=0&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/ac032bd9746ae6e524427e32a0059b05/'>Example 3</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.
+            </iframe>
+            
+            
+            <h4><code>justify-content</code></h4>
+            <p>Определяет, как браузер распределяет пространство вокруг флекс-элементов вдоль главной оси контейнера.</p>
+            <p>Доступные значения <code>justify-content</code>:</p>
+            <ul>
+                <li><b>flex-start</b> - (значение по умолчанию) блоки прижаты к началу главной оси.</li>
+                <li><b>flex-end</b> - блоки прижаты к концу главной оси.</li>
+                <li><b>center</b> - блоки располагаются в центре главной оси.</li>
+                <li><b>space-between</b> - блоки выравниваются по главной оси, свободное место между ними распределяется следующим образом: первый блок располагается в начале flex-контейнера, последний блок – в конце, все остальные блоки равномерно распределены в оставшемся пространстве, а свободное пространство равномерно распределяется между элементами.</li>
+                <li><b>space-around</b> - все блоки равномерно распределены вдоль главной оси, разделяя все свободное пространство поровну.</li>
+            </ul>
+            <figure>
+                <img style="width:auto;" src="img/flex-justify-content.png">
+                <figcaption>Распределение простаранство между блоками на главной оси</figcaption>
+            </figure>
+            
+            
+            <h4><code>align-items</code></h4>
+            <p>Свойство <code>align-items</code> определяет, то как будут выравниваться флекс-элементы внутри флекс-контейнера вдоль поперечной оси.</p>
+            <p>Доступные значения <code>align-items</code>:</p>
+            <ul>
+                <li><b>flex-start</b> - блоки прижаты к началу поперечной оси.</li>
+                <li><b>flex-end</b> -  блоки прижаты к концу поперечной оси.</li>
+                <li><b>center</b> - блоки располагаются в центре поперечной оси.</li>
+                <li><b>baseline</b> - блоки выравниваются по базовой линии(<code>baseline</code>).</li>
+                <li><b>stretch</b> - (значение по умолчанию) блоки растягиваются, занимая все пространство по высоте поперечной оси, при этом учитываются <code>min-width/max-width</code>, если таковые заданы.</li>
+            </ul>
+            <figure>
+                <img style="width:auto;" src="img/flex-align-items.png">
+                <figcaption>Выравнивание вдоль поперечной оси</figcaption>
+            </figure>
+            
+            <p><mark>Оси и выравнивания по ним – это основы <code>flex</code>.</mark></p>
+            <!-- Взят со стороннего сайт. Очень хороший пример. Обязательно посмотрите -->
+            <iframe oallowfullscreen="" msallowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" class="demoiframe" src="http://html5.by/blogdemo/flexbox/flex-direction-align-justify.html" height="550"></iframe>
+            <br>
+            <p><mark>Далее мы поговорим о организации блоков внутри flex-контейнера.</mark></p>
+            
+            <h4><code>flex-wrap</code></h4>
+            <p>Все примеры, которые мы приводили выше, были построены с учетом однострочного (одностолбцового) расположения блоков. По умолчанию flex-контейнер всегда будет располагать блоки внутри себя в одну линию. Однако, спецификацией также поддерживается многострочный режим. За многострочность внутри flex-контейнера отвечает CSS свойство <code>flex-wrap</code>.</p>				
+            <p>Свойство <code>flex-wrap</code> указывает, следует ли флексам располагаться в одну строку или можно занять несколько строк. Если перенос строк допускается, то свойство также позволяет контролировать направление, в котором выкладываются строки.</p>
+            <ul>
+                <li><b>nowrap</b> - (значение по умолчанию) блоки расположены в одну линию слева направо (в rtl справа налево).</li>
+                <li><b>wrap</b> -  блоки переносятся, располагаясь в несколько горизонтальных рядов (если не помещаются в один ряд) в направлении слева направо (в rtl справа налево).</li>
+                <li><b>wrap-reverse</b> - то-же что и <code>wrap</code>, но блоки располагаются в обратном порядке.</li>					
+            </ul>				
+            <div id="flxCon4">
+                <div class="flxBlock">Block 1</div>
+                <div class="flxBlock">Block 2</div>
+                <div class="flxBlock">Block 3</div>
+                <div class="flxBlock">Block 4</div>
+                <div class="flxBlock">Block 5</div>
+                <div class="flxBlock">Block 6</div>
+                <div class="flxBlock">Block 7</div>
+                <div class="flxBlock">Block 8</div>
+            </div>
+            
+            <h4><code>flex-flow</code></h4>
+            <p>Свойство предоставляет возможность в одном свойстве задать направление главной оси и многострочность поперечной оси, т.е. сокращённая запись свойств <code>flex-direction</code> и <code>flex-wrap</code>. Значение по умолчанию <code>flex-flow: row nowrap;</code>.</p>
+            <pre>
+<span class="property">flex-flow</span>: <span class="unit">&lt;flex-direction&gt; || &lt;flex-wrap&gt;</span>;
+            </pre>
+            <p>Первым параметром идёт направление <code>flex-direction</code> - указывает направление главной оси. Значение по умолчанию <code>row</code>.</p>
+            <p>Следующим параметром идёт многострочность <code>flex-wrap</code> - задаёт многострочность поперечной оси. Значение по умолчанию <code>nowrap</code>.</p>
+            <pre>
+<span class="property">flex-direction</span>: <span class="unit">column-reverse</span>;
+<span class="property">flex-wrap</span>: <span class="unit">nowrap</span>;
+
+<span class="comment">/* Эквивалентно двух предыдущим строчкам */</span>
+<span class="property">flex-flow</span>: <span class="unit">column-reverse nowrap</span>;
+            </pre>
+            
+            
+            <h4><code>align-content</code></h4>
+            <p>Существует также свойство <code>align-content</code>, которое определяет то, каким образом flex-контейнер выравнивает строки на поперечной оси, при наличии свободного места. Свойство работает аналогично тому, как это делает <code>justify-content</code> на главной оси.</p>
+            <p><mark><b>Важно: <code>align-content</code> работает только в многострочном режиме (т.е. в случае <code>flex-wrap:wrap;</code> или <code>flex-wrap:wrap-reverse;</code>) при указании высоты flex-контейнера.</b></mark></p>
+            <p>Доступные значения <code>align-content</code>:</p>
+            <ul>
+                <li><b>flex-start</b> - ряды блоков прижаты к началу flex-контейнера.</li>
+                <li><b>flex-end</b> -  ряды блоков прижаты к концу flex-контейнера.</li>
+                <li><b>center</b> - ряды блоков находятся в центре flex-контейнера.</li>
+                <li><b>space-between</b> - первый ряд блоков располагается в начале flex-контейнера, последний ряд блоков блок – в конце, все остальные ряды равномерно распределены в оставшемся пространстве.</li>
+                <li><b>space-around</b> - ряды блоков равномерно распределяются по высоте, свободное пространство добавляется сверху и снизу строки.</li>
+                <li><b>stretch</b> - (значение по умолчанию) ряды блоков равномерно растягиваются, заполняя все доступное пространство.</li>
+            </ul>
+            <figure>
+                <img style="width:auto;" src="img/flex-align-content.png">
+                <figcaption>Выравнивание строк по поперечной оси</figcaption>
+            </figure>
+            <p><mark>СSS свойства <code>flex-wrap</code> и <code>align-content</code> должны применяться непосредственно к flex-контейнеру, а не к его дочерним элементам.</mark></p>
+            <!-- Взят со стороннего сайт. Очень хороший пример. Обязательно посмотрите -->
+            <iframe oallowfullscreen="" msallowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen="" class="demoiframe" src="http://html5.by/blogdemo/flexbox/flex-direction-multiline.html" height="583"></iframe>
+        </article>
+        
+        <article>
+            <h3>Свойства для дочерних элементов</h3>
+            <h4><code>flex-basis</code></h4>
+            <p>Задает изначальный размер по главной оси для flex-блока до того, как к нему будут применены преобразования, основанные на других flex-факторах. Может быть задан в любых единицах измерения длинны (px, em, %, ...) или <code>auto</code>(по умолчанию). Если задан как <code>auto</code> – за основу берутся размеры блока (<code>width</code>, <code>height</code>), которые, в свою очередь, могут зависеть от размера контента, если не указанны явно.</p>
+            <blockquote class="warn">Свойство позволяет задать базовую ширину flex-элемента, относительно которой будет происходить растяжение <code>flex-grow</code> или сужение <code>flex-shrink</code> элемента. Не наследуется.</blockquote>
+            
+            
+            <h4><code>flex-grow</code></h4>
+            <p>Определяет для flex-элемента возможность «вырастать» при необходимости. Принимает безразмерное значение, служащее в качестве пропорции. Оно определяет, какую долю свободного места внутри контейнера элемент может занять.</p>
+            <p>Если у всех элементов свойство <code>flex-grow</code> задано как 1, то каждый потомок получит внутри контейнера одинаковый размер. Если вы задали одному из потомков значение 2, то он заберёт в два раза больше места, чем другие.</p>
+            <iframe height='338' scrolling='no' title='Exmaple 5' src='http://codepen.io/userzamt/embed/08522e8e3216ba40d17d2c8d4af39874/?height=338&theme-id=dark&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/08522e8e3216ba40d17d2c8d4af39874/'>Exmaple 5</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+            <p>Т.е абсолютное значение <code>flex-grow</code> не определяет точную ширину. Оно определяет его степень “жадности” по отношению к другим flex-блокам того же уровня.</p>
+            
+            <h4><code>flex-shrink</code></h4>
+            <p>Свойство указывает коэффициент уменьшения ширины flex-элемента относительно других flex-элементов, внутри flex-контейнера в случае недостатка свободного места, чтобы разместить все элементы в одну строку. По умолчанию коэффициент сжатия флексов в контейнере равен 1.</p>
+            <p><mark><b>Работает только если для элемента задана ширина с помощью свойства flex-basis или width.</b></mark></p>
+            <blockquote class="info">Коэффициент сжатия может быть как положительное целое, так и дробное число.</blockquote>
+            <iframe height='265' scrolling='no' title='Exmaple 6' src='http://codepen.io/userzamt/embed/egxEKr/?height=265&theme-id=dark&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/egxEKr/'>Exmaple 6</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+            
+            
+            <h4>Короткая запись для свойств <code>flex-grow</code>, <code>flex-shrink</code> и <code>flex-basis</code></h4>
+            <p>Свойство представляет собой сокращённую запись свойств <code>flex-grow</code>, <code>flex-shrink</code> и <code>flex-basis</code>. Значение по умолчанию: <code>flex: 0 1 auto;</code>. Можно указывать как одно, так и все три значения свойств. Второй и третий параметры (<code>flex-shrink</code>, <code>flex-basis</code>) необязательны.</p>
+            <pre>
+<span class="property">flex-grow</span>: <span class="unit">2</span>;
+<span class="property">flex-shrink</span>: <span class="unit">5</span>;
+<span class="property">flex-basis</span>: <span class="unit">150px</span>;
+
+<span class="comment">/* Эквивалентно предыдущим строчкам */</span>
+<span class="property">flex</span>: <span class="unit">2 5 150px</span>;
+            </pre>
+            
+            <pre>
+<span class="comment">/* Второй и третий параметры необязательны */</span>
+<span class="property">flex</span>: <span class="unit">4</span>;
+            </pre>
+            <p>W3C рекомендует использовать сокращённую запись, так как она правильно сбрасывает любые неуказанные компоненты, чтобы подстроиться под типичное использование.</p>
+            
+            
+            <h4><code>align-self</code></h4>
+            <p>Свойство отвечает за выравнивание отдельно взятого flex-элемента по высоте flex-контейнера. <mark>Переопределяет выравнивание, заданное <code>align-self</code></mark>.</p>
+            <ul>
+                <li><b>flex-start</b> - flex-блок прижат к началу поперечной оси.</li>
+                <li><b>flex-end</b> -  flex-блок прижат к концу поперечной оси.</li>
+                <li><b>center</b> - flex-блок располагаются в центре поперечной оси.</li>					
+                <li><b>baseline</b> - flex-блок выравнен по <code>baseline</code>.</li>
+                <li><b>stretch</b> - (значение по умолчанию) flex-блок растянут, чтобы занять все доступное место по поперечной оси, при этом учитываются <code>min-width/max-width</code>, если таковые заданы.</li>
+            </ul>
+            <iframe height='265' scrolling='no' title='Exmaple 7' src='http://codepen.io/userzamt/embed/RKvLrG/?height=265&theme-id=dark&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/RKvLrG/'>Exmaple 7</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+            
+            
+            <h4><code>order</code></h4>
+            <p>По умолчанию flex-элементы располагаются в исходном порядке. Тем не менее, свойство order может управлять порядком их расположения в контейнере.</p>
+            <p>Свойство определяет порядок, в котором flex-элементы отображаются внутри flex-контейнера. По умолчанию для всех flex-элементов задан порядок <code>order: 0;</code> и они следуют друг за другом по мере добавления во flex-контейнер. Самый первый flex-элемент по умолчанию расположен слева. Чтобы поставить любой flex-элемент в начало строки, ему нужно назначить <code>order: -1;</code>, в конец строки — <code>order: 1;</code>.</p>
+            <blockquote class="warn">Значение <code>order</code> не задает абсолютную позицию элемента в последовательности. Оно определяет вес позиции элемента.</blockquote>
+            <iframe height='237' scrolling='no' title='Exmaple 8' src='http://codepen.io/userzamt/embed/Ndoady/?height=237&theme-id=dark&default-tab=html&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/Ndoady/'>Exmaple 8</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+        </article>
+        
+        <article>
+            <h3>Пример 1</h3>
+            <iframe height='265' scrolling='no' title='Flexbox Mockup' src='http://codepen.io/userzamt/embed/xgMpZz/?height=265&theme-id=dark&default-tab=html,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/xgMpZz/'>Flexbox Mockup</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+        </article>
+        
+        <article>
+            <h3>Пример 2</h3>
+            <iframe height='265' scrolling='no' title='Flexbox NAV' src='http://codepen.io/userzamt/embed/38e4a6ea7c3c2e2f125cab83a6ecec06/?height=265&theme-id=dark&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/38e4a6ea7c3c2e2f125cab83a6ecec06/'>Flexbox NAV</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+        </article>
+    
+    </section>
+    
+
+</main>    
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+</body>
+</html>

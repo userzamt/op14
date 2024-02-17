@@ -1,0 +1,26 @@
+@media screen and (orientation: landscape) {
+	body { background: url("../img/sb_land.jpg") no-repeat; }
+	body:after {
+		content: "landscape";
+		display: block;
+		background-color: white;
+		color: black;
+		font-size: 5vw;
+		text-transform: uppercase;
+		padding: 1vw;
+	}
+}
+
+/* @media screen and (orientation: portrait) */
+@media not screen and (orientation: landscape) {
+	body { background: url("../img/sb_port.jpg") no-repeat; }
+	body:after {
+		content: "portrait";
+		display: block;
+		background-color: white;
+		color: black;
+		font-size: 5vw;
+		text-transform: uppercase;
+		padding: 1vw;
+	}
+}
