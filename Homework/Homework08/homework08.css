@@ -1,3 +1,32 @@
 html {
 	font-size: 20px;
 }
+
+main {
+	counter-reset: img-count;/*numeric image*/
+}
+
+/* FIGURE */
+figure {
+	margin: auto;
+	padding: 10px;
+	border: 1px solid #ccc;
+	text-align: center;
+}
+
+figure img {
+	width: auto;
+	max-width: 95%;
+}
+
+figcaption {
+	color: #666;
+	/*text-transform: uppercase;*/
+}
+
+figcaption:before {
+	content: "Рис. ";
+	content: "Рис. " counter(img-count) " ";/**/
+	counter-increment: img-count;/**/
+}
+/* *FIGURE*/
