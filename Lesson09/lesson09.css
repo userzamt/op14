@@ -1,0 +1,217 @@
+html {
+	font-size: 20px;
+}
+
+body {
+	counter-reset: table-count; /* for table caption*/
+}
+
+main {
+	counter-reset: img-count;/*numeric image*/
+}
+
+nav ol li{
+	padding-top: 0.5rem;
+}
+
+h2 {
+	border-bottom: thin solid #000;
+}
+
+p {
+	text-align: justify;
+	text-indent: 1.5rem;
+}
+
+dl {
+	column-count: 2;
+}
+
+/* FIGURE */
+figure {
+	margin: auto;
+	padding: 10px;
+	border: 1px solid #ccc;
+	text-align: center;
+}
+
+figcaption {
+	color: #666;
+	/*text-transform: uppercase;*/
+}
+
+figcaption:before {
+	content: "Рис. " counter(img-count) " ";
+	counter-increment: img-count;
+}
+/* *FIGURE*/
+
+/* PRE */
+pre {
+	background-color: #f8f7f7;
+	color: #333;
+	border: thin solid #e9e8e8;
+	border-radius: 3px;
+	padding: 10px 20px;
+}
+
+pre .property {
+	color: #e6550d;
+}
+
+pre .unit {
+	color: #31a354;
+}
+
+pre .comment {
+	color: #a9a9a9;
+}
+
+pre .tag {
+	color: #d20962;
+}
+
+pre .attr{
+	color: #de9000;
+}
+
+pre .val {
+	color: #00a4e4;
+}
+/* *PRE */
+
+/* BLOCKQUOTE */
+blockquote {
+	border-left: 4px solid #bbb;
+	padding-left: 10px;
+}
+
+blockquote.old , blockquote.error{
+	background-color: rgba(255, 0,0, 0.3);
+	border-left: 4px solid #f00;
+	padding: 5px;
+}
+
+blockquote.warn {
+	background-color: rgba(255, 185,0, 0.3);
+	border-left: 4px solid #ffb900;
+	padding: 5px 5px 5px 15px;
+}
+
+blockquote.info {
+	background-color: rgba(127,187,0, 0.3);
+	border-left: 4px solid #7fbb00;
+	padding: 5px 5px 5px 15px;
+	margin-top: 40px;
+}
+/* *BLOCKQUOTE*/
+
+/* TABLE ALL */
+table caption:before {
+	content: "Таб. " counter(table-count) " ";
+	counter-increment: table-count;
+}
+
+/* TABLE SUPPORTBROWSER */
+.supportBrowser {
+	border-collapse: collapse;
+	text-align: center;
+	font-size: 0.9rem;
+	width: 95%;
+	margin: auto;
+}
+
+.supportBrowser th {
+	font-weight: 600;
+	background-color: #ADD8E6;
+	padding: 10px;
+	border: thin solid rgba(0,0,0, 0.3);
+}
+
+.supportBrowser td {
+	padding: 10px;
+	border: thin solid rgba(0,0,0, 0.3);
+	text-align: center;
+}
+
+.supportBrowser .no span:before{
+	content: " \2716";
+	color: #ce3045;
+}
+
+.supportBrowser .yes span:before{
+	content: " \2714";
+	color: #4b846a;
+}
+
+.supportBrowser  .warn span:before{
+	content: " !";
+	font-size: 1rem;
+	font-weight: bold;
+	color: #f7941e;
+}
+/* *TABLE SUPPORTBROWSER */
+
+/* TABLE TYPEDEVICE */
+#typeDevice {
+	margin: auto;
+	width: 80%;
+}
+
+#typeDevice th, td {
+	padding: 10px;
+}
+
+#typeDevice tr:nth-child(2n+1):not(:first-child) {
+	background-color: #bff199;
+}
+
+#typeDevice th {
+	font-family: monospace;
+	font-weight: 600;
+	background-color: #f7c8c9;
+}	
+/* *TABLE TYPEDEVICE */
+
+/* TABLE LOGICOPER */
+#logicOper {
+	width: 80%;
+	margin: auto;
+}
+
+#logicOper tr:nth-child(odd) { background-color: #cee67d; }
+#logicOper tr:first-child { background-color: #ff7243; }
+
+/* *TABLE LOGICOPER */
+
+/* TABLE TYPEDEVICE */
+#typeDevice {
+	margin: auto;
+	width: 80%;
+}
+
+#typeDevice th, td {
+	padding: 10px;
+}
+
+#typeDevice tr:nth-child(2n+1):not(:first-child) {
+	background-color: #bff199;
+}
+
+#typeDevice th {
+	font-family: monospace;
+	font-weight: 600;
+	background-color: #f7c8c9;
+}	
+/* *TABLE TYPEDEVICE */
+
+/* TABLE LOGICOPER */
+#logicOper {
+	width: 80%;
+	margin: auto;
+}
+
+#logicOper tr:nth-child(odd) { background-color: #a4c639; }
+#logicOper tr:first-child { background-color: #ff7243; }
+
+/* *TABLE LOGICOPER */

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lesson09</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+    <link rel="stylesheet" href="lesson09.css">   
+</head>
+<body>
+<main class="container-lg">
+    <header>
+        <h1>CSS Grid</h1>
+    </header>
+
+    <a class="fs-3" href="../PR/PR03/pr03.html">ПР03 Использование CSS Flexbox/Grid в верстке веб-страниц</a>
+
+    
+		<section>
+			<h2>CSS Grid Layout Module Level 1</h2>
+			<p>CSS Grid Layout - является ещё экспериментальной технологией. Задача, которую может решает этот модуль, очень проста и понятна: предоставить удобный механизм расположения контента по виртуальной сетке.</p>
+			<p>Модуль CSS Grid Layout определяет двумерную сетку оптимизированную для дизайна пользовательского интерфейса. В CSS Grid Layout, дети grid-контейнера могут быть расположены в произвольных местах виртуальной сетки, с заранее определенным гибким или фиксированным размером.</p>
+			<figure>
+				<img src="img/grid.png">
+				<figcaption>Пример виртаульной сетки</figcaption>
+			</figure>
+			<p><a href="https://www.w3.org/TR/css3-grid-layout/" target="_blinck">Документ CSS Grid Layout был подготовлен рабочей группой CSS, в качестве Candidate Recommendation(т.е. другими словами - модуль находится ещё на стадии стандартизации)</a>. Этот документ призван стать рекомендацией для W3C. Модуль CSS Grid Layout будет оставаться на стадии Candidate Recommendation по крайней мере до 1 мая 2017года для того, чтобы обеспечить возможность для широкого обзора.</p>
+			<p>В отличие от старых табличных подходов, основанных на использовании тэга <code>&lt;table&gt;</code>, здесь не замусоривается семантика документа, а также есть чёткое разделение структуры документа от содержания. Grid отлично подходит для раскладки элеметов более высокого уровня нежели Flexbox. Он прекрасно подходит для определения общей системы раскладки всей страницы в целом.</p>
+			<p>Вот только некоторые из возможностей этого модуля:</p>
+			<ul>
+				<li>легко построить любую сетку, каркас, n-колоночный макет, стандартный набор из шапки, нескольких колонок и подвала, и вообще соорудить макет любой сложности</li>
+				<li>проще манипулировать любым grid-элементом: перемещать его в любой столбец/строку сетки, растягивать/сжимать на любую ширину/высоту, а также указывать размеры, составляющие, например, сумму ширин соседних двух grid-элементов</li>
+				<li>также grid-элементами можно отдельно управлять в своих столбцах/строках сетки, например, выравнивая их по любой из четырёх сторон, по базовой линии, по середине</li>
+				<li>вы знакомы со значением <code>repeat</code> свойства <code>backroud-position</code> для повторения фона изображения; у Grid Layout тоже есть похожее значение, которое позволяет повторять части сетки при её построении</li>
+			</ul>
+			<p>Вообще CSS Grid Layout вводит много новых понятий, которые более детально Вы можете изучить по <a href="https://www.w3.org/TR/css3-grid-layout/" target="_blinck">спецификации</a>. Так же вводится 17 новых свойств, с которыми можно ознокомиться на <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout" target="_blinck">MDN</a>.</p>
+		
+			<article>
+				<h3>Поддержка браузерами</h3>
+				<p>Как видно из статистики поддержки браузерами, свойства работают только в самых новых версиях браузеров и то не во всех. <mark>Что касается IE10+, в нём поддерживается предыдущая версия CSS Grid Layout(от 2011 года) и то только с префиксами. Так что при работе с IE будьте внимательны.</mark></p>				
+				<iframe src="https://caniuse.bitsofco.de/embed/index.html?feat=css-grid&amp;periods=future_3,future_2,future_1,current,past_1,past_2" frameborder="0" width="95%" height="480px"></iframe>
+				<p>Для старых версий браузров(начиная с Firefox 47 до версии 52; Chrome с версии 49 до 56) есть возможность включить поддержку CSS Grid Layout. Для этого необходимо в Chrome включить параметр «Включить экспериментальные функции веб-платформы» (вкладка chrome://flags), а Firefox включить параметр layout.css.grid.enabled (вкладка about:config).</p>
+			</article>
+			
+			<article>
+				<h3>Основные понятия</h3>
+				<p>CSS Grid – это те же таблицы, однако данный инструмент вводит несколько новых терминов, которые необходимо будет помнить при работе с сетками.</p>
+				<figure>
+					<img style="width:auto;" src="img/grid-main.jpg">
+					<figcaption>Основные понятия</figcaption>
+				</figure>
+				<p><b>Единицы измерения <code>fr</code></b> задаёт размер свободного пространства. Распределение свободного пространства происходит только после того, как все «длины» или размеры строк и столбцов с контентом достигнут максимальных размеров.</p>
+				<blockquote class="warn"> По спецификации <code>fr</code> - это <i>«Фактор гибкости»</i> — коэффициент пропорциональности, который отталкивается от общего количество фракций в значениях.</blockquote>
+				<p><b>Линии</b>(lines)- линии отмечают границы других элементов. Они бывают как горизонтальные, так и вертикальные. </p>
+				<p><b>Треки</b>(track) - это пространство между параллельными линиями.</p>
+				<figure>
+					<img style="width:auto;" src="img/grid-line.png">
+					<figcaption>Нумерация линий</figcaption>
+				</figure>
+				<blockquote class="info">Треки располагаются между линиями сетки (Grid Lines), которые, в свою очередь, находятся справа-слева и сверху-снизу от каждого трека.</blockquote>
+				<p><b>Ячейки</b>(cell) - строительные блоки сетки или по другому, это наименьшая единица на сетки.</p>
+
+				<p><b>Области</b> (area) - прямоугольник из произвольного количества ячеек.</p>
+			</article>
+		
+			<article>
+				<h3><code>display: grid | inline-grid</code></h3>
+				<p>Для работы с CSS Grid Layout необходимо создать родительский элемент и один или более дочерних.</p>
+				<iframe height='265' scrolling='no' title='Grid. Simply exapmle' src='http://codepen.io/userzamt/embed/WRBvYZ/?height=265&theme-id=0&default-tab=html,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/WRBvYZ/'>Grid. Simply exapmle</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+				<blockquote class="error">Свойства <code>column</code>, <code>float</code>, <code>clear</code>, и <code>vertical-align</code> не оказывают никакого влияния на grid-контейнер</blockquote>
+			</article>
+		
+			<article>
+				<h3><code>grid-template-columns<br>grid-template-rows</code></h3>
+				<p>Для создания сетки контейнеру необходимо указать свойства <code>display:grid</code>(или <code>display:inline-grid</code>), а также свойства <code>grid-template-columns</code> и <code>grid-template-rows</code>, которые задают ширина колонок и строк соответственно. </p>
+				<iframe height='265' scrolling='no' title='Grid. Children. Column/Row' src='http://codepen.io/userzamt/embed/apgVZM/?height=238&theme-id=0&default-tab=html,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/apgVZM/'>Grid. Children. Column/Row</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+				
+				<p><a href="http://codepen.io/userzamt/pen/BpgmJd" target="_blinck">Пример работы единицы измерения <code>fr</code></b> &rarr;</a></p>				
+			</article>
+		
+			<article>
+				<h3><code>grid-gap</code></h3>
+				<p>Свойство CSS являющиеся сокращенной формой свойств <code>grid-row-gap</code> и <code> grid-column-gap</code>, указывающие свободное пространство между строк и столбцов сетки grid-контейнера.</p>				
+				<pre>
+    <span class="comment">/* Абсолютные единицы */</span>
+    <span class="property">grid-gap</span>: <span class="unit">1cm</span>;
+    <span class="property">grid-gap</span>: <span class="unit">10px</span>;
+	
+    <span class="comment">/* Относительные единицы */</span>
+    <span class="property">grid-gap</span>: <span class="unit">5%</span>;
+    <span class="property">grid-gap</span>: <span class="unit">2vw</span>;
+	
+    <span class="comment">/* Сокращёная форма записи grid-row-gap grid-column-gap  */</span>
+    <span class="property">grid-gap</span>: <span class="unit">5% 2vw</span>;
+				</pre>
+				<iframe height='265' scrolling='no' title='Grid. grid-gap' src='http://codepen.io/userzamt/embed/pRXdYq/?height=265&theme-id=0&default-tab=html,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/pRXdYq/'>Grid. grid-gap</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+			</article>
+			
+			<article>
+				<h3><code>min-content<br>max-content<br>minmax()</code></h3>
+				<p>Ещё один из способов определить ширину каждой колонки, это выставить им в качестве значения  ключевые слова <code>min-content</code> или <code>max-content</code>. Как можно догадаться из их названия, они определяют размер по минимальному и максимальному содержимому колонки.</p>
+				<iframe height='265' scrolling='no' title='Grid. min- max- content' src='http://codepen.io/userzamt/embed/BpgJBr/?height=265&theme-id=0&default-tab=html,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/BpgJBr/'>Grid. min- max- content</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+				<p>Первой колонке выставлено значение <code>min-content</code>, она ужимается по минимальному содержимому (в данном случае это слова <i>«ощущением»</i>), а вторая колонка с <code>max-content</code>, напротив, расширяется по максимуму, чтобы вместить всё содержимое в одну строку (т.е. все слова).</p>
+				
+				<p>Для более гибкого управления отдельными колонками разработчики спецификации создали функцию <code>minmax(min, max)</code>.</p>
+				<pre>
+    <span class="property">grid-template-columns</span>: <span class="unit">200px minmax(200px, 1fr) 200px</span>;
+				</pre>
+				<p>Первое значение функции <code>minmax()</code> представляет минимальный размер колонки, а второе — максимальный. </p>
+				<iframe height='265' scrolling='no' title='Grid. minmax() function' src='http://codepen.io/userzamt/embed/bgPaVx/?height=265&theme-id=0&default-tab=html,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/bgPaVx/'>Grid. minmax() function</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+				<blockquote class="warn">Значения функции <code>minmax()</code> можно подставлять размеры, заданные в любых единицах длины (хоть абсолютных, хоть относительных). Так же в качестве значения можно использовать функцию <a href="https://webref.ru/css/value/calc" target="_blinck"><code>calc()</code></a> и значение <code>auto</code>.</blockquote>
+			</article>
+			
+			<article>
+				<h3>Именованные линии</h3>
+				<p>Идея именованных линий заключается в удобном и простом механизме для построения сетки при помощи направляющих.</p>
+				<pre>
+    <span class="property">grid-template-columns</span>: <span class="unit">[first] 200px [content] minmax(200px, 1fr) [aside] 200px [last]</span>;
+				</pre>
+				<figure>
+					<img style="width:auto;" src="img/grid-name-line.png">
+					<figcaption>Именованные линии</figcaption>
+				</figure>
+				<iframe height='265' scrolling='no' title='Grid. Именованные линии' src='http://codepen.io/userzamt/embed/OWezKG/?height=265&theme-id=0&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/OWezKG/'>Grid. Именованные линии</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+				<p>В примере выше линия «first» идёт в списке значений первой, а значит она располагается на отметке 0px. Значение 200px между ней и следующей линией (content) задает расстояние или интервал между этими линиями, а значит, ширину первой колонки. Тоже самое происходит с остальными линиями и интервалами между ними. Вторая линия (content) находится на отметке 200px, третья (aside) в диапозоне от 400px до (1fr + 200px). Последняя линия (last) находится от 600px до (1fr + 200px + 200px) - сумма ширин всех колонок.</p>
+							
+				<pre>
+    <span class="property">grid-template-columns</span>: <span class="unit">[first nav] 200px [content] minmax(200px, 1fr) [aside] 200px [last]</span>;
+    <span class="property">grid-template-rows</span>: <span class="unit">[first header] 200px [content] 200px [footer] 200px [last]</span>;
+				</pre>			
+				<iframe height='265' scrolling='no' title='Grid. Именованные линии. Чуть сложнее ' src='http://codepen.io/userzamt/embed/mRZKOo/?height=265&theme-id=0&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/mRZKOo/'>Grid. Именованные линии. Чуть сложнее </a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+				<p>Заметьте в CSS-коде, что первое значение каждого свойства состоит из двух именнованных линий (first nav) и (first header). Это означает, что значение в скобках может содержать любое количество линий, идущих через пробел.</p>
+				<p>Это может пригодиться для независимого размещения контента по ячейкам сетки, где разные именованные линии на одной отметке упрощают управление блоками grid-контейнера.</p>
+				<blockquote class="info">Если в виде значения для <code>grid-template-columns/grid-template-rows</code> мы используем именованные линии, то это значение не обязательно должно начинаться (или заканчиваться) именно с именованной линии . Мы легко можем написать так: «100px [first] 100px … [last] 100px». В этом случае ширина первой и последней колонки будет по 100px.</blockquote>
+				<p>Как можно заметить ничего особеного не произошло при добавлении именованых линий, но это пока. Чтобы познать их особеность нужно воспользоваться следующими свойствами...</p>				
+			</article>			
+			
+			<article>
+				<h3><code>grid-column-start | grid-column-end<br>grid-row-start | grid-row-end</code></h3>
+				<p>Свойства <code>grid-column-start</code>, <code>grid-column-end</code>, <code>grid-row-start</code>, <code>grid-row-end</code> обеспечивают независимое расположение блока по ячекам grid-контейнера, при этом, его положения в общем потоке элементов ни как не вляет.</p>
+				<p>Внесём небольшие изменения в таблицу стилей.</p>
+				<pre>
+<span class="property">grid-template-columns</span>: <span class="unit">[first nav] 200px [content yandex] minmax(200px, 1fr) [aside] 200px [last]</span>;
+<span class="property">grid-template-rows</span>: <span class="unit">[first header] 200px [content] 100vh [aside] 100px [footer] 200px [last]</span>;
+				</pre>
+				<iframe height='265' scrolling='no' title='Grid. Именованные линии. Чуть сложнее 2' src='http://codepen.io/userzamt/embed/QdXQJd/?height=265&theme-id=0&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/QdXQJd/'>Grid. Именованные линии. Чуть сложнее 2</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+				<p>С помощью именнованных линий можно легко привязать grid-блок(дочерний элемент grid-контейнера) к определённой линии колонки и строки. </p>				
+			</article>
+			
+			<article>
+				<h3><code>grid-template-ares</code></h3>
+				<p>CSS свойство определяющие название для областей сетки. При помощи этого свойства можно легко стоить сетку grid-контейнера, объеденяя при этом несколько ячеек в одну. Суть его работы лучше всего показать на примере.</p>
+				<p>Создадим его помощью стандартную трёх колоночную страницу с footer и header.</p>
+				<pre>
+    <span class="property">grid-template-areas</span>: <span class="unit">"header header header"</span>
+                         <span class="unit">"nav main aside"</span>
+                         <span class="unit">"nav main aside"</span>
+                         <span class="unit">"footer footer ."</span>;
+				</pre>				
+				<p>Свойства <code>grid-template-ares</code> устанавливается grid-контейнеру. В качестве значения принимает шаблон из строк, идущих в кавычках через пробел. Шаблон определает количество строк и колонок в grid-контейнер и описываются области внутри него. Названия строк могут повторяться и включать в точку, указывающую как бы пустую ячейку. Если не указать точку в данном примере - то сетка порвётся.</p>				
+				<iframe height='265' scrolling='no' title='GRID. Areas' src='http://codepen.io/userzamt/embed/bgXggq/?height=265&theme-id=0&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/bgXggq/'>GRID. Areas</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+				
+				
+				Для того, чтобы grid-элементам понять, какие ячейки им занимать для каждого из них, нужно указать  свойство <code>grid-area</code>. 
+				<pre>
+    <span class="property">grid-area</span>: <span class="unit">header</span>;<span class="comment">/* для HEADER */</span>
+    <span class="property">grid-area</span>: <span class="unit">nav</span>;<span class="comment">/* для NAV */</span>
+    .....
+    <span class="property">grid-area</span>: <span class="unit">footer</span>;<span class="comment">/* для FOOTER */</span>
+				</pre>
+			</article>
+			
+			<article>
+				<h3>Повторение колонок и рядов</h3>
+				<p><code>repeat()</code> - функция введёная в CSS Grid Layout. При помощи этой функции можно создавать повторяющиеся трэки, обладающие определённой закономерностью.</p>
+				<pre>
+    <span class="property">grid-template-columns</span>: <span class="unit">100px 100px 100px 100px 100px 250px </span>;
+    <span class="comment">/* Идентично следующему */</span>
+    <span class="property">grid-template-columns</span>: <span class="unit">repeat(5, 100px) 250px</span>;
+				</pre>
+				<p>В качестве примера создадим сетку 4(колонки) на 4(строчки).</p>
+				<iframe height='265' scrolling='no' title='GRID. repeat() function' src='http://codepen.io/userzamt/embed/NdQpPM/?height=265&theme-id=0&default-tab=html,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/NdQpPM/'>GRID. repeat() function</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+			</article>
+		</section>
+		
+
+</main>    
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+</body>
+</html>
