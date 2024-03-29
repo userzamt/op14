@@ -1,0 +1,12 @@
+html {
+    font-size: 20px;
+}
+
+main {
+	counter-reset: var-count;/*numeric*/
+}
+
+header h3::after {
+    content: " " counter(var-count);
+    counter-increment: var-count;
+}
