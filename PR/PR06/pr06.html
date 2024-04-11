@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>pr06</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+        <link rel="stylesheet" href="pr06.css">
+    </head>
+<body>
+<main class="container-lg">
+    <header>
+        <h1>ПР06 Работа с объектами</h1>
+    </header>
+
+    <a class="d-block my-3" href="emojis.json" target="_blank">Список "Эмодзи" (Emoji)</a>
+    
+    <article>
+        <header>
+            <h2>Структура объекта</h2>
+        </header>
+                
+        <p>Каждый элемент из <a class="" href="emojis.json" target="_blank">списка эмоджи</a> имеет одинаковый набор свойств, представленный ниже</p>
+
+        <ul>
+            <li><b>emoji</b> - непосредственно сам эмоджи как он выглядит(например: 👩‍👩‍👧‍👧)</li>
+            <li><b>name</b> - название (например: "family: woman, woman, girl, girl")</li>
+            <li><b>shortname</b> - короткое имя для вставки (например: ":woman_woman_girl_girl:")</li>
+            <li><b>unicode</b> - шестнадцатеричный код эмоджи (например: "1F469 200D 1F469 200D 1F467 200D 1F467")</li>
+            <li><b>html</b> - html-код для вставки на страницу (например: <code>"&amp;#128105;&amp;zwj;&amp;#128105;&amp;zwj;&amp;#128103;&amp;zwj;&amp;#128103;"</code>) </li>
+            <li><b>category</b> - наименование группы к которой относится эмоджи (например: "People & Body (family)")</li>
+            <li><b>order</b> </li>
+        </ul>
+        
+    </article>
+    
+    <section>
+        <h2 class="text-decoration-underline mt-4">Задание</h2>
+
+        <article>
+            <header>
+                <h3>Создание объектов</h3>
+            </header>
+
+            <p>Выбрать любые три эмоджи и основываясь на данных хранящихся в предоставленном <a class="" href="emojis.json" target="_blank">списке</a> создать их с помощью JavaScript следующим способом:</p>
+
+            <ol>
+                <li>описать полностью всю структуру объекту и вручную(непосредственно в коде) прописать все значения для свойств создаваемого объекта</li>
+<pre>
+    <code>
+    let obj = {
+        key: "value",
+        props: 123,
+        ...
+    }
+    </code>
+</pre>
+                <li>создать пустой объект и используя оператор точка(или квадратные скобки) прописать вручную все свойства и значения</li>
+<pre>
+    <code>
+    let obj = {};
+    
+    obj.key = "value";
+    obj.props = 123;
+    ...
+    </code>
+</pre>
+                <li>создать объект на основе функции конструктор</li>
+            </ol>
+
+            <p>В качестве имени переменных, хранящих объекты, использовать значение из свойства <code>shortname</code></p>
+
+            <blockquote class="bg-warning p-3">Все три переменные должны иметь структуру объекта описанную выше</blockquote>
+
+        </article>
+
+
+        <article class="mt-4">
+            <header>
+                <h3>Работа со свойствами объекта</h3>
+            </header>
+
+            <p>Удалить все свойства из первого объекта, кроме свойств: <b>name</b> и <b>category</b>.</p>
+            
+            <p>Во второй объект добавить свойство <code>is my cool</code> со значением <code>true</code></p>
+        </article>
+
+        <article class="mt-4">
+            <header>
+                <h3>Клонирование</h3>
+            </header>
+
+            <p>Вывести в консоль объект получившись, в результате объединения всех трёх объектов. Создаваемый объект должен никак не влиять на остальные.</p>
+        </article>
+
+    </section>
+
+</main>  
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+</body>
+</html>
