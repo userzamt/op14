@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>pr08</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+        <link rel="stylesheet" href="pr08.css">
+    </head>
+<body>
+<main class="container-lg">
+    <header>
+        <h1>ПР08 Работа с классами в JavaScript</h1>
+    </header>
+
+    <article>
+        <header><h2>Задание</h2></header>
+
+        <p>Основываясь на Ваш вариант задания, создать класс "предок". Данный класс должен обладать общими свойствами и методами, которые присущи всем объектам по Вашей теме задания. Класс "предок" должен содержать:</p>
+
+        <ul>
+            <li>конструктор, принимающий параметры для инициализации свойств; предусмотреть возможность инициализации свойств значениями по умолчанию; выводить в консоль строку с именем класса при выполнении конструктора</li>
+            <li>два свойства, которые являются общими для всех объектов; свойствам присваивать значение через конструктор;</li>
+            <li>один статический метод</li>
+            <li>один метод, который является общим для всех объектов</li>
+        </ul>
+
+        <p>Создать два класса "потомка". Классы "потомки" расширить за счёт класса "предка". В обоих классах "потомка" реализовать:</p>
+
+        <ul>
+            <li>конструктор, выводящий в консоль имя класса</li>
+            <li>геттер и сеттер для двух свойств класса "потомок"; выбирать свойства необходимо исходя из Вашего варианта</li>
+            <li>один метод, который является уникальным для данного класса</li>
+        </ul>
+
+        <p>Для любого из двух класса "потомков" переопределить метод из класса "предок".</p>
+        <p>Вывести в консоль оба класса "потомка". Сравните их.</p>
+        <p>Подготовиться к ответу на вопросы по темам: прототипы, классы и наследование в JavaScript</p>
+    </article>
+
+    <article>
+        <header><h2>Варианты задания</h2></header>
+
+        <p>Самостоятельно проанализируйте тему и выделите объекты и связи между ними.</p>
+
+        <ol>
+            <li>Общественный транспорт</li>
+            <li>Школа</li>
+            <li>Дом отдыха</li>
+            <li>Служба занятости</li>
+            <li>Автосалон</li>
+            <li>Поликлиника</li>
+            <li>Автомойка</li>
+            <li>Учебное заведение</li>
+            <li>Ремонт бытовой техники</li>
+            <li>Банк</li>
+            <li>Продажа билетов в кинотеатре</li>
+            <li>Приемная комиссия</li>
+            <li>Кассир ж/д вокзала</li>
+            <li>Аптека</li>
+            <li>Поликлиника</li>
+        </ol>
+    </article>
+    
+
+</main>  
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+</body>
+</html>
