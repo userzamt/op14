@@ -124,6 +124,501 @@
         
     </section>
 
+    <section>
+        <h2>Объектная модель документа <code>DOM</code></h2>
+        <p><a href="https://www.w3.org/DOM/DOMTR" target="_blinck">Cтандарт <code>W3C DOM</code></a></p>
+        <p><a href="https://www.w3schools.com/jsref/dom_obj_document.asp" target="_blinck">W3schools</a></p>
+        <p><code>DOM</code> - это не зависящий от платформы и языка программный интерфейс(API), позволяющий программам и скриптам получить доступ к содержимому HTML, SVG и XML документов, а также изменять содержимое, структуру и оформление таких документов.</p>
+        <p>Это API обеспечивает структурированное представление документа (дерева), и определяет способ, по которому структура может быть доступна для программы, для изменения структуры документа, его стиля и содержания.</p> 
+        <p>Любой документ известной структуры с помощью DOM может быть представлен в виде дерева узлов, каждый узел которого представляет собой элемент, атрибут, текстовый, графический или любой другой объект. Узлы связаны между собой отношениями «родительский-дочерний».</p>
+        <p>По сути, <code>DOM</code> связывает веб-страницы со скриптами или языками программирования.</p>
+        <figure class="text-center">
+            <img src="img/javascript-dom-web-page.png">
+            <figcaption>Связь HTML, DOM и JavaScript</figcaption>
+        </figure>
+        
+        <article>
+            <h3>Возможности <code>DOM</code></h3>
+            <p><code>DOM</code> - не является языком программирования, но без него, JavaScript не имел бы никакого представления о веб-странице и её элементах. По сути объектная модель документа является основным инструментом для динамического изменения веб-страниц.</p>
+            <p>При создании динамических веб-страниц разработчик работает не с HTML разметкой страницы, а с объектами <code>DOM</code>, которые браузер создаёт на основе этой разметки.</p>
+            <p>Фактически, DOM предоставляет возможность делать со страницей всё, что угодно: чтение информации из элементов, создание, добавление, удаление и измение элементов.</p>
+        </article>
+        
+        <article>
+            <h3>Дерево <code>DOM</code></h3>
+            <p>Браузер, получая код HTML из интернета, сначала строит дерево узлов (объектов) в своей памяти. А уже потом на основе этого дерева "рисует" картинку этой страницы в своём окне или вкладке.</p>
+            <figure class="text-center">
+                <img src="img/dom-html-to-dom.png">
+                <figcaption>Условный процесс отображения страницы в браузере</figcaption>
+            </figure>
+            <p>Постороим дерево <code>DOM</code> для следующего примера</p>
+            <pre>
+&lt;<span class="tag">html</span>>
+&lt;<span class="tag">head</span>>
+    &lt;<span class="tag">title</span>>Title window&lt;<span class="tag">/title</span>>
+    &lt;<span class="tag">meta</span> <span class="attr">charset</span>="<span class="val">utf-8</span>">
+&lt;<span class="tag">/head</span>>
+
+&lt;<span class="tag">body</span>>
+    &lt;<span class="tag">h1</span>>Big main title page&lt;<span class="tag">/h1</span>>
+    &lt;<span class="tag">div</span>>
+        &lt;<span class="tag">h2</span>>Small title&lt;<span class="tag">/h2</span>>
+        &lt;<span class="tag">p</span>>Text on article. Hello, world!!&lt;<span class="tag">/p</span>>
+    &lt;<span class="tag">/div</span>>
+&lt;<span class="tag">/body</span>>
+
+&lt;<span class="tag">/html</span>>
+            </pre>
+            <p>Дерево <code>DOM</code> - это множество узлов (объектов, элементов) связанных друг с другом. При этом каждый элемент HTML образует узел в этом дереве.</p>
+            <p>Связи между узлами определяются на основе того что каждый элемент в HTML документе вложен в какой-то другой элемент. Элемент, который содержит другие элементы, по отношению к ним является родителем. У любого элемента в HTML коде есть свой родитель и притом только один. Если элемент содержит другие элементы, то для него они являются дочерними (детьми, прямыми потомками). Один элемент может содержать сколько угодно много дочерних элементов. </p>
+            <blockquote class="info">Дерево <code>DOM</code> строится браузером сверху вниз.</blockquote>
+            <figure class="text-center">
+                <img src="img/dom-example.png">
+                <figcaption>Дерево <code>DOM</code> по разметки из примера выше</figcaption>
+            </figure>
+            <p>В самом верху этого дерева находится узел <code>document</code>. Данный узел имеет один дочерний узел <code>html</code>, который образован элементом <code>&lt;html&gt;</code>. В свою очередь узел <code>html</code> имеет уже два дочерних элемента <code>head</code> и <code>body</code>, и т.д.</p>	
+            <p>Теги образуют узлы-элементы (ELEMENT_NODE). Естественным образом одни узлы вложены в другие. Структура дерева образована исключительно за счет них. Текст же внутри элементов образует текстовые узлы(TEXT_NODE). И то и другое - равноправные узлы дерева <code>DOM</code>.</p>
+            <blockquote<blockquote class="warn">Текстовый узел содержит исключительно строку текста и не может иметь потомков, то есть он всегда на самом нижнем уровне.</blockquote>
+        </article>
+        
+        <article>
+            <h3>Типы узлов (NODE) документа</h3>
+            <p>В предыдущем примере, дерево <code>DOM</code> состоит только из узлов, образованных элементами. Но, узлы в дереве образуются не только на основе элементов, но и на основе текста, комментариев и вообще на основе всего, что есть в HTML разметке.</p>
+            <blockquote class="info">Например, текст, заключённый между открывающим и закрывающим тегом <code>&lt;p&gt;</code>, тоже является узлом. Но он является не узлом элемента, а текстовым узлом. Данный текстовый узел будет являться дочерним по отношению к узлу, образованным элементом <code>&lt;p&gt;</code>.</blockquote>
+            <p>Пример не учитывает текст, состоящий из одних пробельных символов, перевода на новую строку, пустые строки. И такие текстоые узлы должны идти практически после каждого тэга(если взять предыдущий пример).</p>
+            <blockquote class="warn">Пробелы, знаки табуляции и другие управляющие символы, которые например, располагаются между элементами, тоже образуют текстовые узлы.</blockquote>
+            <figure class="text-center">
+                <img src="img/dom-example-full-tree.png">
+                <figcaption>Полное дерево <code>DOM</code></figcaption>
+            </figure>
+            <blockquote class="warn"><mark><code>DOM</code>, в котором отсутствуют пустые текстовые узлы, а также смежные текстовые узлы называют <b>нормализованным</b>.</mark></blockquote>
+            <pre>
+&lt;<span class="tag">html</span>>&lt;<span class="tag">head</span>>&lt;<span class="tag">title</span>>Title window&lt;<span class="tag">/title</span>>&lt;<span class="tag">/head</span>>&lt;<span class="tag">body</span>>&lt;<span class="tag">h1</span>>Big main title page&lt;<span class="tag">/h1</span>>...&lt;<span class="tag">/html</span>>
+            </pre>
+            <p>Всего различают 12 типов узлов, но в основном используются узлы, образованные на основе HTML элементов и текста. Рекомендуется использовать только 7 из них(остальные считаются устаревшыми), но на практике в основном работают с 4.</p>
+            <table id="domNode">
+                <caption>Типы узлов (NODE) документа</caption>
+                <tr><th>Тип узла</th><th>Код типа (nodeType)</th><th>Описание</th></tr>
+                <tr>
+                    <td><code>ELEMENT_NODE</code></td>
+                    <td>1</td>
+                    <td>Узел элемента</td>
+                </tr>
+                <tr>
+                    <td><code class="no">ATTRIBUTE_NODE</code></td>
+                    <td>2</td>
+                    <td>Вообще говоря, атрибуты тоже считаются узлами в DOM-модели, родителем которых является элемент DOM, у которого они указаны. Однако, в веб-программировании в эти дебри обычно не лезут, и считают атрибуты просто свойствами DOM-узла, которые можно устанавливать и менять.</td>
+                </tr>
+                <tr>
+                    <td><code>TEXT_NODE</code></td>
+                    <td>3</td>
+                    <td>Текстовый узел</td>
+                </tr>
+                <tr>
+                    <td><code class="no">CDATA_SECTION_NODE</code></td>
+                    <td>4</td>
+                    <td>Узел CDATA-раздела(символьных данных)</td>
+                </tr>
+                <tr>
+                    <td><code class="no">ENTITY_REFERENCE_NODE</code></td>
+                    <td>5</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><code class="no">ENTITY_NODE</code></td>
+                    <td>6</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><code>PROCESSING_INSTRUCTION_NODE</code></td>
+                    <td>7</td>
+                    <td>Узел инструкции обработки</td>
+                </tr>
+                <tr>
+                    <td><code>COMMENT_NODE</code></td>
+                    <td>8</td>
+                    <td>Узел комментария</td>
+                </tr>
+                <tr>
+                    <td><code>DOCUMENT_NODE</code></td>
+                    <td>9</td>
+                    <td>Узел документа</td>
+                </tr>
+                <tr>
+                    <td><code>DOCUMENT_TYPE_NODE</code></td>
+                    <td>10</td>
+                    <td>Узел типа документа</td>
+                </tr>
+                <tr>
+                    <td><code>DOCUMENT_FRAGMENT_NODE</code></td>
+                    <td>11</td>
+                    <td>Узел фрагмента документа</td>
+                </tr>
+                <tr>
+                    <td><code class="no">NOTATION_NODE</code></td>
+                    <td>12</td>
+                    <td></td>
+                </tr>
+            </table>
+            <p><mark><b>Всё, что есть в HTML разметке, находится и в <code>DOM</code>.</b></mark></p>
+            <blockquote class="warn">Даже директива <code>&lt;!DOCTYPE&gt;</code>, которая ставится в начале HTML, тоже является DOM-узлом, и находится в дереве <code>DOM</code> непосредственно слева от <code>&lt;html&gt;</code>. На иллюстрациях этот факт скрыт, поскольку с этим узлом мало кто работает.</blockquote>
+            <p>У каждого узла есть определённый тип, который определяется числом от 1 до 12. Определить тип узла в JavaScript можно с помощью свойства <code>nodeType</code>.</p>
+            <p>Для манипуляций с <code>DOM</code> используется объект <code>document</code>.</p>
+            <figure class="text-center">
+                <img src="img/dom-console-nodetype.png">
+                <figcaption>Определение типа узла <code>DOM</code></figcaption>
+            </figure>
+
+            <p>Кроме определения типа узла (<code>nodeType</code>) с помощью JavaScript можно также узнать его имя и значение:</p>
+            <ul>
+                <li><code>nodeName</code> - возвращает имя узла. Если узел является элементом, то свойство <code>nodeName</code> возвращает имя тега. Для других типов узлов данное свойство будет возвращать различные имена: "#text" (для текстовых узлов), "#comment" для комментариев, "#document" для документа и .т.д.</li>
+                <li>
+                <code>nodeValue</code> — строка, представляющая значение узла. Возвращает следующие значения в зависимости от типа узла:
+                    <ul>						
+                        <li>возвращает <code>null</code> для узла элемента и узла документа</li>
+                        <li>возвращает содержимое для текстового узла</li>
+                        <li>возвращает контент для узла комментария.</li>
+                    </ul>
+                </li>
+            </ul>				
+        </article>
+        
+        <article>
+            <h3>Навигация по DOM-элементам</h3>
+            <p><code>DOM</code> позволяет делать что угодно с HTML-элементом и его содержимым, но для этого нужно сначала его получить.</p>
+            <p>Доступ к <code>DOM</code> начинается с объекта <code>document</code>. Из него можно добраться до любого узла.</p>
+            <figure class="text-center">
+                <img src="img/dom-links.png">
+                <figcaption>Ссылки на узлы дерева</figcaption>
+            </figure>
+            
+            <p>Начнем с вершины дерева. Самый верхний тег. В случае корректной HTML-страницы, это будет <code>&lt;html&gt;</code>.</p>
+            <pre>
+<span class="comment">//получаем объект хранящий структуру,свойства, дочерние элементы html</span>
+<span class="js">var</span> html = document.documentElement;
+
+<span class="comment">//соответствует тэгу body</span>
+<span class="js">var</span> body = document.body;
+
+<span class="comment">//также можем получить head</span>
+<span class="js">var</span> head = document.head;
+            </pre>
+            
+            <p>Так же с вершины дерева можно пойти дальше вниз. Для этого каждый DOM-узел содержит массив всех детей(<code>childNodes</code>), отдельно - ссылки на первого(<code>firstChild</code>) и последнего ребенка(<code>lastChild</code>) и еще ряд полезных свойств.</p>
+            <pre>
+<span class="comment">//вывод на консоль всех дочерних элементов body</span>
+<span class="js">for</span>(<span class="js">var</span> i=0; i < document.body.childNodes.length; ++i) {
+    console.log(document.body.childNodes[i]);
+}
+            </pre>
+            <button onclick="exampleChildNodes()">Пример получения всех дочерних элементов</button>
+            
+            <p>Свойства <code>firstChild</code> и <code>lastChild</code> показывают на первый и последний дочерние элементы и равны <code>null</code>, если детей нет.</p>
+            <pre>
+<span class="comment">//вывод на консоль первого и последнего элементы head</span>
+<span class="comment">//лучше всего head привести в нормализованный вид</span>
+<span class="js">var</span> last = document.head.lastChild;
+<span class="js">var</span> first =  document.head.firstChild;
+
+<span class="comment">/* ************************************************** */</span>
+elem.childNodes[0] === elem.firstChild
+elem.childNodes[elem.childNodes.length - 1] === elem.lastChild
+            </pre>
+            <button onclick="exampleFirstLastChild()">Вывод первого и последнего элемента</button>
+            
+            <p>Родитель доступен через <code>parentNode</code>. Если долго идти от одного элемента к другому, то рано или поздно можно дойти до корня <code>DOM</code>, то есть до <code>document.documentElement</code>, а затем и <code>document</code>.</p>
+            <pre>
+<span class="js">var</span> parent = document.body.parentNode;<span class="comment">//мама BODY</span>
+<span class="js">var</span> parentParent = parent.parentNode;<span class="comment">//бабушка BODY</span>
+            </pre>
+            <button onclick="exampleParentNode()">Выясняем родителя и родителя родителя("бабушку/дедушку")</button>
+            
+            <p>Кроме как двигаться сверху вниз и снизу вверх по дереву, JavaScript также позволяет двигаться в горизонтальном направлении между соседними узлами, т.е. узлами, которые имеют одного родителя.</p>
+            <p>Доступ к элементам слева и справа данного можно получить по ссылкам <code>previousSibling</code> / <code>nextSibling</code>.</p>
+            <p><code>nextSibling</code> - для перемещения слева направо, т.е. к следующему соседу (сиблингу). Если соседа справа нет, то данное свойство возвращает значение <code>null</code>.
+            <p><code>previousSibling</code> - для перемещения справа налево, т.е. к предыдущему соседу (сиблингу). Если соседа слева нет, то данное свойство возвращает значение <code>null</code>.</p>
+            <pre>
+<span class="js">var</span> body = document.body.childNodes;<span class="comment">//список дочерних элементов BODY</span>
+<span class="js">var</span> main = body[1];<span class="comment">//должны получить MAIN</span>
+
+console.log(<span class="unit">"Сосед справа \n %O"</span>,main.nextSibling);
+console.log(<span class="unit">"Сосед слева \n %O"</span>,main.previousSibling);				
+            </pre>
+            <button onclick="exampleSibling1()">Узнать соседей</button>
+            <button onclick="exampleSibling2()">Узнать соседей 2(что то осмысленное)</button>
+            
+            <p>Навигационные ссылки, описанные выше, равно касаются всех узлов в документе. В частности, в <code>childNodes</code> сосуществуют и текстовые узлы и узлы-элементы и узлы-комментарии, если есть. Но для большинства задач текстовые узлы нам не интересны.</p>
+            <p>Поэтому существует дополнительный набор ссылок, которые могут перемещаться по узлам дерева, образованными только элементами.</p>
+            <figure class="text-center">
+                <img style="width: 60%; min-width: 480px;" src="img/dom-links-elements.png">
+                <figcaption>Ссылки на узлы дерева образованные элементами</figcaption>
+            </figure>
+            
+            <p>Эти ссылки похожи на предыдущие, но только в ряде мест стоит слово Element:</p>
+            <ul>
+                <li><b><code>children</code></b> - возвращает коллекцию дочерних элементов (детей); только соответствующие тегам</li>
+                <li><b><code>firstElementChild</code></b>, <b><code>lastElementChild</code></b> - возвращает первый и последний дочерний узел</li>
+                <li><b><code>previousElementSibling</code></b>, <b><code>nextElementSibling</code></b> - следующий и предыдущий соседний узел</li>
+                <li><b><code>parentElement</code></b> - родительский узел</li>
+            </ul>
+            
+            <button onclick="exampleChildren(document.documentElement)">Получение только узлов элементов HTML</button>
+            <button onclick="exampleChildren(document.head)">Получение только узлов элементов HEAD</button>
+            <button onclick="exampleChildren(document.body)">Получение только узлов элементов BODY</button>
+            
+            <blockquote class="info"><b>Зачем <code>parentElement</code>? Неужели бывают родители не-элементы?</b><br>Свойство <code>elem.parentNode</code> возвращает родитель элемента. Оно всегда равно <code>parentElement</code>, кроме одного исключения:<br>
+            <pre>
+<span class="js">alert</span>( document.documentElement.parentNode );<span class="comment">//document</span>
+<span class="js">alert</span>( document.documentElement.parentElement );<span class="comment">//null</span>
+            </pre>
+            Иногда это имеет значение, если хочется перебрать всех предков и вызвать какой-то метод, а на документе его нет.</blockquote>
+        </article>
+        
+        <article>
+            <h3>Поиск элементов</h3>
+            <p>Прямая навигация от родителя к потомку удобна, если элементы рядом. А если нет? По поиск становиться не эффективным.</p>
+            <p>Поэтому, чтобы найти узлы в дереве, веб-разработчики используют специально предназначенные для поиска методы объекта <code>document</code> или узла (node).</p>
+            
+            <h4><code>document.getElementById(elementID)</code></h4>
+            <p>Метод возвращает элемент в документе, имеющий указанный идентификатор, в виде объекта(узла). Если элемента с указанным идентификатором не существует, то данный метод возвращает значение <code>null</code>.</p>
+            <iframe height='265' scrolling='no' title='DOM. getElementById(elemID)' src='http://codepen.io/userzamt/embed/cc3f2b5f4fd199cdf4d9c9f73b4dc482/?height=265&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/cc3f2b5f4fd199cdf4d9c9f73b4dc482/'>DOM. getElementById(elemID)</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+            
+            <h4><code>getElementsByTagName(tagname)</code></h4>
+            <p>Метод ищет все элементы с заданным тегом внутри элемента(или внутри <code>document</code>) и возвращает их в виде списка.</p>
+            <pre>
+<span class="node">document</span>.getElementsByTagName(<span class="unit">tagname</span>);
+<span class="node">node</span>.getElementsByTagName(<span class="unit">tagname</span>);
+            </pre>
+            <p><b><mark>Обратим внимание: в отличие от <code>getElementById</code>, который существует только в контексте <code>document</code>, метод <code>getElementsByTagName</code> может искать внутри любого элемента.</mark></b></p>
+            <p><code>getElementsByTagName(tagname)</code> возвращает все найденные элементы в виде объекта NodeList (коллекции узлов). Получение определённого узла в коллекции осуществляется по индексу.</p>
+            <iframe height='265' scrolling='no' title='DOM. getElementByTagName(tagName)' src='http://codepen.io/userzamt/embed/569fab73373bc0e7777e7ac9948c33d1/?height=265&theme-id=0&default-tab=html,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/569fab73373bc0e7777e7ac9948c33d1/'>DOM. getElementByTagName(tagName)</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+            <blockquote class="warn">Данный метод имеет один обязательный параметр <code>tagname</code>, представляющий собой строку, содержащую имя тега, которое указывается прописными буквами. Если в качестве параметра указать строку, содержащую звёздочку ("*"), то мы получим все элементы в документе (для объекта <code>document</code>) или все дочерние элементы узла.</blockquote>
+            
+            <h4><code>document.getElementsByName(name)</code></h4>
+            <blockquote class="old">В HTML5 атрибут <code>name</code> признан устаревшим. Рекомендуется заменить его атрибутом <code>id</code>.</blockquote>
+            <p>Метод <code>getElementsByName(name)</code> возвращает все найденные элементы в документе, имеющих указанное имя (значение атрибута <code>name</code>), в виде коллекции узлов.</p>
+            <p>Элементы (узлы) добавляются в коллекцию в том порядке, в котором они встречаются в дереве. Получение определённого узла в коллекции осуществляется по индексу.</p>
+            <pre>
+<span class="node">document</span>.getElementsByName(<span class="unit">name</span>);
+            </pre>
+            <p>Данный метод имеет один обязательный параметр <code>name</code>, представляющий собой строку, содержащую значение атрибута <code>name</code>.</p>
+            
+            <h4><code>getElementsByClassName(className)</code></h4>
+            <p>Метод возвращает коллекцию элементов имеющих имя класса <code>className</code>. Находит элемент и в том случае, если у него несколько классов, а искомый – один из них.</p>
+            <p>Как и <code>getElementsByTagName</code>, этот метод может быть вызван и в контексте DOM-элемента, и в контексте документа.</p>
+            <pre>
+<span class="node">document</span>.getElementsByClassName(<span class="unit">className</span>);
+<span class="node">node</span>.getElementsByClassName(<span class="unit">className</span>);
+            </pre>				
+            <p>Элементы (узлы) добавляются в коллекцию в том порядке, в котором они встречаются в дереве. Получение определённого узла в коллекции осуществляется по индексу.</p>
+            <iframe height='265' scrolling='no' title='DOM. getElementsByClassName' src='http://codepen.io/userzamt/embed/WpGWvJ/?height=265&theme-id=0&default-tab=html,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/WpGWvJ/'>DOM. getElementsByClassName</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+            
+            <h4><code>querySelectorAll(cssSelector)</code></h4>
+            <p>Метод возвращает все найденные элементы внутри документе (для <code>document</code>) или среди дочерних узлов (для <code>node</code>), которые соответствуют CSS селектору, указанному в качестве параметра данного метода, в виде коллекции узлов.</p>
+            <pre>
+<span class="node">document</span>.querySelectorAll(<span class="unit">cssSelector</span>);
+<span class="node">node</span>.querySelectorAll(<span class="unit">cssSelector</span>);
+            </pre>
+            <!--<blockquote>Псевдо-классы в CSS-селекторе, в частности <code>:hover</code> и <code>:active</code>, также поддерживаются. Например, <code>document.querySelectorAll(":hover")</code> вернёт список, в порядке вложенности, из текущих элементов под курсором мыши.</blockquote>-->
+            <iframe height='265' scrolling='no' title='DOM. querySelectorAll' src='http://codepen.io/userzamt/embed/yMadxj/?height=265&theme-id=0&default-tab=html,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/yMadxj/'>DOM. querySelectorAll</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+            
+            <h4><code>querySelector(cssSelector)</code></h4>
+            <p>Данные метод возвращает не все, а только первый элемент, соответствующий CSS-селектору.</p>
+            <p>Другими словами, результат – такой же, как и при <code>elem.querySelectorAll(cssSelector)[0]</code>, но в последнем вызове сначала ищутся все элементы, а потом берётся первый, а в <code>elem.querySelector(cssSelector)</code> ищется только первый, то есть он эффективнее.
+            <p>Этот метод часто используется, когда мы заведомо знаем, что подходящий элемент только один, и хотим получить в переменную сразу его.</p>
+            <pre>
+<span class="node">document</span>.querySelector(<span class="unit">cssSelector</span>);
+<span class="node">node</span>.querySelector(<span class="unit">cssSelector</span>);
+            </pre>
+            
+            <h4><code>matches(cssSelector)</code></h4>
+            <p>Этот метод ничего не ищет, а проверяет, удовлетворяет ли элемент селектору.</p>
+            <p>Метод <code>elem.matches(cssSelector)</code> вернет true или false, в зависимости от того, соответствует ли элемент указаному css-селектору.</p>
+            <blockquote class="info">Ранее в спецификации он назывался <code>matchesSelector</code>, и большинство браузеров поддерживают его под этим старым именем, либо с префиксами ms/moz/webkit.<br><a href="http://caniuse.com/#feat=matchesselector" target="_blanck">Поддержка в браузерах</a></blockquote>
+            <iframe height='265' scrolling='no' title='DOM. matches' src='http://codepen.io/userzamt/embed/jByYxK/?height=265&theme-id=0&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/jByYxK/'>DOM. matches</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+
+            <h4><code>closest(cssSelector)</code></h4>
+            <p>Метод возвращает ближайшего предка текущего элемента (или сам текущий элемент), который соответствует указанному селектору. Если нет такого предка, он возвращается <code>null</code>.</p>
+            <p>Иначе говоря, метод closest бежит от текущего элемента вверх по цепочке родителей и проверяет, подходит ли элемент под указанный CSS-селектор. Если подходит – останавливается и возвращает его.</p>
+            <iframe height='265' scrolling='no' title='DOM. closest()' src='http://codepen.io/userzamt/embed/GWrQpy/?height=265&theme-id=0&default-tab=html,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/GWrQpy/'>DOM. closest()</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+        </article>
+        
+        <article>
+            <h3>Свойства узлов</h3>
+            <p>До этого были рассмотрены следующие свойства: <code>nodeType</code>, <code>nodeName</code>, <code>nodeValue</code>, которые содержат тип узла, имя узла и значение узла.</p>
+            <p>Теперь мы рассмотрим ещё пару основных свойств узла(но не все), некоторые из них понадобятся нам для добавления узов в дерево <code>DOM</code>.</p>
+        
+            <h4><code>tagName</code></h4>
+            <p>Свойство возвращает HTML-тег элемента.</p>
+            <pre>
+<span class="js">var</span> elementName = element.tagName;
+            </pre>
+            <p>Например</p>
+            
+            <pre>
+&lt;<span class="tag">span <span class="attr">id</span>=<span class="val">"born"</span></span>>Text on article. Hello, world!!&lt;<span class="tag">/p</span>>
+            </pre>
+            <pre>
+<span class="js">var</span> span = <span class="node">document</span>.getElementById(<span class="unit">"born"</span>);
+<span class="js">console</span>.log(span.tagName);<span class="comment">//SPAN</span>
+            </pre>
+            
+            <p>Разница между <code>tagName</code> и <code>nodeName</code> неочевидно, но она отражена в названиях свойств.</p>
+            <pre>
+<span class="node">document</span>.body.nodeName;<span class="comment">//BODY</span>
+<span class="node">document</span>.body.tagName;<span class="comment">//BODY</span>
+            </pre>
+            <p>Свойство <code>tagName</code> есть только у элементов.</p>
+            <p>Свойство <code>nodeName</code> определено для любых узлов, для элементов оно равно <code>tagName</code>, а для не-элементов обычно содержит строку с типом узла.</p>
+            <p>Таким образом, при помощи <code>tagName</code> мы можем работать только с элементами, а <code>nodeName</code> может что-то сказать и о других типах узлов.</p>
+                            
+            <h4><code>innerHTML</code></h4>
+            <p>Свойство позволяет получить или задать HTML-содержимое элемента. Значение, возвращаемое <code>innerHTML</code> - всегда валидный HTML-код. При записи можно попробовать записать что угодно, но браузер исправит ошибки.</p>
+            <iframe height='265' scrolling='no' title='DOM. innerHTML' src='http://codepen.io/userzamt/embed/yMgKMg/?height=265&theme-id=0&default-tab=html,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/yMgKMg/'>DOM. innerHTML</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+            
+            <h4><code>outerHTML</code></h4>
+            <p>Свойство возвращает HTML элемент целиком в виде строки, содержащей сам элемент и его дочерние элементы.</p>
+            <p><mark><b>Изменить <code>outerHTML</code> элемента невозможно.</b></mark></p>
+            <figure class="text-center">
+            <img src="img/dom-innerHTML-outerHTML.png">
+            <figcaption>Пример свойств <code>innerHTML</code> и <code>outerHTML</code></figcaption>
+        </figure>
+            
+            <h4><code>data</code></h4>
+            <p>Свойство <code>innerHTML</code> есть только у узлов-элементов, а содержимое других узлов, например, текстовых или комментариев, доступно на чтение и запись через свойство <code>data</code>.</p>
+            <iframe height='265' scrolling='no' title='DOM. property data' src='http://codepen.io/userzamt/embed/QpdrLg/?height=265&theme-id=0&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/QpdrLg/'>DOM. property data</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+            
+            <h4><code>textContent</code></h4>
+            <p>Позволяет задавать или получать текстовое содержимое элемента и его потомков.</p>
+            <p>Свойство <code>textContent</code> возвращает конкатенацию свойств <code>textContent</code> всех дочерних узлов, исключая комментарии и строки кода. Если узел не имеет дочерних узлов, будет возвращена пустая строка.</p>
+            <p>Установка данного значения удаляет все дочерние узлы и заменяет их единичным текстовым узлом с указанным значением.</p>
+            <iframe height='265' scrolling='no' title='DOM. textContent' src='http://codepen.io/userzamt/embed/908e0ae79d24e3fc89f4a29aba8a6348/?height=265&theme-id=0&default-tab=html,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/908e0ae79d24e3fc89f4a29aba8a6348/'>DOM. textContent</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+            
+            <h4>Другие свойства узлов</h4>
+            <p>У DOM-узлов есть и другие свойства, зависящие от типа, например: <code>value</code>, <code>id</code>, <code>href</code>, <code>src</code> и т.д.</p>
+            <p>Чтобы узнать какие свойства есть у конкретного типа элемента достаточно посмотреть <a href="http://w3c.github.io/html-reference/elements.html" target="_blanck">список элементов HTML5</a> и найти в нём интересующий вас элемент и прочитать секцию с <code>interface</code>.</p>
+            <p>Самый простой способо - это вывести в консоль элемент вызовом <code>console.dir(element)</code>.</p>			
+        </article>
+        
+        <article>
+            <h3>Работа с атрибутами</h3>
+            <p>У любого элемента (узла) есть свойство <code>attributes</code>, с помощью которого Вы можете получить коллекцию его атрибутов, в виде объекта <code>NamedNodeMap</code>. Каждый атрибут в этой коллекции имеет имя, который совпадает с именем атрибута. Доступ к атрибуту (узлу) в этой коллекции осуществляется по его индексу или с помощью метода <code>item()</code>. Отсчёт атрибутов (узлов) в этой коллекции начинается с 0.</p>				
+            <blockquote class="warn">У любого атрибута есть свойства <code>name</code> и <code>value</code>, с помощью которых Вы можете получить имя атрибута и его значение.</blockquote>
+            <iframe height='265' scrolling='no' title='DOM. attributes' src='http://codepen.io/userzamt/embed/LWxBeg/?height=265&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/LWxBeg/'>DOM. attributes</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+
+            <p>У каждого элемента (узла) есть методы (<code>getAttribute()</code>, <code>setAttribute()</code>, <code>removeAttribute()</code>, <code>hasAttribute()</code>), которые позволяют работать с его атрибутами более просто.</p>
+            <iframe height='265' scrolling='no' title='DOM.  _remove _get _set _has  Attributes' src='http://codepen.io/userzamt/embed/jByvbG/?height=265&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/jByvbG/'>DOM.  _remove _get _set _has  Attributes</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+            
+            <h4><code>getAttribute(attributeName)</code></h4>
+            <p>Метод возвращает значение атрибута, указанного в качестве параметра. Если данного атрибута у элемента нет, то данный метод возвращает пустую строку ("") или <code>null</code>.</p>
+            
+            <h4><code>setAttribute(name, value)</code></h4>
+            <p>Метод добавляет указанный атрибут к элементу и присваивает ему указанное значение. Если указанный атрибут у элемента уже есть, то данный метод изменяет только его значение.</p>
+            
+            <h4><code>removeAttribute(attributeName)</code></h4>
+            <p>Метод удаляет указанный атрибут у элемента. Данный метод имеет один обязательный параметр - это строка, содержащая имя атрибута, который Вы хотите удалить у элемента. Данный метод в качестве результата ничего не возвращает.</p>
+            
+            <h4><code>hasAtrribute(attributeName)</code></h4>
+            <p>Метод возвращает <code>true</code>, если указанный атрибут существует у элемента. В противном случае данный метод возвращает <code>false</code>. Данный метод имеет один обязательный параметр - это строка, содержащая имя атрибута, который Вы хотите проверить на существование у элемента.</p>
+        </article>
+        
+        <article>
+            <h3>Работа с классами элементов</h3>
+            <p>Работа с классами элемента(узла) с помощью методов <code>getAttribute()</code>, <code>setAttribute()</code> и <code>removeAttribute()</code> представляется затруднительной, когда например Вам необходимо добавить, переключить или удалить какой-то один определённый класс у элемента. Данные методы позволяют работать со значением атрибута class только целиком и не позволяют управлять его отдельными классами.</p>
+            <p>Для того чтобы управлять отдельными классами элемента необходимо использовать свойство <code>classList</code>. Данное свойство представляет значение атрибута <code>class</code> в виде объекта DOMTokenList. Само свойство <code>classList</code> доступно только для чтения, а управление классом (классами) элемента осуществляется с помощью методов объекта DOMTokenList.</p>
+            <iframe height='265' scrolling='no' title='DOM.  classList' src='http://codepen.io/userzamt/embed/EWZOyw/?height=265&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/EWZOyw/'>DOM.  classList</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+
+            <h4><code>elem.classList.contains(class)</code></h4>
+            <p>Возвращает true или false в зависимости от того имеет ли элемент указанный класс.</p>
+            
+            <h4><code>elem.classList.add(class1,class2,...)</code></h4>
+            <p>Добавляет один или несколько к элементу классов. Если указанный класс уже есть у элемента, то он не будет добавлен.</p>
+            
+            <h4><code>elem.classList.remove(class1,class2,...)</code></h4>
+            <p>Удаляет один или несколько указанных у элемента классов. Если Вы указали класс, который не существует у элемента, то это не приведёт к ошибке в работе метода.</p>
+            
+            <h4><code>elem.classList.toggle(class, true|false)</code></h4>
+            <p>Переключает указанное имя класса у элемента. Если класса <code>class</code> нет, добавляет его, если есть – удаляет.</p>
+            <blockquote class="warn">Метод <code>toggle</code> имеет 2 параметра: <code>class</code> (обязательный) - указывается имя класса, который надо переключить; <code>true|false</code> (необязательный) - логическое значение, которое принудительно заставляет включить или выключить указанный класс у элемента.</blockquote>
+            <p>При использовании метода <code>toogle</code> с 2 параметрами, он переключает класс в зависимости от значения 2 параметра. Если 2 параметр имеет значение <code>true</code>, то данный метод добавляет класс к элементу. А если 2 параметр имеет значение <code>false</code>, то данный метод удаляет указанный класс у элемента.</p>				
+        </article>
+        
+        <article>
+            <h3>Нестандартные атрибуты(<code>data</code>-атрибуты)</h3>
+            <p>С помощью нестандартных атрибутов можно привязать к элементу данные, которые будут доступны в JavaScript. Как правило, это делается при помощи атрибутов <code>data-*</code></p>
+            <p><a href="https://www.w3.org/TR/2010/WD-html5-20101019/elements.html#embedding-custom-non-visible-data-with-the-data-attributes" target="_blanck">Стандарт HTML5</a> специально разрешает атрибуты <code>data-*</code> и резервирует их для пользовательских данных.</p>
+            <p>К таким атрибутам можно обратиться не только как к атрибутам, но и как к свойствам, при помощи специального свойства <code>dataset</code></p>
+            <p><a href="example/example_1.html">Пример использования атрибутов</a></p>
+            <p>Обратим внимание(в примере выше) – название атрибута <code>data-count-default</code> трансформировалось в <code>dataset.countDefault</code>. Дефис превращается в большую букву.</p>
+            <iframe height='265' scrolling='no' title='DOM. dataset' src='http://codepen.io/userzamt/embed/aJJJqx/?height=265&theme-id=0&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/aJJJqx/'>DOM. dataset</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>	
+        </article>
+        
+        <article>
+            <h3>Добавление и удаление узлов</h3>
+            <p>В этой части лекции мы рассмотрим, как создавать новые элементы «на лету»,заполнять их данными и добавлять в <code>DOM</code>.</p>
+            <p>Добавление нового узла к дереву обычно осуществляется в 2 этапа:</p>
+            <ol>
+                <li>Создание необходимого узела</li>
+                <li>Указать место в дереве, куда необходимо вставить узел.</li>
+            </ol>
+
+            <h4><code>document.createElement(tagname)</code></h4>
+            <p>Метод создаёт элемент (узел) с указанным тегом. Имеет один обязательный параметр <code>tagname</code> - это строка, содержащая имя создаваемого элемент(тега). В качестве результата данный метод возвращает элемент, который был создан.</p>
+            <pre>
+<span class="js">var</span> newElem = <span class="node">document</span>.createElement(<span class="unit">"div"</span>);
+            </pre>
+            
+            <h4><code>document.createTextNode(data)</code></h4>
+            <p>Создаёт текстовый узел с указанным текстом. Метод имеет один обязательный параметр <code>text</code> - это строка, содержащая текст текстового узла. В качестве результата данный метод возвращает текстовый узел, который был создан.</p>
+            <pre>
+<span class="js">var</span> textElem = <span class="node">document</span>.createTextNode(<span class="unit">"Hello, world!!"</span>);
+            </pre>
+            
+            <p>Это пока что пустой пример. Так сказать заготовка.</p>
+            <iframe height='265' scrolling='no' title='DOM. createElement' src='http://codepen.io/userzamt/embed/yMMpBo/?height=265&theme-id=0&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/yMMpBo/'>DOM. createElement</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+            
+            <p>Давайте создадит новый элемент. Добавим к нему уже заготовленый класс и укажем текст.</p>
+            <iframe height='265' scrolling='no' title='DOM. createElement 2' src='http://codepen.io/userzamt/embed/OppzNN/?height=265&theme-id=0&default-tab=css,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/OppzNN/'>DOM. createElement 2</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+            
+            <p>После этого у нас есть готовый DOM-элемент. Пока что он присвоен в переменную, но не виден, так как никак не связан со страницей.</p>
+            
+            <h4><code>parentElem.appendChild(elem)</code></h4>
+            <p>Метод добавляет узел в конец списка дочерних элементов указанного родительского узла. В качестве результата данный метод возвращает добавленный узел.</p>
+            <pre>
+<span class="js">var</span> newElem = <span class="node">document</span>.createElement(<span class="unit">"div"</span>);
+<span class="js">var</span> parentElement = <span class="node">document</span>.body;
+
+parentElement.appendChild(newElement);<span class="comment">//будет последним элементом в body</span>
+            </pre>
+            
+            <h4><code>parentElem.insertBefore(elem, nextSibling)</code></h4>
+            <p>Вставляет <code>elem</code> в коллекцию детей <code>parentElem</code>, перед элементом <code>nextSibling</code>. <code>nextSibling</code> (не обязательный) - это дочерний узел элемента перед которым, необходимо вставить узел. Если второй параметр не указать, то данный метод вставит его в конец, т.е. в качестве последнего дочернего узла элемента для которого вызывается данный метод. В качестве результата метод <code>insertBefore(elem, nextSibling)</code> возвращает вставленный узел.</p>
+            <pre>
+<span class="js">var</span> newElem = <span class="node">document</span>.createElement(<span class="unit">"div"</span>);
+<span class="js">var</span> parentElement = <span class="node">document</span>.body;
+
+parentElement.insertBefore(newElement, parentElement.firstChild);<span class="comment">//новый элемент будет первым</span>
+            </pre>
+            
+            <p>Теперь добавим наш новый элементв в <code>DOM</code></p>
+            <iframe height='265' scrolling='no' title='DOM. createElement 3' src='http://codepen.io/userzamt/embed/MpprEG/?height=265&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/MpprEG/'>DOM. createElement 3</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+            
+            <h4><code>node.cloneNode(deep)</code></h4>
+            <p>В ряде случаев гораздо эффективнее использовать клонирование существующих элементов, нежели создовать новый. В частности, если элемент большой, то клонировать его будет гораздо быстрее, чем пересоздавать.</p>
+            <p>Вызов <code>node.cloneNode(true)</code> создаст «глубокую» копию элемента – вместе с атрибутами, включая подэлементы. Если же вызвать с аргументом <code>false</code>, то копия будет сделана без дочерних элементов. Это нужно гораздо реже.</p>
+            <iframe height='265' scrolling='no' title='DOM. createElement 3 + cloneNode' src='http://codepen.io/userzamt/embed/c6508c785ed874ae0e85d5a2112ff204/?height=265&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/c6508c785ed874ae0e85d5a2112ff204/'>DOM. createElement 3 + cloneNode</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+            
+            <h4><code>parentElem.removeChild(child)</code></h4>
+            <p>Метод удаляет дочерний узел из писка детей родительского элемента <code>parentElem</code>. Метод <code>removeChild(child)</code> возвращает в качестве значения удалённый узел или <code>null</code>, если узел, который мы хотели удалить, не существовал.</p>
+            
+            <h4><code>parentElem.replaceChild(newChild, oldChild)</code></h4>
+            <p>Метод удаляет дочерний узел <code>oldChild</code> из писка детей родительского элемента <code>parentElem</code> и вставляет на его место <code>newChild</code>.</p>
+            <iframe height='265' scrolling='no' title='DOM. removeChild' src='http://codepen.io/userzamt/embed/wJJyoj/?height=265&theme-id=0&default-tab=html,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/wJJyoj/'>DOM. removeChild</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+            
+        </article>
+        
+    </section>
+
 </main>    
 
 
