@@ -1,0 +1,144 @@
+html {
+	font-size: 20px;
+}
+
+body {
+	counter-reset: table-count; /* for table caption*/
+}
+
+main {
+	counter-reset: img-count;/*numeric image*/
+}
+
+dl {
+	column-count: 2;
+}
+
+pre {
+	margin: 0 auto;
+}
+
+/* TABLE ALL */
+table caption:before {
+	content: "Таб. " counter(table-count) " ";
+	counter-increment: table-count;
+}
+/* *TABLE ALL */
+
+/* FIGURE */
+figcaption:before {
+	content: "Рис. " counter(img-count) " ";
+	counter-increment: img-count;
+}
+/* *FIGURE*/
+
+/* PRE */
+pre {
+	background-color: #f8f7f7;
+	color: #333;
+	border: thin solid #e9e8e8;
+	border-radius: 3px;
+	padding: 10px 20px;
+}
+
+pre .property {
+	color: #e6550d;
+}
+
+pre .unit {
+	color: #31a354;
+}
+
+pre .comment {
+	color: #a9a9a9;
+}
+
+pre .tag {
+	color: #d20962;
+}
+
+pre .attr{
+	color: #de9000;
+}
+
+pre .val {
+	color: #00a4e4;
+}
+/* *PRE */
+
+/* BLOCKQUOTE */
+blockquote {
+	border-left: 4px solid #bbb;
+	padding-left: 10px;
+}
+
+blockquote.old , blockquote.error{
+	background-color: rgba(255, 0,0, 0.3);
+	border-left: 4px solid #f00;
+	padding: 5px;
+}
+
+blockquote.warn {
+	background-color: rgba(255, 185,0, 0.3);
+	border-left: 4px solid #ffb900;
+	padding: 5px 5px 5px 15px;
+}
+
+blockquote.info {
+	background-color: rgba(127,187,0, 0.3);
+	border-left: 4px solid #7fbb00;
+	padding: 5px 5px 5px 15px;
+	margin-top: 40px;
+}
+
+/* *BLOCKQUOTE*/
+
+/* TABLE SPECFORMAT */
+#specFormat {
+	margin: auto;
+	width: 95%;
+}
+
+#specFormat th, td {
+	padding: 10px;
+}
+
+#specFormat tr:nth-child(2n+1) {
+	background-color: #bff199;
+}	
+/* *TABLE SPECFORMAT */
+
+/* TABLE DOMNODE */
+#domNode {
+	border-collapse: collapse;
+	margin: auto;
+	width: 95%;
+}
+
+#domNode th, td {
+	padding: 5px;
+	border: thin solid rgba(0,0,0, 0.3);
+}
+
+#domNode th {
+	text-align: center;
+	background-color: #ADD8E6;	
+}
+
+#domNode .no:after{
+	content: " \2716 ";
+	color: #ce3045;
+}
+
+#domNode tr:nth-child(2) {
+	background-color: #dff0d8;
+}
+
+#domNode tr:nth-child(4) {
+	background-color: #ccc1da;
+}
+
+#domNode tr:nth-child(10) {
+	background-color: #fcd5b5;
+}	
+/* *TABLE DOMNODE */
