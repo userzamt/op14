@@ -16,6 +16,113 @@
         <h1>Объектная модель документа (DOM)</h1>
     </header>
 
+    <section>
+        <h2><code>Console API</code></h2>
+        <p><code>Console API</code> добавляет глобальную переменную JavaScript под названием <code>console</code> для всех веб-страниц. Этот объект содержит набор удобных функций для выполнения общих задач: выбора и проверки DOM элементов, отображение данных в удобном для чтения формате, а также мониторинг событий DOM.</p>
+        <p>Консоль можно открыть нажав на меню <code>Console</code> Панели разработчика, либо по нажатию клавиши <code>ESC</code>.</p>
+        <figure class="text-center">
+            <img src="img/console-console.png">
+            <figcaption>Меню <code>Console</code></figcaption>
+        </figure>
+        
+        <figure class="text-center">
+            <img src="img/console-elements.png">
+            <figcaption>Меню <code>Console</code> и меню <code>Elements</code> вместе</figcaption>
+        </figure>
+        
+        
+        <article>
+            <h3><code>console.clear()</code></h3>
+            <p>Пожалуй одна из самых простых в понимании команд. Очистка консоли.</p>
+            <figure class="text-center">
+                <img src="img/console-clear.png">
+                <figcaption>Очистка консоли</figcaption>
+            </figure>
+        </article>
+        
+        <article>
+            <h3><code>console.log(object[, object, ...])</code></h3>
+            <p>Метод применяется для вывода сообщений на консоль(иными словами процесс протоколирования). В качестве параметров может принимать один или более аргументов.</p>
+            <iframe height='265' scrolling='no' title='Console.log' src='http://codepen.io/userzamt/embed/b4e5009caf1bc8ff872a0ece097399a0/?height=265&theme-id=0&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/b4e5009caf1bc8ff872a0ece097399a0/'>Console.log</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+ 
+            <p>Первым аргументом для вывода может быть строка, содержащая один или несколько спецификаторов формата. Спецификатор формата состоит из символа %, за которым следует буква, указывающая на тип выводим данных.</p>
+            <p>Вот не полный набор спецификаторов формата, которые можно использовать для подстановки строк:</p>				
+            <table id="specFormat">
+                <caption>Спецификаторы формата</caption>
+                <tr>
+                    <td><code>%s</code></td>
+                    <td>Строка</td>
+                </tr>
+                <tr>
+                    <td><code>%d&nbsp;или&nbsp;%i</code></td>
+                    <td>Целые числа</td>
+                </tr>
+                <tr>
+                    <td><code>%f&nbsp;/&nbsp;%.xf</code></td>
+                    <td>Число с плавающей точкой; <code>х</code> обозначает число знаков после запятой, до которого число должно быть округлено (если неуказывается <code>х</code>, то число не будет округленно). Округление доступно в Firefox.</td>
+                </tr>
+                <tr>
+                    <td><code>%O</code></td>
+                    <td>Вывод объектов JavaScript</td>
+                </tr>
+            </table>
+            <iframe height='258' scrolling='no' title='Console.log 2' src='http://codepen.io/userzamt/embed/ZeQqOr/?height=258&theme-id=0&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/ZeQqOr/'>Console.log 2</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+            
+        </article>
+        
+        <article>
+            <h3><code>console.info(object[, object, ...])</code></h3>
+            <p>Так же как и <code>console.log()</code> выводит сообщения на консоль, но в сообщение добавляется круглая иконка с символом "i" внутри.</p>
+        </article>
+        
+        <article>
+            <h3><code>console.warn(object[, object, ...])</code></h3>
+            <p>Так же как и <code>console.log()</code> выводит сообщения на консоль, но в сообщение добавляется треугольная иконка с восклицательным знаком внутри.</p>
+        </article>
+        
+        <article>
+            <h3><code>console.error(object[, object, ...])</code></h3>
+            <p>Так же как и <code>console.log()</code> выводит сообщения на консоль. В начале сообщения добавляется иконка с крестиком внутри. Далее идёт текс сообщения и ссылка на номер строки, вызвавщий метод <code>console.error()</code>.</p>
+            <iframe height='248' scrolling='no' title='.info, .warn, .error' src='http://codepen.io/userzamt/embed/jBWeZa/?height=248&theme-id=0&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/jBWeZa/'>.info, .warn, .error</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+        </article>
+        
+        <article>
+            <h3><code>console.group*</code></h3>
+            <p>Методы <code>console.group()</code>, <code>console.groupEnd()</code>, <code>console.groupCollapsed()</code> служат для группировки выводимой информации на консоль в виде списка.</p>
+            <p>Все следующие выводы на консоль после метода <code>console.group()</code> будут группироваться в один список. <code>console.groupEnd()</code> закрывает список.</p>
+            <iframe height='243' scrolling='no' title='xqZQbx' src='http://codepen.io/userzamt/embed/xqZQbx/?height=243&theme-id=0&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/xqZQbx/'>xqZQbx</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+            <p>Метод <code>console.groupCollapsed()</code> похож на <code>console.group()</code> за одним лишь исключением. Группа созданая с помощью <code>console.groupCollapsed()</code> по умолчанию находится в закрытом состоянии("свёрнутой").</p>				
+        </article>
+        
+        <article>
+            <h3><code>console.table</code></h3>
+            <p><code>console.table</code> выводит информацию на консоль в виде таблицы.</p>
+            <p>Данный метод обеспечивает простой способ просмотра объектов и массивов, которые содержат и данные. При вызове, он будет принимать свойства объекта и создать заголовки на основе их имён.</p>
+            <iframe height='241' scrolling='no' title='Console.table' src='http://codepen.io/userzamt/embed/NpxEdz/?height=241&theme-id=0&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/NpxEdz/'>Console.table</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+        </article>
+                    
+        <article>
+            <h3><code>console.time*</code></h3>
+            <p>Методы <code>console.time()</code> и <code>console.timeEnd()</code> служат для запуска и остоновки таймера. При создания таймер <mark>необходимо обязательно указать его имя</mark>.</p>
+            <p>Вызов метода <code>console.timeEnd()</code> останавливает работу указаного таймера и выводит прошедшее время с его запуска.</p>				
+            <iframe height='225' scrolling='no' title='Console.time' src='http://codepen.io/userzamt/embed/mWVQgL/?height=228&theme-id=0&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/mWVQgL/'>Console.time</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>	
+        </article>
+        
+        <article>
+            <h3><code>console.count([name])</code></h3>
+            <p><code>console.count()</code> выводит на консоль число, равное количеству вызовов строки, где указан данный метод. Так же необходимо указать имя счётчика. Это имя будет отображаться при выводи значения счётчика. Если имя не задано, то в качестве имени берётся номер строки. </p>	
+            <iframe height='240' scrolling='no' title='Console.count' src='http://codepen.io/userzamt/embed/jBWXer/?height=240&theme-id=0&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/jBWXer/'>Console.count</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>				
+        </article>
+        
+        <article>
+            <h3><code>console.dir(object)</code></h3>
+            <p>Метод <code>console.dir()</code> выводит список всех свойств объекта. <mark>Входное значение для отображения свойств должно быть объектом.</mark></p>
+            <iframe height='258' scrolling='no' title='Console.dir' src='http://codepen.io/userzamt/embed/ZeQwWv/?height=258&theme-id=0&default-tab=result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/ZeQwWv/'>Console.dir</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>				
+        </article>
+        <br>
+        <p>Были рассмотрены не все возможности <code>Console API</code>. Больше информации по данному API можно найти ознакомившись с <a href="https://developers.google.com/web/tools/chrome-devtools/console/" target="_blancl"><code>Chrome Console API</code></a> и <a href="http://getfirebug.com/wiki/index.php/Console_API" target="_blancl"><code>Firebug Console API</code></a>.</p>
+        
+    </section>
 
 </main>    
 
