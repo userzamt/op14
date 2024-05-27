@@ -16,6 +16,536 @@
         <h1>Обработка событий</h1>
     </header>
 
+    <p>Для реакции на действия посетителя и внутреннего взаимодействия скриптов существуют события.</p>
+		<p>Событие – это сигнал от браузера о том, что что-то произошло. Существует много видов событий.</p>
+		<p>Самым ярким примером события это нажатие пользователя по какому-то объекту(<code>click</code>), будь то это кнопка, ссылка или любой другой элемент. Другой пример события, это наведение мыши над каким-то объектом(<code>mouseover</code>), скажем над изображением. Также событием является полное загрузка страницы(<code>load</code>). В общем все действия, которые происходят на сайте являются событиями.</p>
+		
+		<section>
+			<h2>Обработчик событий</h2>
+			<p>Для того чтобы обрабатывать какое-то событие, необходимо использовать специальный обработчик для данного события.</p>
+			<p>Обработчик события - это функция, которая обрабатывает, или откликается на событие, как только оно произошло. Когда в объекте возникнет событие указанного типа, браузер вызовет незамедлительно обработчик.</p>
+			<p>Именно благодаря обработчикам JavaScript-код может реагировать на действия посетителя.</p>
+			<p>Есть несколько способов назначить событию обработчик.</p>
+			
+			<h3><code>HTML</code> атрибуты событий</h3>
+			<p>Обработчик может быть назначен прямо в разметке, в атрибуте, который имеет вид <code>on&lt;событие&gt;</code>.</p>
+			<p>HTML атрибуты событий - это специальные глобальные атрибуты, используемые в тегах для вызова обработчиков событий, написанных на различных языках сценариев и вызываемых, когда на странице происходит какое-либо действие.</p>
+			<pre>
+&lt;<span class="tag">button <span class="attr">onclick</span>="<span class="val">alert('Hello? user zamt')</span>"</span>&gt;Нажми меня&lt;<span class="tag">/button</span>&gt;    
+			</pre>
+			<button type="button" onclick="alert('Hello? user zamt')" class="btn btn-primary my-2">Нажми меня</button>
+			<p>В значение обработчика можно написать сразу код JavaScript, но лучше вызывать какую-то функцию, которая сделает необходимые действия. Функцию необходимо описать внутри тега <code>&lt;script&gt;</code>, который может находится как внутри блока <code>&lt;head&gt;</code>, так и в конце тега <code>&lt;body&gt;</code>.</p>
+			
+			<h4>Атрибуты событий окна(<code>window</code>)</h4>
+			<p>События, вызываемые на объект окна(<code>window</code>). Данные события применяются с тегом <code>&lt;body&gt;</code>.</p>
+			<table class="table table-hover table-striped table-bordered">
+				<caption>Атрибуты событий окна(<code>window</code>)</caption>
+				<tbody>
+				<tr class="table-primary">
+					<th>Атрибут</th>
+					<th>Описание</th>
+				</tr>
+				<tr>
+					<td>onafterprint</td>
+					<td>Скрипт запустится после того, как документ будет распечатан.</td>
+				</tr>
+				<tr>
+					<td>onbeforeprint</td>
+					<td>Скрипт запустится прежде, чем документ будет распечатан.</td>
+				</tr>
+				<tr>
+					<td>onbeforeonload</td>
+					<td>Скрипт запустится до загрузки документа.</td>
+				</tr>
+				<tr>
+					<td>onblur</td>
+					<td>Скрипт запустится, когда окно потеряет фокус.</td>
+				</tr>
+				<tr>
+					<td>onerror</td>
+					<td>Скрипт запустится, если произойдет ошибка.</td>
+				</tr>
+				<tr>
+					<td>onfocus</td>
+					<td>Скрипт запустится, когда окно получит фокус.</td>
+				</tr>
+				<tr>
+					<td>onhaschange</td>
+					<td>Скрипт запустится, после изменения документа.</td>
+				</tr>
+				<tr>
+					<td>onload</td>
+					<td>Код события будет выполнен после полной загрузки страницы, т.е. когда всё содержимое веб-страницы полностью загружено, включая изображения, внешние таблицы стилей и внешние скрипты.</td>
+				</tr>
+				<tr>
+					<td>onmessage</td>
+					<td>Скрипт запустится при срабатывании сообщения.</td>
+				</tr>
+				<tr>
+					<td>onoffline</td>
+					<td>Скрипт запустится, когда документ перейдет в автономный режим.</td>
+				</tr>
+				<tr>
+					<td>ononline</td>
+					<td>Скрипт запустится, когда документ войдет в сеть.</td>
+				</tr>
+				<tr>
+					<td>onpagehide</td>
+					<td>Скрипт запустится, когда окно будет скрыто.</td>
+				</tr>
+				<tr>
+					<td>onpageshow</td>
+					<td>Скрипт запустится, когда окно станет видимым.</td>
+				</tr>
+				<tr>
+					<td>onpopstate</td>
+					<td>Скрипт запустится при изменении окна истории.</td>
+				</tr>
+				<tr>
+					<td>onredo</td>
+					<td>Скрипт запустится, когда документ начнет выполнять повтор.</td>
+				</tr>
+				<tr>
+					<td>onresize</td>
+					<td>Скрипт запустится при изменении размеров окна.</td>
+				</tr>
+				<tr>
+					<td>onstorage</td>
+					<td>Скрипт запустится при загрузке документа.</td>
+				</tr>
+				<tr>
+					<td>onundo</td>
+					<td>Скрипт запустится при выполнении команды отменить в документе.</td>
+				</tr>
+				<tr>
+					<td>onunload</td>
+					<td>Скрипт запустится при выходе пользователя из документа.</td>
+				</tr>
+				</tbody>
+			</table>
+			
+			<h4>События формы</h4>
+			<p>События срабатывают на действия внутри HTML формы.</p>
+			<table class="table table-hover table-striped table-bordered">
+				<caption>События формы</caption>
+				<tbody>
+				<tr class="table-primary">
+					<th>Атрибут</th>
+					<th>Описание</th>
+				</tr>
+				<tr>
+					<td>onblur</td>
+					<td>Скрипт запустится, когда элемент потеряет фокус.</td>
+				</tr>
+				<tr>
+					<td>onchange</td>
+					<td>Скрипт запустится при изменении элемента.</td>
+				</tr>
+				<tr>
+					<td>oncontextmenu</td>
+					<td>Скрипт запустится при вызове контекстного меню.</td>
+				</tr>
+				<tr>
+					<td>onfocus</td>
+					<td>Скрипт запустится, когда элемент получит фокус.</td>
+				</tr>
+				<tr>
+					<td>onformchange</td>
+					<td>Скрипт запустится при изменении формы.</td>
+				</tr>
+				<tr>
+					<td>onforminput</td>
+					<td>Скрипт запустится, когда пользователь будет вводить данные в форму.</td>
+				</tr>
+				<tr>
+					<td>oninput</td>
+					<td>Скрипт запустится, когда элемент станет получать пользовательский ввод.</td>
+				</tr>
+				<tr>
+					<td>oninvalid</td>
+					<td>Скрипт запустится, когда элемент станет недействителен.</td>
+				</tr>
+				<tr>
+					<td>onselect</td>
+					<td>Скрипт запустится при выборе элемента.</td>
+				</tr>
+				<tr>
+					<td>onsubmit</td>
+					<td>Скрипт запустится при отправке формы.</td>
+				</tr>
+			</tbody>
+			</table>
+			
+			<h4>События клавиатуры</h4>
+			<p>События, вызываемые клавиатурой (могут применяться ко всем элементам HTML).</p>
+			<table class="table table-hover table-striped table-bordered">
+				<caption>События клавиатуры</caption>
+				<tbody>
+				<tr class="table-primary">
+					<th>Атрибут</th>
+					<th>Описание</th>
+				</tr>
+				<tr>
+					<td>onkeydown</td>
+					<td>Скрипт запустится, когда будет нажата клавиша.</td>
+				</tr>
+				<tr>
+					<td>onkeypress</td>
+					<td>Скрипт запустится после того, как клавиша была нажата и отпущена.</td>
+				</tr>
+				<tr>
+					<td>onkeyup</td>
+					<td>Скрипт запустится при отпускании клавиши.</td>
+				</tr>
+			</tbody>
+			</table>
+			
+			<h4>События мыши</h4>
+			<p>События, вызываемые действиями мышкой(могут применяться ко всем элементам HTML).</p>
+			<table class="table table-hover table-striped table-bordered">
+				<caption>События мыши</caption>
+				<tbody>
+				<tr class="table-primary">
+					<th>Атрибут</th>
+					<th>Описание</th>
+				</tr>
+				<tr>
+					<td>onclick</td>
+					<td>Код события будет выполнен по клику левой кнопкой мыши на элементе.</td>
+				</tr>
+				<tr>
+					<td>ondblclick</td>
+					<td>Скрипт запустится после двойного клика мыши.</td>
+				</tr>
+				<tr>
+					<td>ondrag</td>
+					<td>Скрипт запустится при перетаскивании элемента.</td>
+				</tr>
+				<tr>
+					<td>ondragend</td>
+					<td>Скрипт запустится после операции перетаскивания.</td>
+				</tr>
+				<tr>
+					<td>ondragenter</td>
+					<td>Скрипт запустится, когда элемент будет перенесен на допустимую зону падения.</td>
+				</tr>
+				<tr>
+					<td>ondragleave</td>
+					<td>Скрипт запустится, когда элемент отпустят в действующий зоне падения.</td>
+				</tr>
+				<tr>
+					<td>ondragover</td>
+					<td>Скрипт запустится, если элемент тащат за допустимую зону падения.</td>
+				</tr>
+				<tr>
+					<td>ondragstart</td>
+					<td>Скрипт запустится в начале операции перетаскивания элемента.</td>
+				</tr>
+				<tr>
+					<td>ondrop</td>
+					<td>Скрипт запустится после перетаскивания элемента при падении.</td>
+				</tr>
+				<tr>
+					<td>onmousedown</td>
+					<td>Скрипт запустится при нажатии кнопки мыши.</td>
+				</tr>
+				<tr>
+					<td>onmousemove</td>
+					<td>Скрипт запустится, когда указатель мыши начнет перемещаться.</td>
+				</tr>
+				<tr>
+					<td>onmouseout</td>
+					<td>Скрипт запустится, когда указатель мыши будет перемещаться из элемента.</td>
+				</tr>
+				<tr>
+					<td>onmouseover</td>
+					<td>Скрипт запустится, когда указатель мыши будет перемещаться над элементом.</td>
+				</tr>
+				<tr>
+					<td>onmouseup</td>
+					<td>Скрипт запустится при отпускании кнопки мыши.</td>
+				</tr>
+				<tr>
+					<td>onmousewheel</td>
+					<td>Скрипт запустится при использовании колеса мыши.</td>
+				</tr>
+				<tr>
+					<td>onscroll</td>
+					<td>Скрипт запустится во время прокручивания полосы прокрутки элемента.</td>
+				</tr>
+			</tbody>
+			</table>
+						
+			<h4>События медиа-файлов</h4>
+			<p>События, вызываемые для медиа файлов, таких как видео, изображения и аудио (могут применяться ко всем элементам HTML, но чаще всего применяются к таким элементам, как <code>&lt;audio&gt;</code>, <code>&lt;embed&gt;</code>, <code>&lt;object&gt;</code> и <code>&lt;video&gt;</code>).</p>
+			<table class="table table-hover table-striped table-bordered">
+				<caption>События медиа-файлов</caption>
+				<tbody>
+				<tr class="table-primary">
+					<th>Атрибут</th>
+					<th>Описание</th>
+				</tr>
+				<tr>
+					<td>onabort</td>
+					<td>Скрипт запустится при прерывании.</td>
+				</tr>
+				<tr>
+					<td>oncanplay</td>
+					<td>Скрипт запустится, когда файл будет готов, чтобы начать проигрывание (когда будет достаточно буферизирован).</td>
+				</tr>
+				<tr>
+					<td>oncanplaythrough</td>
+					<td>Скрипт запустится, когда файл может быть воспроизведен полностью (от начала до конца), не останавливаясь для буферизации.</td>
+				</tr>
+				<tr>
+					<td>ondurationchange</td>
+					<td>Скрипт запустится при изменении длины продолжительности медиа файла.</td>
+				</tr>
+				<tr>
+					<td>onemptied</td>
+					<td>Скрипт запустится, когда произошла какая-то неполадка и файл стал недоступен (например при разрыве связи с интернетом).</td>
+				</tr>
+				<tr>
+					<td>onended</td>
+					<td>Скрипт запустится, когда аудио/видео файл дойдет до конца (например для вывода сообщения: спасибо за прослушивание/просмотр).</td>
+				</tr>
+				<tr>
+					<td>onerror</td>
+					<td>Скрипт запустится, если возникнет ошибка при загрузке файла.</td>
+				</tr>
+				<tr>
+					<td>onloadeddata</td>
+					<td>Скрипт запустится при загрузке данных медиа файла.</td>
+				</tr>
+				<tr>
+					<td>onloadedmetadata</td>
+					<td>Скрипт запустится, когда загружены мета-данные (например размер и продолжительность).</td>
+				</tr>
+				<tr>
+					<td>onloadstart</td>
+					<td>Скрипт запустится при загрузке файла прежде, чем начнет загружаться на самом деле.</td>
+				</tr>
+				<tr>
+					<td>onpause</td>
+					<td>Скрипт запустится, если воспроизведение файла приостановлено (нажали паузу) пользователем или программно.</td>
+				</tr>
+				<tr>
+					<td>onplay</td>
+					<td>Скрипт запустится, когда файл готов начать воспроизводиться.</td>
+				</tr>
+				<tr>
+					<td>onplaying</td>
+					<td>Скрипт запустится при воспроизведении файла.</td>
+				</tr>
+				<tr>
+					<td>onprogress</td>
+					<td>Скрипт запускается, когда браузер находится в процессе получения данных медиа файла.</td>
+				</tr>
+				<tr>
+					<td>onratechange</td>
+					<td>Скрипт запускается, каждый раз, при изменении режима воспроизведения (например, когда пользователь переключается на медленное воспроизведение или режим быстрой перемотки).</td>
+				</tr>
+				<tr>
+					<td>onreadystatechange</td>
+					<td>Скрипт запускается, каждый раз, при изменении состояния готовности (состояние готовности отслеживает состояние данных файла).</td>
+				</tr>
+				<tr>
+					<td>onseeked</td>
+					<td>Скрипт запускается, когда атрибут seeked у тегов audio или video имеет значение "false", т.е.текущая позиция воспроизведения найдена.</td>
+				</tr>
+				<tr>
+					<td>onseeking</td>
+					<td>Скрипт запускается, когда атрибут seeking у тегов audio или video имеет значение "true", т.е. текущая позиция воспроизведения перемещается.</td>
+				</tr>
+				<tr>
+					<td>onstalled</td>
+					<td>Скрипт запускается, когда браузер не может получить данные медиа файла по любой причине.</td>
+				</tr>
+				<tr>
+					<td>onsuspend</td>
+					<td>Скрипт запускается, когда получение данных медиа файла прекращается, до окончания полной загрузки по любой причине.</td>
+				</tr>
+				<tr>
+					<td>ontimeupdate</td>
+					<td>Скрипт запускается, когда позиция воспроизведения изменилась (например, когда пользователь выбрал точку воспроизведения на много дальше от текущей).</td>
+				</tr>
+				<tr>
+					<td>onvolumechange</td>
+					<td>Скрипт запускается каждый раз при изменении значения громкости звука (включая полное отключение звука).</td>
+				</tr>
+				<tr>
+					<td>onwaiting</td>
+					<td>Скрипт запускается, когда медиа файл остановлен, но ожидается возобновление запуска (например, когда файл делает паузу для буферизации оставшихся данных).</td>
+				</tr>
+			</tbody>
+			</table>
+			
+			<h3>Использование свойства <code>DOM</code>-объекта</h3>
+			<p>Другой способ зарегистрировать обработчик события заключается в том, чтобы присвоить свойству DOM-элемента <code>on&lt;событие&gt;</code> желаемую функцию обработчика.</p>
+			<iframe height='206' scrolling='no' title='Event. Sample 1' src='http://codepen.io/userzamt/embed/WpdZaw/?height=206&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/WpdZaw/'>Event. Sample 1</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+			<p>Этот способ, по сути, аналогичен предыдущему.Обработчик хранится именно в DOM-свойстве, а атрибут – лишь один из способов его инициализации.</p>
+			<p>Так как DOM-свойство <code>onclick</code>, в итоге, одно, то назначить более одного обработчика так нельзя.</p>
+			<iframe height='227' scrolling='no' title='Event. Sample  2' src='http://codepen.io/userzamt/embed/qrpVEL/?height=227&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/qrpVEL/'>Event. Sample  2</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+			<blockquote class="warn">Обработчиком можно назначить так же и уже существующую функцию(см. пример выше), а если обработчик надо убрать – нужно назначить <code>elem.onclick = null</code>.</blockquote>
+						
+			<h3>Оператор <code>this</code></h3>
+			<p>В качестве агумента обработчику события можно пердавать оператор <code>this</code>, который ссылается на текущий элемент, то есть на тот, на котором он сработал.</p>
+			<p>Оператор <code>this</code> возвращает ссылку на объект, являющийся текущим контекстом вызова. Это позволяет обращаться к свойствам "текущего" объекта: <code>this.property</code>.</p>		
+			<p>Это можно использовать, чтобы получить свойства или изменить элемент</p>			
+			<iframe height='242' scrolling='no' title='Event. Sample 2' src='http://codepen.io/userzamt/embed/00055786dbdefbac8f352f96fa1382df/?height=242&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/00055786dbdefbac8f352f96fa1382df/'>Event. Sample 2</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+			
+			<h3><code>addEventListener()</code> и <code>removeEventListener()</code></h3>
+			<p>Главный недостаток описанных выше способов назначения обработчика – невозможность повесить несколько обработчиков на одно событие.</p>
+			<p>Поэтому разработчики стандартов достаточно давно предложили альтернативный способ назначения обработчиков при помощи специальных методов, которые свободны от указанного недостатка.</p>
+			<p>Методы <code>addEventListener()</code> и <code>removeEventListener()</code> являются современным способом назначить или удалить обработчик, и при этом позволяют использовать сколько угодно любых обработчиков.</p>
+			
+				<h4><code>addEventListener()</code></h4>
+				<p>Метод может быть применём к любому существующему объекту в документе, включая объекты <code>Window</code> и <code>Document</code></p>
+				<pre>
+    <span class="node">element</span>.addEventListener(event-name, callback[, use-capture]);
+				</pre>
+				<p>Метод <code>addEventListener()</code> принимает три аргумента. Первый - тип события, для которого регистрируется обработчик. Тип (или имя) события должен быть строкой и не должен включать префикс <code>on</code>, используемый при установке свойств обработчиков событий. Вторым аргументом методу <code>addEventListener()</code> передается функция, которая должна вызываться при возникновении события указанного типа. Третьим(необязательным) аргументом методу <code>addEventListener()</code> передается логическое значение. Обычно в этом аргументе передается значение <code>false</code>. Если передать в нем значение <code>true</code>, функция будет зарегистрирована как перехватывающий обработчик и будет вызываться в другой фазе распространения события.</p>
+
+				<h4><code>removeEventListener()</code></h4>
+				<p>Парным к методу <code>addEventListener()</code> является метод <code>removeEventListener()</code>, который принимает те же три аргумента, но не добавляет, а удаляет функцию-обработчик из объекта. Это часто бывает удобно, когда необходимо зарегистрировать временный обработчик события, а затем удалить его в какой-то момент.</p>
+				<blockquote class="warn">Для удаления нужно передать именно ту функцию-обработчик которая была назначена. Пример ниже не сработает<br>
+				<pre>
+    <span class="node">element</span>.addEventListener(<span class="unit">"click"</span>, <span class="js">fucntion</span>() { <span class="js">alert</span>(<span class="unit">"Hello"</span>);});
+....
+    <span class="node">element</span>.removeEventListener(<span class="unit">"click"</span>, <span class="js">fucntion</span>() { <span class="js">alert</span>(<span class="unit">"Hello"</span>);});
+				</pre>
+				В <code>removeEventListener()</code> передана не та же функция, а другая, с одинаковым кодом.
+				</blockquote>
+				<iframe height='223' scrolling='no' title='Event. addEventListener' src='http://codepen.io/userzamt/embed/qrpVxe/?height=223&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/qrpVxe/'>Event. addEventListener</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+			
+			<h3>Объект события</h3>
+			<p>Чтобы хорошо обработать событие, недостаточно знать о том, что это – «клик» или «нажатие клавиши». Иногда могут понадобиться детали произошедшего. Детали произошедшего браузер записывает в объект события(<code>event</code>), который передаётся первым аргументом в обработчик.</p>
+			<p>Объект события <code>event</code> предназначен для получения различной информации о событии в обработчике события. <code>event</code> позволяет получить элемент, который вызвал обработчик события; элемент, который сгенерировал событие; определить какая была нажата кнопка мыши (для событий связанных с мышью) и многое другое.</p>
+			<p>Объект событие всегда передается обработчику и содержит массу полезной информации о том где и какое событие произошло.</p>
+			<pre>
+    <span class="node">element</span>.addEventListener(<span class="unit">"click"</span>, myEvent);
+
+    <span class="js">fucntion</span> myEvent(event) { 
+        <span class="comment">/* переменная event будет содержать объект event */</span> 
+    }
+	
+    <span class="comment">/* Или можно так */</span>
+	
+    <span class="node">element</span>.addEventListener(<span class="unit">"click"</span>, <span class="js">fucntion</span>(event) {
+        <span class="comment">//переменная event будет содержать объект event</span>
+    });
+			</pre>
+			<iframe height='187' scrolling='no' title='Event. объект события' src='http://codepen.io/userzamt/embed/rypZag/?height=187&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/rypZag/'>Event. объект события</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+			
+				<h4>Свойства и методы объекта <code>event</code></h4>
+				<p>Общие свойства объекта <code>event</code>:</p>
+				<ul>
+					<li><b><code>type</code></b> - строка, содержащее имя события</li>
+					<li><b><code>target</code></b> - DOM-элемент, который сгенерировал событие</li>
+					<li><b><code>currentTarget</code></b> - DOM-элемент, который вызвал обработчик события</li>
+					<li><b><code>eventPhase</code></b> - число, показывающее на каком этапе произошло событие (1 - этапе погружения (перехвата), 2 - на цели, 3 - на этапе всплытия)</li>
+					<li><b><code>timestamp</code></b> - число (дата), когда произошло событие</li>
+					<li><b><code>bubbles</code></b> - возвращает логическое значение, указывающее может ли данное событие всплывать</li>
+					<li><b><code>view</code></b> - возвращает ссылку на объект <code>window</code>, в котором произошло событие</li>
+				</ul>
+				
+				<h4>Свойства объекта <code>event</code>, предназначенные для получения дополнительной информации о событиях, связанных с клавиатурой и мышью</h4>
+				<p>Ниже представлены не все свойтва, а лишь некоторые из них</p>
+				<ul>
+					<li><b><code>which</code></b> - (для мыши)возвращает число, указывающее, какая кнопка мыши была нажата (1 - левая кнопка, 2 - средняя кнопка, 3 - правая кнопка). Это свойство в основном используется вместе с событием <code>mousedown</code>. Данное свойство может использоваться для получения дополнительной информации о событие, связанном с нажатием кнопки мыши.</li>
+					<li><b><code>clientX, clientY</code></b> - (для мыши)возвращают информацию о положении курсора (<code>clientX</code>- горизонтальная координата, <code>clientY</code> - вертикальная координата) относительно левого верхнего угла клиентской области</li>
+					<li><b><code>screenX, screenY</code></b> - (для мыши)возвращают информацию о положении курсора (<code>screenX</code> - горизонтальная координата, <code>screenY</code> - вертикальная координата) относительно левого верхнего угла экрана</li>
+					<li><b><code>detail</code></b> - (для мыши)возвращает число, указывающее сколько раз была нажата кнопка мыши в некоторой области за короткий промежуток времени</li>
+					<li><b><code>altKey, ctrlKey, metaKey, shiftKey</code></b> - (для мыши и клавиатуры)получение дополнительной информации о том была ли нажата соответствующая клавиша <code>alt</code>, <code>ctrl</code> и <code>shift</code> в тот момент когда произошло событие</li>
+					<li><b><code>charCode</code></b> - (для клавиатуры)возвращает код символа Unicode нажатой клавиши (для события keypress). Если данное свойство использовать для получения дополнительной информации о событиях <code>keydown</code> или <code>keyup</code>, то оно всегда вернёт "0"</li>
+					<li><b><code>keyCode, which</code></b> - (для клавиатуры)возвращает код символа Unicode (для события <code>keypress</code>) или код ключа Unicode (для событий <code>keydown</code> и <code>keyup</code>)</li>
+				</ul>
+		</section>
+		
+		<section>
+			<h2>Всплытие и перехват</h2>
+			<p>Примечательно, что на одно событие может реагировать не только тот элемент, на котором произошло событие, но и элементы над ним.</p>
+			<p>Это очень удобно, например если в элементе содержатся много дочерних HTML-тегов - не обязательно ставить обработчик на каждый, достаточно указать один обработчик на родителе и в нем ловить все события.</p>
+			<p>Рассмотрим ситуацию, когда у вас есть элементы "вложенные" друг в друга.</p>
+			<iframe height='199' scrolling='no' title='771adc0ccb9ab5dd1514c75ce6e01aea' src='http://codepen.io/userzamt/embed/771adc0ccb9ab5dd1514c75ce6e01aea/?height=199&theme-id=0&default-tab=html,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/771adc0ccb9ab5dd1514c75ce6e01aea/'>771adc0ccb9ab5dd1514c75ce6e01aea</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+			<p><mark><b>При наступлении события обработчики сначала срабатывают на самом вложенном элементе, затем на его родителе, затем выше и так далее, вверх по цепочке вложенности.</b><mark></p>
+			<figure>
+				<img src="img/event-bubbling.png">
+				<figcaption>Всплытие события</figcaption>
+			</figure>
+			<p>Этот процесс называется всплытием, потому что события «всплывают» от внутреннего элемента вверх через родителей, подобно тому, как всплывает пузырек воздуха в воде.<p>
+			<blockquote class="warn">Всплывают почти все события. Ключевое слово в этой фразе - «почти». Например, событие <code>focus</code> не всплывает.</blockquote>
+				<h3>Целевой элемент <code>event.target</code></h3>
+				<p>На каком бы элементе мы ни поймали событие, всегда можно узнать, где конкретно оно произошло.</p>
+				<p>Самый глубокий элемент, который вызывает событие, называется «целевым» или «исходным» элементом и доступен как <code>event.target</code>.</p>
+				<p>Отличия от <code>this</code> (=<code>event.currentTarget</code>)</p>
+				<ul>
+					<li><b><code>event.target</code></b> - это исходный элемент, на котором произошло событие, в процессе всплытия он неизменен</li>
+					<li><b><code>this</code></b> - то текущий элемент, до которого дошло всплытие, на нём сейчас выполняется обработчик</li>
+				</ul>
+				<iframe height='209' scrolling='no' title='Всплытие события' src='http://codepen.io/userzamt/embed/EWodKm/?height=209&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/EWodKm/'>Всплытие события</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+				
+				<h3>Отмена всплытия</h3>
+				<p>Нужно понимать, что всплытие происходит всегда. При возникновении события на элементе, сигнал будет подниматься до самого высокого элемента, выполняя нужные обработчики.</p>
+				<p>Если какой-то обработчик хочет остановить всплытие и не выпускать событие дальше вверх - это делается методом <code>event.stopPropagation()</code></p>
+				<pre>
+    <span class="node">event</span>.stopPropagation();
+				</pre>
+				<iframe height='258' scrolling='no' title='Отмена всплытия ' src='http://codepen.io/userzamt/embed/oZpQmg/?height=258&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/oZpQmg/'>Отмена всплытия </a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+					<h4><code>event.stopImmediatePropagation()</code></h4>
+					<p>Если у элемента есть несколько обработчиков на одно событие, то даже при прекращении всплытия все они будут выполнены. То есть, <code>event.stopPropagation()</code> препятствует продвижению события дальше, но на текущем элементе все обработчики отработают.</p>
+					<p>Для того, чтобы полностью остановить обработку, современные браузеры поддерживают метод <code>event.stopImmediatePropagation()</code>. Он не только предотвращает всплытие, но и останавливает обработку событий на текущем элементе.</p>
+
+				<h3>Перехват события</h3>
+				<p>В современном стандарте, кроме «всплытия» событий, предусмотрено ещё и «погружение»(или по другому перехват). Перехват - это вторая, альтернативная всплытию модель порядка выполнения для события. Оно гораздо менее востребовано, но иногда, очень редко, знание о нём может быть полезным.</p>
+				<p>Когда в приложении возникает событие, оно не просто срабатывает один раз в месте своего происхождения; оно отправляется в путь, состоящий из трёх фаз. Первая фаза, событие движется от корня документа к цели (фаза перехвата), затем срабатывает для цели события (фаза цели) и движется назад к корню документа (фаза всплытия).</p>
+				<p><a href="https://www.w3.org/TR/DOM-Level-3-Events/" target="_blanck">Стандарт DOM Events 3</a></p>
+				<figure>
+					<img src="img/event-capture.png">
+					<figcaption>Порядок обработки в стандарте W3C</figcaption>
+				</figure>
+				<p><a href="http://jsbin.com/exezex/4/edit?html,css,js,output" target="_blanck">Замедленное воспроизведение продвижения события</a></p>
+				<blockquote class="info">Фаза перехвата так называется, потому что родительские элементы могут обработать событие раньше, чем непосредственная цель события, как бы "перехватывая" обработку.</blockquote>
+				<p>Чтобы поймать событие на стадии перехвата, нужно использовать третий аргумент  метода <code>addEventListener()</code></p>				
+				<pre>
+    <span class="comment">//Если аргумент false, то событие будет поймано при всплытии</span>
+    <span class="node">element</span>.addEventListener(<span class="unit">"click"</span>, funcClk, <span class="js">false</span>);
+	
+    <span class="comment">//Если аргумент true, то событие будет перехвачено по дороге вниз</span>
+    <span class="node">element</span>.addEventListener(<span class="unit">"click"</span>, funcClk, <span class="js">true</span>);
+				</pre>
+				<p>Если в качестве третьего параметра функции <code>addEventListener()</code> передать значение <code>true</code>, то событие будет срабатывать на фазе захвата, если <code>false</code> – то после окончания захвата, на фазе всплытия.</p>
+				<blockquote class="info">Мы не будем рассматривать фазу захвата детально, так как в реальной жизни используется только всплытие.<blockquote>
+		</section>
+		
+		<section>
+			<h2>Действия браузера по умолчанию</h2>
+			<p>Для некоторых событий, которые происходят в документе, в браузере установлено поведение по умолчанию. Например, при нажатии на ссылку браузер осуществляет стандартное действие - это переход на страницу, указанную в атрибуте <code>href</code>; при нажатии на кнопку <code>&lt;input type="submit"&gt;</code> в форме данные отправляются на сервер; движение колёсика мыши инициирующие прокрутку страницы; показывающиеся контекстное меню браузера при нажатии правой кнопки мыши и многие другие.</p>
+			<p>Иногда возникают ситуации, когда стандартные действия, которые выполняет браузер необходимо отменить.</p>
+			<blockquote class="warn">И в ряде случаев реакцию браузера на событие мы можем убрать в обработчике, но некоторые поведения браузера по умолчанию отменить нельзя и об этом нужно помнить.</blockquote>
+			<p>К примеру, в веб-приложениях обычно хотелось бы иметь возможность самостоятельно управлять навигацией, без перезагрузок страницы. Чтобы такую возможность получить, нужно предотвратить установленную по умолчанию реакцию браузера на клик, и вместо неё выполнить то, что задумали мы.</p>
+				
+				<h3>Отмена действия браузера</h3>
+				<p>Существует два способа отмены действия браузера по умолчанию</p>
+				<ul>
+					<li>Основной способ для отмены стандартного действия - это метод <code>preventDefault()</code> объекта <code>event</code></li>
+					<li>В случаи если обработчик назначен через <code>on&lt;событие&gt;</code>(не через <code>addEventListener()</code>), то для отмены стандартного действия кроме <code>event.preventDefault()</code> также можно использовать <code>return false</code></li>
+				</ul>
+				<blockquote class="warn">Данный способ (<code>return false</code>) не будет работать, если обработчик назначен через метод <code>addEventListener()</code>.</blockquote>
+				<iframe height='186' scrolling='no' title='Отмена действия браузера по умолчанию' src='http://codepen.io/userzamt/embed/yMvLGE/?height=186&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/yMvLGE/'>Отмена действия браузера по умолчанию</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+								
+				<p>Так же следует помнить, что отмена стандартного действия браузера не останавливает всплытие события.</p>
+				<p>В ситуациях, когда необходимо отменить стандартное действие браузера и всплытие события, можно использовать метод <code>event.stopPropagation()</code></p>
+				<pre>
+    <span class="node">element</span>.addEventListener(<span class="unit">"click"</span>, <span class="js">function</span>(event) {
+        event.preventDefault();<span class="comment">//отмена стандартного действия браузера</span>
+    ....
+        event.stopPropagation();<span class="comment">//отмена всплытия события</span>
+    });
+
+				</pre>
+
+		</section>
 
 </main>    
 
