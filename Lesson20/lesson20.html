@@ -382,18 +382,23 @@
 			
 			<h3>Использование свойства <code>DOM</code>-объекта</h3>
 			<p>Другой способ зарегистрировать обработчик события заключается в том, чтобы присвоить свойству DOM-элемента <code>on&lt;событие&gt;</code> желаемую функцию обработчика.</p>
-			<iframe height='206' scrolling='no' title='Event. Sample 1' src='http://codepen.io/userzamt/embed/WpdZaw/?height=206&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/WpdZaw/'>Event. Sample 1</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+			
+            <a class="d-block" href='http://codepen.io/userzamt/pen/WpdZaw/'>Event. Sample 1</a> 
+
 			<p>Этот способ, по сути, аналогичен предыдущему.Обработчик хранится именно в DOM-свойстве, а атрибут – лишь один из способов его инициализации.</p>
 			<p>Так как DOM-свойство <code>onclick</code>, в итоге, одно, то назначить более одного обработчика так нельзя.</p>
-			<iframe height='227' scrolling='no' title='Event. Sample  2' src='http://codepen.io/userzamt/embed/qrpVEL/?height=227&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/qrpVEL/'>Event. Sample  2</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+			
+            <a class="d-block" href='http://codepen.io/userzamt/pen/qrpVEL/'>Event. Sample  2</a> 
+                
 			<blockquote class="warn">Обработчиком можно назначить так же и уже существующую функцию(см. пример выше), а если обработчик надо убрать – нужно назначить <code>elem.onclick = null</code>.</blockquote>
 						
 			<h3>Оператор <code>this</code></h3>
 			<p>В качестве агумента обработчику события можно пердавать оператор <code>this</code>, который ссылается на текущий элемент, то есть на тот, на котором он сработал.</p>
 			<p>Оператор <code>this</code> возвращает ссылку на объект, являющийся текущим контекстом вызова. Это позволяет обращаться к свойствам "текущего" объекта: <code>this.property</code>.</p>		
 			<p>Это можно использовать, чтобы получить свойства или изменить элемент</p>			
-			<iframe height='242' scrolling='no' title='Event. Sample 2' src='http://codepen.io/userzamt/embed/00055786dbdefbac8f352f96fa1382df/?height=242&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/00055786dbdefbac8f352f96fa1382df/'>Event. Sample 2</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
 			
+            <a class="d-block" href='http://codepen.io/userzamt/pen/00055786dbdefbac8f352f96fa1382df/'>Event. Sample 2</a> 
+            			
 			<h3><code>addEventListener()</code> и <code>removeEventListener()</code></h3>
 			<p>Главный недостаток описанных выше способов назначения обработчика – невозможность повесить несколько обработчиков на одно событие.</p>
 			<p>Поэтому разработчики стандартов достаточно давно предложили альтернативный способ назначения обработчиков при помощи специальных методов, которые свободны от указанного недостатка.</p>
@@ -416,7 +421,9 @@
 				</pre>
 				В <code>removeEventListener()</code> передана не та же функция, а другая, с одинаковым кодом.
 				</blockquote>
-				<iframe height='223' scrolling='no' title='Event. addEventListener' src='http://codepen.io/userzamt/embed/qrpVxe/?height=223&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/qrpVxe/'>Event. addEventListener</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+				
+                <a class="d-block" href='http://codepen.io/userzamt/pen/qrpVxe/'>Event. addEventListener</a> 
+                    
 			
 			<h3>Объект события</h3>
 			<p>Чтобы хорошо обработать событие, недостаточно знать о том, что это – «клик» или «нажатие клавиши». Иногда могут понадобиться детали произошедшего. Детали произошедшего браузер записывает в объект события(<code>event</code>), который передаётся первым аргументом в обработчик.</p>
@@ -435,7 +442,9 @@
         <span class="comment">//переменная event будет содержать объект event</span>
     });
 			</pre>
-			<iframe height='187' scrolling='no' title='Event. объект события' src='http://codepen.io/userzamt/embed/rypZag/?height=187&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/rypZag/'>Event. объект события</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+			
+            <a class="d-block" href='http://codepen.io/userzamt/pen/rypZag/'>Event. Объект события</a>
+                
 			
 				<h4>Свойства и методы объекта <code>event</code></h4>
 				<p>Общие свойства объекта <code>event</code>:</p>
@@ -467,7 +476,9 @@
 			<p>Примечательно, что на одно событие может реагировать не только тот элемент, на котором произошло событие, но и элементы над ним.</p>
 			<p>Это очень удобно, например если в элементе содержатся много дочерних HTML-тегов - не обязательно ставить обработчик на каждый, достаточно указать один обработчик на родителе и в нем ловить все события.</p>
 			<p>Рассмотрим ситуацию, когда у вас есть элементы "вложенные" друг в друга.</p>
-			<iframe height='199' scrolling='no' title='771adc0ccb9ab5dd1514c75ce6e01aea' src='http://codepen.io/userzamt/embed/771adc0ccb9ab5dd1514c75ce6e01aea/?height=199&theme-id=0&default-tab=html,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/771adc0ccb9ab5dd1514c75ce6e01aea/'>771adc0ccb9ab5dd1514c75ce6e01aea</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+			
+            <a class="d-block" href='http://codepen.io/userzamt/pen/771adc0ccb9ab5dd1514c75ce6e01aea/'>Всплытие</a>
+                
 			<p><mark><b>При наступлении события обработчики сначала срабатывают на самом вложенном элементе, затем на его родителе, затем выше и так далее, вверх по цепочке вложенности.</b><mark></p>
 			<figure>
 				<img src="img/event-bubbling.png">
@@ -483,15 +494,18 @@
 					<li><b><code>event.target</code></b> - это исходный элемент, на котором произошло событие, в процессе всплытия он неизменен</li>
 					<li><b><code>this</code></b> - то текущий элемент, до которого дошло всплытие, на нём сейчас выполняется обработчик</li>
 				</ul>
-				<iframe height='209' scrolling='no' title='Всплытие события' src='http://codepen.io/userzamt/embed/EWodKm/?height=209&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/EWodKm/'>Всплытие события</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
 				
+                <a class="d-block" href='http://codepen.io/userzamt/pen/EWodKm/'>Всплытие события</a> 
+                            
 				<h3>Отмена всплытия</h3>
 				<p>Нужно понимать, что всплытие происходит всегда. При возникновении события на элементе, сигнал будет подниматься до самого высокого элемента, выполняя нужные обработчики.</p>
 				<p>Если какой-то обработчик хочет остановить всплытие и не выпускать событие дальше вверх - это делается методом <code>event.stopPropagation()</code></p>
 				<pre>
     <span class="node">event</span>.stopPropagation();
 				</pre>
-				<iframe height='258' scrolling='no' title='Отмена всплытия ' src='http://codepen.io/userzamt/embed/oZpQmg/?height=258&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/oZpQmg/'>Отмена всплытия </a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+				
+                <a class="d-block" href='http://codepen.io/userzamt/pen/oZpQmg/'>Отмена всплытия </a> 
+                    
 					<h4><code>event.stopImmediatePropagation()</code></h4>
 					<p>Если у элемента есть несколько обработчиков на одно событие, то даже при прекращении всплытия все они будут выполнены. То есть, <code>event.stopPropagation()</code> препятствует продвижению события дальше, но на текущем элементе все обработчики отработают.</p>
 					<p>Для того, чтобы полностью остановить обработку, современные браузеры поддерживают метод <code>event.stopImmediatePropagation()</code>. Он не только предотвращает всплытие, но и останавливает обработку событий на текущем элементе.</p>
@@ -532,8 +546,9 @@
 					<li>В случаи если обработчик назначен через <code>on&lt;событие&gt;</code>(не через <code>addEventListener()</code>), то для отмены стандартного действия кроме <code>event.preventDefault()</code> также можно использовать <code>return false</code></li>
 				</ul>
 				<blockquote class="warn">Данный способ (<code>return false</code>) не будет работать, если обработчик назначен через метод <code>addEventListener()</code>.</blockquote>
-				<iframe height='186' scrolling='no' title='Отмена действия браузера по умолчанию' src='http://codepen.io/userzamt/embed/yMvLGE/?height=186&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/yMvLGE/'>Отмена действия браузера по умолчанию</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
-								
+				
+                <a class="d-block" href='http://codepen.io/userzamt/pen/yMvLGE/'>Отмена действия браузера по умолчанию</a>
+                 				
 				<p>Так же следует помнить, что отмена стандартного действия браузера не останавливает всплытие события.</p>
 				<p>В ситуациях, когда необходимо отменить стандартное действие браузера и всплытие события, можно использовать метод <code>event.stopPropagation()</code></p>
 				<pre>
