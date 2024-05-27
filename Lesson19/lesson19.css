@@ -2,7 +2,7 @@ html {
 	font-size: 20px;
 }
 
-body {	
+body {
 	counter-reset: table-count; /* for table caption*/
 }
 
@@ -12,11 +12,6 @@ main {
 
 dl {
 	column-count: 2;
-}
-
-
-blockquote {
-	text-align: justify;
 }
 
 pre {
@@ -98,57 +93,52 @@ blockquote.info {
 
 /* *BLOCKQUOTE*/
 
-
-
-/* TABLE ALL */
-table {
-    caption-side: top;
+/* TABLE SPECFORMAT */
+#specFormat {
+	margin: auto;
+	width: 95%;
 }
 
-table caption:before {
-	content: "Таб. " counter(table-count) " ";
-	counter-increment: table-count;	
-}
-/* *TABLE ALL */
-
-/* FIGURE */
-figcaption:before {
-	content: "Рис. ";
-	content: "Рис. " counter(img-count) " ";/**/
-	counter-increment: img-count;/**/
-}
-/* *FIGURE*/
-
-/* PRE */
-pre {
-	background-color: #f8f7f7;
-	color: #333;
-	border: thin solid #e9e8e8;
-	border-radius: 3px;
-	padding: 10px 20px;
+#specFormat th, td {
+	padding: 10px;
 }
 
-pre .property, pre .node  {
-	color: #e6550d;
+#specFormat tr:nth-child(2n+1) {
+	background-color: #bff199;
+}	
+/* *TABLE SPECFORMAT */
+
+/* TABLE DOMNODE */
+#domNode {
+	border-collapse: collapse;
+	margin: auto;
+	width: 95%;
 }
 
-pre .unit {
-	color: #31a354;
+#domNode th, td {
+	padding: 5px;
+	border: thin solid rgba(0,0,0, 0.3);
 }
 
-pre .comment {
-	color: #a9a9a9;
+#domNode th {
+	text-align: center;
+	background-color: #ADD8E6;	
 }
 
-pre .tag {
-	color: #d20962;
+#domNode .no:after{
+	content: " \2716 ";
+	color: #ce3045;
 }
 
-pre .attr{
-	color: #de9000;
+#domNode tr:nth-child(2) {
+	background-color: #dff0d8;
 }
 
-pre .val, pre .js {
-	color: #00a4e4;
+#domNode tr:nth-child(4) {
+	background-color: #ccc1da;
 }
-/* *PRE */
+
+#domNode tr:nth-child(10) {
+	background-color: #fcd5b5;
+}	
+/* *TABLE DOMNODE */
