@@ -5,3 +5,14 @@ html {
 main {
 	counter-reset: img-count;/*numeric image*/
 }
+
+main {
+	counter-reset: img-count;/*numeric image*/
+}
+
+/* FIGURE */
+figcaption:before {
+	content: "Рис. " counter(img-count) " ";
+	counter-increment: img-count;
+}
+/* *FIGURE*/

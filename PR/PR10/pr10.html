@@ -15,6 +15,59 @@
         <h1>ПР10 Обработка событий (действия пользователя)</h1>
     </header>
 
+    <p>Прежде чем приступить к выполнению задания ознакомьтесь со следующими материалом.</p>
+		<h2>Событие <code>mousemove</code></h2>
+		<p>Назначив обработчик события <code>mousemove</code> для глобального объекта <code>window</code> мы можем узнать положение курсора мыши в документе через объект события <code>event</code>.</p>
+		<iframe height='202' scrolling='no' title='ПР05. Координаты мыши' src='http://codepen.io/userzamt/embed/4193b04c49a8ec823fc4c8418ede8a84/?height=202&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/4193b04c49a8ec823fc4c8418ede8a84/'>ПР05. Координаты мыши</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+		
+		<h2><code>setInterval</code></h2>
+		<p>Этот метод неоднократно вызывает функцию или выполняет фрагмент кода, с фиксированной задержкой по времени между каждым вызовом. В качестве значения возвращает <code>intervalID</code>.</p>
+		<pre>
+    <span class="js">var</span> intervalID = <span class="node">window</span>.setInterval(func | code, delay);
+		</pre>
+		
+		<p><b><code>func|code</code></b> - функция или строка кода для выполнения</p>
+		<p><b><code>delay</code></b> - интервал в миллисекундах, т.е 1000 это 1 секунда</p>
+
+		<h2><code>clearInterval</code></h2>
+		<p>Этот метод отменяет выполнение <code>setInterval</code>, используя для этого идентификатор <code>intervalID</code>.</p>
+		<pre>
+    clearInterval(intervalID);
+		</pre>
+		<iframe height='231' scrolling='no' title='ПР05. Пример' src='http://codepen.io/userzamt/embed/aJqXeE/?height=231&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/aJqXeE/'>ПР05. Пример</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+		
+		<h2>Простая анимация</h2>
+		<p>Это пример простой анимации. Перемещение объекта в документе. Первоначально объект перемещается по оси X. Дойдя до конечного значения по оси X объект начинает двигаться по оси Y до конечной точки.</p>
+		<iframe height='265' scrolling='no' title='ПР05. Пример анимации' src='http://codepen.io/userzamt/embed/f790aef556a7c04666271b68fa6f44c3/?height=265&theme-id=0&default-tab=js,result&embed-version=2' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>See the Pen <a href='http://codepen.io/userzamt/pen/f790aef556a7c04666271b68fa6f44c3/'>ПР05. Пример анимации</a> by user zamt (<a href='http://codepen.io/userzamt'>@userzamt</a>) on <a href='http://codepen.io'>CodePen</a>.</iframe>
+		
+		<h2>Задание на практическую</h2>
+		<p>Ваша задача анимировать объект на веб-странице с использованием возможностей JavaScript, DOM, BOM, HTML5, CSS3. Использование других языков, технологий, стандратов, в том числе библиотек и фреймворков ЗАПРЕЩЕНО.</p>
+		<p>Анимация должна представлять собой перемещение объекта из начальной точки(x1;y1) в конечную точку(x2;y2). Начальная и коненчая точки должны находиться в документе(т.е. на самой странице).</p>
+		<p>Перемещение объекта должно осуществляться по кратчайшему пути(по прямой). Уравнение прямой, проходящей через две точки имеет следующий вид</p>
+		<figure class="text-center my-2">
+			<img src="img/pr05-function-line.png">
+			<figcaption>Уравнение прямой, проходящей через две точки</figcaption>
+		</figure>
+		<p>В общем виде данное уравнение можно представить следующим образом</p>
+		<figure class="text-center my-2">
+			<img src="img/pr05-function-line-general.png">
+			<figcaption>Уравнение прямой в общем виде</figcaption>
+		</figure>
+		<p>Выбор начальной и конечной точек должны осуществляться по "клику" мыши на странице. По первому нажатию - выбирается начальная точка(x1;y1) откуда будет двигаться объект. По второму "клику" - выбирается конечная точка(x2;y2) куда объект должен прийти и остановиться.</p>
+		<p>Предусмотреть область с демострацией выбраных координат начальной и конечной точек, а также текущее положение курсора мыши в документе(как в пример с событием <code>mousemove</code>).</p>
+		<p>Создать кнопку на странице, которая будет запускать передвижение объекта.</p>
+		
+		<p><b>Критерии оценивания</b></p>
+		<ul>
+			<li>На странице присутствуют все заявленые элементы</li>
+			<li>Выбор начальной и конечной точек производиться по нажатию мыши на документе</li>
+			<li>Движение объекта плавное и по прямой линии
+				<blockquote class="warn">По ряду причин идеально прямой траектории не получиться. Поэтому не будет считаться за ошибку или недочёт если объект при движении тёргается(или колеблиться)</blockquote>
+			</li>
+			<li>Назначение обработчиков для всех собтый производить при помощи метода <code>addEventListener()</code></li>
+		</ul>
+		
+
 </main>  
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
