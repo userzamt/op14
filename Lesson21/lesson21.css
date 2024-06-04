@@ -1,3 +1,78 @@
 html {
 	font-size: 20px;
 }
+
+body {
+	counter-reset: table-count; /* for table caption*/
+}
+
+main {
+	counter-reset: img-count;/*numeric image*/
+}
+
+pre {
+	margin: 0 auto;
+}
+
+
+/* FIGURE */
+figcaption:before {
+	content: "Рис. " counter(img-count) " ";
+	counter-increment: img-count;
+}
+/* *FIGURE*/
+
+/* TABLE ALL */
+table caption:before {
+	content: "Таб. " counter(table-count) " ";
+	counter-increment: table-count;	
+}
+
+table { margin: auto; width: 95%; border-collapse: collapse;}
+th, td { padding: 10px; border: thin solid rgba(0,0,0, 0.3); }
+/* *TABLE ALL */
+
+/* PRE */
+pre {
+	background-color: #f8f7f7;
+	color: #333;
+	border: thin solid #e9e8e8;
+	border-radius: 3px;
+	padding: 10px 20px;
+}
+
+pre .property, pre .node, pre .uri  {
+	color: #e6550d;
+}
+
+pre .unit, pre .caption {
+	color: #31a354;
+}
+
+pre .comment, .port {
+	color: #a9a9a9;
+}
+
+pre .tag, pre .method {
+	color: #d20962;
+}
+
+pre .attr{
+	color: #de9000;
+}
+
+pre .val, pre .js, pre .version {
+	color: #00a4e4;
+}
+/* *PRE */
+
+/* TABLE EVENT */
+#ready th {
+	background-color: #add8e6;
+	text-align: center;
+}
+
+#ready tr td:first-child{ font-family: monospace; }
+
+#ready tr:hover { background-color: #ddd; }
+/* *TABLE EVENT */
