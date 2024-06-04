@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>pr11</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+
+        <link rel="stylesheet" href="pr11.css">
+    </head>
+<body>
+<main class="container-lg">
+    <header>
+        <h1>ПР11 Использование сетевых запросов</h1>
+    </header>
+
+    <p><b>Задача</b> – выполнить асинхронный запрос к веб-серверу и обработать полученные данные.</p>
+		<p>Практическая работа заключается в создании асинхронного запроса веб-серверу, с передачей через адресную строку браузера логина пользователя. Сервер, получив через адресную строку логин, производит поиск в базе данных и отправляет клиенту полученный результат. </p>
+		<table class="table table-hover table-striped table-bordered">
+			<caption>Структура и содержание таблицы</caption>
+			<tr class="table-primary">
+				<th>fio</th><th>login</th><th>description</th>
+			</tr>
+			<tr>
+				<td>Иванов Иван Иванович</td><td>ivan89</td><td>Инженер КБ им.Новикова. Стаж работы более 40лет.</td>
+			</tr>
+			<tr>
+				<td>Петров Пётр Петрович</td><td>pety1</td><td>Основоположник учения об элементарных частицах.</td>
+			</tr>
+			<tr>
+				<td>Сидоров Сидр Сидорович</td><td>sider72</td><td>Работник по обслуживанию электрооборудования 6 разряда.</td>
+			</tr>
+		</table>
+		<p>Полученный ответ от веб-сервера выводится на страницу без перезагрузки самой страницы.</p>
+		<p>На странице должны присутствовать следующие элементы</p>
+		<ul>
+			<li>Текстовое поле для ввода логина, по которому производится поиск в БД</li>
+			<li>Кнопка с обработчиком, по нажатию на которую отправляется запрос серверу</li>
+			<li>Поле для вывода полученной информации</li>
+		</ul>
+		<p>Параметры HTTP-запроса</p>
+		<ul>
+			<li>Метод запроса к веб-серверу – <code>GET</code></li>
+			<li>Адрес запрашиваемого ресурса – <code>http://ильяалександрович.рф/zamt000webhostappcom/pr08.php</code></li>
+			<li>Имя передаваемого параметра - <code>usr</code> </li>
+			<li>Запрос производить асинхронно</li>
+		</ul>
+		
+
+</main>  
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+
+</body>
+</html>

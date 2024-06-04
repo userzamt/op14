@@ -1,0 +1,18 @@
+html {
+    font-size: 20px;
+}
+
+body {	
+	counter-reset: table-count; /* for table caption*/
+}
+
+/* TABLE ALL */
+table caption:before {
+	content: "Таб. " counter(table-count) " ";
+	counter-increment: table-count;	
+}
+
+table {
+	caption-side: top;
+}
+/* *TABLE ALL */
