@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>AJAX. Sample 4</title>
+	<link rel="stylesheet" href="sample4.css">
+	<script src="sample4.js"></script>
+</head>
+
+<body>
+	<h1>AJAX. Sample 4</h1>
+	<article>
+		<header>Описание</header>
+		<p>Теперь всё по взрослому как и положено. Добавили обработчки для анализа общения между клиентом и сервером.</p>
+		<p>Производится асинхроный POST запрос к странице <a href="https://zamt19.000webhostapp.com/pr08post.php">https://zamt19.000webhostapp.com/pr08post.php</a>.</p>
+	</article>
+
+
+	<label for="usr">User</label>
+	<input id="usr" name="usr" type="text" value="admin"><br>
+	<label for="passwd">Password</label>
+	<input id="passwd" name="passwd" type="text" value="12345"><br>
+	<button onclick="postInfo()">Отправить на проверку</button>
+	<div id="output"></div>
+</body>
+
+</html>
