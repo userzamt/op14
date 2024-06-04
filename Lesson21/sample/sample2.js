@@ -7,9 +7,9 @@ function getInfo() {
 	
 	var cmd = "ping";
 	var query = "?cmd=" + cmd;//параметры через строку запроса
-	var protocol = "https://";
-	var host = "zamt19.000webhostapp.com";
-	var resourcePath = "/pr08get.php";
+	var protocol = "http://";
+	var host = "ильяалександрович.рф";
+	var resourcePath = "/zamt000webhostappcom/pr08get.php";
 	var uri = protocol + host + resourcePath + query;
 
 	console.log(uri);

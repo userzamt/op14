@@ -4,9 +4,9 @@
 	var passwd = document.getElementById("passwd").value;
 	var msg = "usr=" + usr + "&passwd=" + passwd;//тело сообщения
 	
-	var protocol = "https://";
-	var host = "zamt19.000webhostapp.com";
-	var resourcePath = "/pr08post.php";
+	var protocol = "http://";
+	var host = "ильяалександрович.рф";
+	var resourcePath = "/zamt000webhostappcom/pr08post.php";
 	var uri = protocol + host + resourcePath;
 	
 	var xhr = new XMLHttpRequest(); //создаём новый экземляр объекта

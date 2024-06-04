@@ -8,9 +8,9 @@ function getInfo() {
 	
 	// далее для удобства восприятия информации одна строка была разбита на несколько
 	// протокол - хост - путь до ресурса - параметры(данны пукнт пока отсутствует)
-	var protocol = "https://";
-	var host = "zamt19.000webhostapp.com";
-	var resourcePath = "/pr08get.php";
+	var protocol = "http://";
+	var host = "ильяалександрович.рф";
+	var resourcePath = "/zamt000webhostappcom/pr08get.php";
 	var uri = protocol + host + resourcePath;
 	
 	//метод запроса, адрес URL ресурса, асинхроность/синхроность
