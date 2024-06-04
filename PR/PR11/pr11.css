@@ -2,17 +2,17 @@ html {
     font-size: 20px;
 }
 
-main {
-	counter-reset: img-count;/*numeric image*/
+body {	
+	counter-reset: table-count; /* for table caption*/
 }
 
-main {
-	counter-reset: img-count;/*numeric image*/
+/* TABLE ALL */
+table caption:before {
+	content: "Таб. " counter(table-count) " ";
+	counter-increment: table-count;	
 }
 
-/* FIGURE */
-figcaption:before {
-	content: "Рис. " counter(img-count) " ";
-	counter-increment: img-count;
+table {
+	caption-side: top;
 }
-/* *FIGURE*/
+/* *TABLE ALL */
