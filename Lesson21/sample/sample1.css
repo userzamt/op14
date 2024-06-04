@@ -1,0 +1,13 @@
+html {
+	font-size: 22px;
+}
+
+button { padding: 10px; font-size: 1.6rem;}
+
+article {
+	text-align: justify;
+}
+
+article header {
+	font-size: 1.6rem;
+}

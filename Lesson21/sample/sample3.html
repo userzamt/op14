@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>AJAX. Sample 3</title>
+	<link rel="stylesheet" href="sample3.css">
+	<script src="sample3.js"></script>
+</head>
+
+<body>
+	<h1>AJAX. Sample 3</h1>
+	<article>
+		<header>Описание</header>
+		<p>В этом пример используем уже метод POST для отправки данных на сервер. </p>
+		<p>Произведём для сравнения сначало синхроный, а потом асинхроный POST запрос к странице <a href="http://ильяалександрович.рф/zamt000webhostappcom/pr08post.php">http://ильяалександрович.рф/zamt000webhostappcom/pr08post.php</a>. И посмотрим что из этого выйдет.</p>
+	</article>
+
+
+	<label for="usr">User</label>
+	<input id="usr" name="usr" type="text" value="admin"><br>
+	<label for="passwd">Password</label>
+	<input id="passwd" name="passwd" type="text" value="12345"><br>
+	<button onclick="postInfo()">Отправить на проверку</button>
+	<div id="output"></div>
+</body>
+
+</html>
